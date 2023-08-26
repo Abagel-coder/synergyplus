@@ -37,7 +37,6 @@ label{
 #login-div{
   max-width: 480px;
   margin: auto;
-  margin-bottom: 24px;
   overflow: hidden;
 }
 
@@ -51,6 +50,7 @@ label{
   color: #fff;
   font-size: 12px;
 }
+
 
 #div-msg, #div-msg2{
   background: #fed;
@@ -77,19 +77,108 @@ label{
   box-shadow: 2px 0px 2px #57f;
 }
 
-#div-domain{
-  border-bottom: 1px solid #4CAF50;
-  box-shadow: 0 1px 0 0 #4CAF50;
+
+#drop-domain-ul {
+  background-color: #20B2AA;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#drop-domain-ul li {
+  padding: 1px 0px;
   cursor: pointer;
-  line-height: 1.15;
-  padding: 8px 0;
-  transition: color 0.3s; 
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #d3d3d3;
+  display: flex;
+  align-items: center;
+}
+
+#drop-domain-ul li:last-child {
+  border-bottom: none;
+}
+
+#drop-domain-ul li svg {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+#drop-domain-ul li span {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#drop-domain-ul li:hover {
+  background-color: #1C8BFF;
 }
 
 .domain{
   margin: 0 0 5px;
   padding: 2px 6px;
 }
+
+#i_pass {
+  margin-top: 0.25rem;
+  border-radius: 0.5rem;
+  background-color: #4A5568;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  height: 2rem;
+  width: 21.2rem;
+}
+
+#div-domain {
+  margin-top: 0.25rem;
+  border-radius: 0.5rem;
+  background-color: #4A5568;
+  color: white; /* Added property */
+  padding: 0.25rem 0.5rem;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Added property */
+  height: 2rem;
+  width: 21.2rem;
+}
+
+#div-domain:focus {
+  outline: none !important;
+  background-color: #4A5568 !important;
+  border-color: transparent !important;
+  color: white !important; /* Added property */
+}
+
+#i_user {
+  margin-top: 0.25rem;
+  border-radius: 0.5rem;
+  background-color: #4A5568;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  height: 2rem;
+  width: 21.2rem;
+}
+
+#l_user {
+  font-size: 16px;
+}
+
+#l_pass {
+  font-size: 16px;
+}
+
+#sign_in_button {
+  background-color: #14b8a6;
+  color: white;
+  border-color: transparent;
+  box-shadow: 0px 2px 10px 0px #14b8a6; /* Adjust the Y-offset and spread radius as needed */
+}
+
+
 
 #wa-signin{
   margin: 0 0 12px; 
@@ -113,15 +202,6 @@ label{
 
 .wa-option:focus{
   border: 1px solid #5df;
-}
-
-#div-domain:focus {
-  outline: none; 
-  color: #2bc02b; 
-}
-
-label ~ #div-domain:focus {
-  color: #4CAF50; 
 }
 
 /* .domain.current{
@@ -172,7 +252,7 @@ label ~ #div-domain:focus {
   #login-div{
     height: 100%;
     max-width: 600px;
-    margin-bottom: 0;
+    margin-bottom: 20;
   }
   #login-footer{
     background: none;
@@ -200,3 +280,4 @@ label ~ #div-domain:focus {
     background: rgba(255, 255, 255, 0.6);
   }
 }
+
