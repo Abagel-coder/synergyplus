@@ -93,6 +93,15 @@ theme: {
 
   <div id='loadingDiv' style='position: fixed; top: 0; left: 0; width: calc(100% - 60px); height: 100%; font-family: -apple-system, "Roboto", "Segoe UI", sans-serif; z-index: 9999; padding: 0 30px; overflow: hidden; color: #fff'>
     <style>
+      @media (max-width: 640px) {
+        .mobile-shorten {
+          max-width: 50%; /* Adjust as needed */
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
       body {
         overflow: hidden;
       }
@@ -455,45 +464,55 @@ theme: {
           
         <!-- GRADEBOOK ACTUAL -->
   
-        <div id = 'acc gradebook'>
-          <a 
-            v-on:click='$_sc({index})' 
-            v-on:keyup.enter='$_sc({index})' 
-            v-on:keydown.up.prevent='$_focus(index, 0)' 
-            v-on:keydown.down.prevent='$_focus(index, 1)' 
-            :id='`ci-`+index' 
-            class=' bg-gray-100 rounded-lg collection-item border p-2' 
-            :class='$_hasNew(course.$.Title)' 
-            v-for='(course, index) in course.slice(0,8)' 
-            v-if='course.$' 
+        <div id='acc gradebook'>
+          <a
+            v-on:click='$_sc({index})'
+            v-on:keyup.enter='$_sc({index})'
+            v-on:keydown.up.prevent='$_focus(index, 0)'
+            v-on:keydown.down.prevent='$_focus(index, 1)'
+            :id='`ci-`+index'
+            class='bg-gray-100 rounded-lg collection-item border p-2'
+            :class='$_hasNew(course.$.Title)'
+            v-for='(course, index) in course.slice(0,8)'
+            v-if='course.$'
             tabindex='0'
           >
-      
+        
             <div class="flex items-center">
-              <div class = "mr-4">
-
+              <div class="mr-4">
+        
                 <div class="w-12 h-12 flex items-center justify-center bg-primary-600 rounded-full">
-                  <span class = "text-3xl tracking-tight font-extrabold lg:text-3xl text-gray-100 dark:text-gray-100 whitespace-nowrap ">{{course.$.Period}}</span>
+                  <span class="text-3xl tracking-tight font-extrabold lg:text-3xl text-gray-100 dark:text-gray-100 whitespace-nowrap">{{course.$.Period}}</span>
                 </div>
               </div>
+        
+              
 
-              <div class = "flex-grow">
-                <span class='whitespace-nowrap px-2 py-2 font-medium text-gray-900 dark:text-white' :class='$_chkLength($_trim(course.$.Title))'>{{$_trim(course.$.Title)}} </span>
+              <div class="flex-grow">
+        
+                <span class='whitespace-nowrap px-2 py-2 font-medium text-gray-900 dark:text-white'
+                  :class='$_chkLength($_trim(course.$.Title))'
+                >
+                  {{$_trim(course.$.Title.replace(/\([^)]*\)/g, ''))}}
+                </span>
+
+
                 <br>
                 <span class='whitespace-nowrap px-2 py-2 text-sm text-gray-900 dark:text-white'>{{course.$.Staff}}</span>
+              
               </div>
-              <div>
 
+              <div>
+        
                 <span class='right ml-auto lg font-medium px-2 text-gray-900 dark:text-white' v-html='$_showGrade(course)'></span>
                 <br>
                 <span class='right ml-auto text-sm px-2 py-1' :class='$_detNew(course.$.Title, 1, index)'>{{$_detNew(course.$.Title, 0, index)}}</span>
-
+        
               </div>
-            </div>          
+            </div>
           </a>
         </div>
-            
-  
+        
           
           <li class='collection-item course-rp' v-else-if='course._m && course._nd'>
             <span class='bw'>No Data </span><span class='gray'>(No courses found in this reporting period)</span>
