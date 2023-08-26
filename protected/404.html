@@ -1,59 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Error 404 (Page Not Found)</title>
+  <title>Page Not Found | Synergy+</title>
   <meta charset="UTF-8">
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href="favicon.ico" rel="icon" type="icon/ico">
   <link href='https://fonts.googleapis.com/css?family=Inter:400,700' rel='stylesheet' type='text/css'/>
-  <style>
-    html{
-      background: #e3e3ff;
-      background: linear-gradient(#e3fffe, #e3ebff);
-      height: 100%;
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
+
+  
+<script>
+  tailwind.config = {
+darkMode: 'media',
+theme: {
+  extend: {
+    colors: {
+      primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
     }
-    body{
-      font-family: 'Inter', sans-serif;
-    }
-    #header{
-      position: absolute;
-      font-size: 80px;
-      left: calc(50% - 75px);
-      top: calc(30% - 50px);
-      border-bottom: 2px solid black;
-      text-shadow: 1px 1px 3px gray;
-    }
-    #main{
-      position: absolute;
-      font-size: 20px;
-      left: calc(50% - 80px);
-      top: calc(30% + 50px);
-      line-height: 1.5;
-      text-shadow: 1px 1px 2px lightgray;
-    }
-    #side{
-      position: absolute;
-      font-size: 18px;
-      width: calc(100% - 8px);
-      top: calc(30% + 120px);
-      text-align: center;
-    }
-    a{
-      text-decoration: none; 
-      color: #4174ff;
-    }
-    a:hover{
-      text-decoration: underline;
-    }
-  </style>
+  },
+  fontFamily: {
+    'body': [
+  'Inter', 
+  'ui-sans-serif', 
+  'system-ui', 
+  '-apple-system', 
+  'system-ui', 
+  'Segoe UI', 
+  'Roboto', 
+  'Helvetica Neue', 
+  'Arial', 
+  'Noto Sans', 
+  'sans-serif', 
+  'Apple Color Emoji', 
+  'Segoe UI Emoji', 
+  'Segoe UI Symbol', 
+  'Noto Color Emoji'
+],
+    'sans': [
+  'Inter', 
+  'ui-sans-serif', 
+  'system-ui', 
+  '-apple-system', 
+  'system-ui', 
+  'Segoe UI', 
+  'Roboto', 
+  'Helvetica Neue', 
+  'Arial', 
+  'Noto Sans', 
+  'sans-serif', 
+  'Apple Color Emoji', 
+  'Segoe UI Emoji', 
+  'Segoe UI Symbol', 
+  'Noto Color Emoji'
+]
+  }
+}
+}
+</script>
+
 </head>
-<body>
-  <div id='header'>404</div>
-  <div id='main'>
-    <p>Page Not Found</p>
-  </div>
-  <div id='side'>
-    <p>The requested URL was not found on this server.<br><a href='#' onclick='window.history.back()'>Go Back</a> | <a href='/'>Homepage</a></p>
-  </div>
+
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+      <div class="mx-auto max-w-screen-sm text-center">
+        <h1 class="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-primary-600 dark:text-primary-600">404</h1>
+        <p class="mb-4 text-3xl tracking-tight font-bold text-gray-900 md:text-4xl dark:text-white">Something's missing.</p>
+        <p class="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">These are not the <s>droids</s> pages you are looking for.</p>
+        <a href="/" class="inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4">Back to Homepage</a>
+      </div>   
+    </div>
 </body>
 </html>
