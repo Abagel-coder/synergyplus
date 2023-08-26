@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+  <title>Sign Out | Synergy+</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='favicon.ico' rel='icon' type='icon/ico'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' integrity='sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=' crossorigin='anonymous'/>
+  <link rel='stylesheet' href='css/auth.css' type='text/css'>
+  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js' integrity='sha256-vrn14y7WH7zgEElyQqm2uCGSQrX/xjYDjniRUQx3NyU=' crossorigin='anonymous'></script>
+  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js' integrity='sha256-H/ZsHjKSJUnQyCQHZwPmn7VTWFeTTI+qgCP1GkiB9zI=' crossorigin='anonymous'></script>
+  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js' integrity='sha256-U/cHDMTIHCeMcvehBv1xQ052bPSbJtbuiw4QA9cTKz0=' crossorigin='anonymous'></script>
+  <script defer src='../js/ver.js'></script>
+  <script defer src='js/signout.js'></script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+  darkMode: 'media',
+  theme: {
+    extend: {
+      colors: {
+        primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
+      }
+    },
+    fontFamily: {
+      'body': [
+    'Inter', 
+    'ui-sans-serif', 
+    'system-ui', 
+    '-apple-system', 
+    'system-ui', 
+    'Segoe UI', 
+    'Roboto', 
+    'Helvetica Neue', 
+    'Arial', 
+    'Noto Sans', 
+    'sans-serif', 
+    'Apple Color Emoji', 
+    'Segoe UI Emoji', 
+    'Segoe UI Symbol', 
+    'Noto Color Emoji'
+  ],
+      'sans': [
+    'Inter', 
+    'ui-sans-serif', 
+    'system-ui', 
+    '-apple-system', 
+    'system-ui', 
+    'Segoe UI', 
+    'Roboto', 
+    'Helvetica Neue', 
+    'Arial', 
+    'Noto Sans', 
+    'sans-serif', 
+    'Apple Color Emoji', 
+    'Segoe UI Emoji', 
+    'Segoe UI Symbol', 
+    'Noto Color Emoji'
+  ]
+    }
+  }
+}
+  </script>
+
+  <noscript><style>#div-msg{opacity:1; height: 96px; margin-top: 10px; padding: 3px 6px} input, button, label {display: none !important}</style></noscript>
+
+  
+</head>
+  
+<body class = "bg-gray-900">
+  
+
+  <div class="grid h-screen w-full">
+    <div class="flex min-h-screen flex-col justify-center bg-gray-800">
+      <form
+        class="mx-auto w-full max-w-[400px] rounded-lg bg-gray-900 p-8 px-8 shadow-xl"
+      >
+        <img src="https://synergy-plus.vercel.app/static/media/synergyplus.66a8d0c1367f658c0c37.png" alt="Logo" class="mx-auto mb--4 block" />
+        <p class="text-center text-gray-400 mb-4">You have successfully signed out.</p>
+  
+        <a href = "/signin">
+          <button type = "button" class="my-2 w-full rounded-lg bg-primary-600 py-2 font-semibold text-white shadow-md shadow-teal-500/50 hover:shadow-primary-600/40">Sign In Again</button>
+        </a>
+  
+        <a href = "/">
+          <button type="button" class="my-2 w-full rounded-lg bg-gray-700 py-2 font-semibold text-white shadow-md shadow-gray-700/50 hover:shadow-gray-700/40">Back to Main Page</button>
+        </a>
+  
+        <div class="flex justify-between py-2 text-gray-400" style="font-size: 8.5px;">
+          <p class="flex items-center"></p>
+          <a id="passwordLink" href="#">Synergy+ is not affiliated with Edupoint in any way. ©2023. All Rights Reserved.</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+</body>
+</html>

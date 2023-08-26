@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+  user-select: none;
+}
+
+#div-msg, #div-theme{
+  padding: 4px 6px; 
+  border-radius: 2px;
+  max-width: 600px;
+  margin: auto;
+}
+
+html{
+  text-align: center;
+}
