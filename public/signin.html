@@ -2,13 +2,11 @@
 <html>
 <head>
 <meta charset='UTF-8'>
-  <title>Sign In • Synergy+</title>
+  <title>Sign In • BetterVue</title>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='favicon.ico' rel='icon' type='icon/ico'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' integrity='sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=' crossorigin='anonymous'/>
   <link rel='stylesheet' href='css/auth.css' type='text/css'>
-
-
   <script defer src='js/zepto.min.js' integrity='sha256-RHTXmWrHQAbYRTGQR8NJapj1bG53Zh4oRZRuAy2Hu3A=' crossorigin='anonymous'></script>
   <script defer src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js' integrity='sha256-U/cHDMTIHCeMcvehBv1xQ052bPSbJtbuiw4QA9cTKz0=' crossorigin='anonymous'></script>
   <script defer src='js/ver.js'></script>
@@ -16,70 +14,48 @@
   <script defer src='js/wa-client.js'></script>
   <script async src='https://unpkg.com/animejs@3.0.1/lib/anime.min.js'></script>
   <noscript><style>#div-msg{opacity:1; height: 96px; margin-top: 10px; padding: 3px 6px} input, button, label {display: none !important}</style></noscript>
-
-  <link href="/dist/output.css" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
-
-  <script>
-    tailwind.config = {
-  darkMode: 'media',
-  theme: {
-    extend: {
-      colors: {
-        primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
-      }
-    },
-    fontFamily: {
-      'body': [
-    'Inter', 
-    'ui-sans-serif', 
-    'system-ui', 
-    '-apple-system', 
-    'system-ui', 
-    'Segoe UI', 
-    'Roboto', 
-    'Helvetica Neue', 
-    'Arial', 
-    'Noto Sans', 
-    'sans-serif', 
-    'Apple Color Emoji', 
-    'Segoe UI Emoji', 
-    'Segoe UI Symbol', 
-    'Noto Color Emoji'
-  ],
-      'sans': [
-    'Inter', 
-    'ui-sans-serif', 
-    'system-ui', 
-    '-apple-system', 
-    'system-ui', 
-    'Segoe UI', 
-    'Roboto', 
-    'Helvetica Neue', 
-    'Arial', 
-    'Noto Sans', 
-    'sans-serif', 
-    'Apple Color Emoji', 
-    'Segoe UI Emoji', 
-    'Segoe UI Symbol', 
-    'Noto Color Emoji'
-  ]
-    }
-  }
-}
-  </script>
 </head>
+<script>
+  function redirectToPasswordHelp() {
+    window.location.href = "https://ca-pleas-psv.edupoint.com/PXP2_Password_Help.aspx?S=Y";
+  }
+  </script>
 <style>
+  #synergy-plus-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .input-container {
+    margin-bottom: 20px;
+  }
+
+  .input-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .custom-input {
+    width: 5%;
+  }
+
+  #sign_in_button {
+    width: 100%;
+    font-size: 1.25rem;
+    margin-top: 20px;
+  }
+
+  .card {
+    border-radius: 12px;
+  }
+
   .custom-button {
     background-color: transparent;
     border: none;
     outline: none;
-    transition: none; /* Remove any transition effects */
+    transition: none;
   }
 
-  /* Remove default focus and active styles */
   .custom-button:focus,
   .custom-button:active {
     background-color: transparent;
@@ -90,96 +66,127 @@
     background-color: transparent;
     border: none;
     outline: none;
-    color: #ffffff; /* Set the desired text color */
+    color: #ffffff;
+  }
+
+  .center-elements {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: -10px;
+  }
+
+  .center-elements button {
+    margin-left: 40px;
+  }
+
+  .login-card {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: calc(50vh - 300px);
+  }
+
+  hover-text-primary:hover {
+    color: #2196F3;
   }
 </style>
 <body>
-
-  <section class="bg-gray-0 dark:bg-gray-900">
-
-    
-<div class = "grid h-screen w-full">
-  <div class="flex min-h-screen flex-col justify-center bg-gray-800">
-    
-    <div
-    class="mx-auto w-full max-w-[400px] rounded-lg bg-gray-900 p-8 px-8 shadow-xl"
-    > 
-    
-    <img src="https://synergy-plus.vercel.app/static/media/synergyplus.66a8d0c1367f658c0c37.png" alt="Logo" class="mx-auto block" style="margin-bottom: -17px;"/>
-    <div id='login-div' class="flex flex-col py-2 text-gray-400">
-      <div class='p-6 space-y-4 md:space-y-6 sm:p-8' id='ccL'>
+  <div id='login-outer'>
+    <div id='login-div' class='card' style="background-color: #111827; width: 400px; height: 575px;">
+      <div id='div-loadbar'></div>
+      <div class='card-content' id='ccL'>
+        <span class='card-title'><img id='title-icon' src=''> BetterVue</span>
         <br/>
         <noscript>
           <div>
             <b>Error:</b>
-            <span>JavaScript is disabled (29).<br>Synergy+ can not be used without JavaScript.<br><br>If you need help enabling JavaScript, <a href='https://enable-javascript.com'>click here</a>.</span>
+            <span>JavaScript is disabled (29).<br>BetterVue can not be used without JavaScript.<br><br>If you need help enabling JavaScript, <a href='https://enable-javascript.com'>click here</a>.</span>
           </div>
         </noscript>
+        <p style='font-size: 16px'><img src='images/rolling.svg' id='so-i' style='height: 20px; vertical-align: text-bottom'> Please wait...</p>
       </div>
-
-
-        
-        
-      <div class = "flex flex-col py-2 text-gray-400">
-        <label id='l_user' for='i_user' >Username</label>
-        <input id='i_user' maxlength='24' class='validate' >
+      <div class='card-content' id='ccD' style='text-align: left;'>
+        <span class='card-title' style='display: flex; align-items: center;'>
+          <img id='title-icon' src=''>
+          <span style='margin-left: 0px; text-align: left;'>District Selection</span>
+        </span>
+        <span>If your district is not listed below, enter either your <b>district URL</b> to show a list of districts near you.</span><br/>
+        <div class='input-field'>
+          <input id='i_domain' type='text' maxlength='64' class='validate'>
+          <label id='l_domain' for='i_domain'>District URL</label>
+          <span id='h_domain' class='helper-text' data-error='The URL provided is not valid.'></span>
+        </div>
+        <div id='domainOut' style='text-align: left;'>
+          <div class='domain' tabindex='0' onkeypress='selDomain(this)' onclick='selDomain(this)'>
+          </div>
+          <div class='domain' tabindex='0' onkeypress='selDomain(this)' onclick='selDomain(this)'>
+            <span class='domainName'>Pleasanton Unified School District</span>
+            <span class='domainURL'>ca-pleas-psv.edupoint.com</span>
+          </div>
+        </div>
       </div>
       
-      <div class='flex flex-col py-2 text-gray-400'>
-        <label id="l_pass" for='i_pass'>Password</label>
-        <input id='i_pass' type='password' maxlength='48' class='mt-2 rounded-lg bg-gray-700 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none" type="text" onchange="(e) => setEmail(e.target.value)'>
+      <div class='card-content' id='cc1'>
+        <img id="synergy-plus-image" src="https://synergy-plus.vercel.app/static/media/synergyplus.66a8d0c1367f658c0c37.png" alt="Logo" class="mx-auto block" style="margin-bottom: -17px; max-width: 100%;" />
+        <div id='div-msg'>
+          <b id='msg-title'>Error:</b>
+          <span id='msg-content'>JavaScript is disabled (29).<br>BetterVue can not be used without JavaScript.<br><br>If you need help enabling JavaScript, <a href='https://enable-javascript.com'>click here</a>.</span>
+        </div>
+        <div class="input-container" style="margin-top: -10px;">
+          <label id='l_user' for='i_user'>Username</label>
+          <input id='i_user' maxlength='24' class='validate custom-input' style="width: 95%;">
+        </div>
+        <div class="input-container">
+          <label id="l_pass" for='i_pass'>Password</label>
+          <input id='i_pass' type='password' maxlength='48' class='mt-2 rounded-lg bg-gray-900 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none custom-input' style="width: 95%;">
+        </div>
+        <div class='input-container' style="margin-bottom: 20px;">
+          <label for='div-domain' class='active'>Domain / District</label>
+          <div id='div-domain' tabindex='0' data-target='drop-domain-ul' onclick='showDrop()' style="width: 100%; height: 35px">
+            <span id='s-domain'></span>
+          </div>
+        </div>
+        <div class="center-elements">
+          <label class="flex items-center">
+            <input id='c_rem' type='checkbox' checked/>
+            <span class="ml-2 text-gray-400 hover:text-gray-100">Remember Me</span>
+          </label>
+          <button onclick="redirectToPasswordHelp();" class="custom-button text-md text-gray-400 hover:text-gray-100 hover-text-primary" style="background-color: transparent; text-align: right; float: right; color: white">
+            Don't Know Password?
+          </button>
+        </div>
+        <button onclick='login()' id="sign_in_button" class="text-lg w-full text-white bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-3 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" style="margin-top: 15px; border-radius: 6px; height: 50px; margin-bottom: 30px;">Sign In</button>
+        <a href='app/start?persist=1' id='lnk-app' style='display: none'><button class='btn btn-flat right blue-grey darken-1 waves-effect waves-effect white-text' style='margin-right: 4px'>Back</button></a>
+        <br>
       </div>
-      <div>
-        <label for="div-domain">District URL</label>
-        <input id='div-domain' maxlength='48' type="text" value="ca-pleas-psv.edupoint.com" style="margin-bottom: 20px" class="custom-input">
-    </div>
-    
-    
-    
-      
-      <div class="flex justify-between items-center ml--2">
-        
-        <label class="flex items-center">
-          <input id='c_rem' type='checkbox' checked/>
-          <span class="ml-2 text-gray-400 hover:text-gray-100">Remember Me</span>
-        </label>
-        <button class="custom-button text-md text-gray-400 hover:text-gray-100">
-          Don't Know Password?
-        </button>
-      </div>
-      <button onclick='login(); consent(1)' id="sign_in_button" class="text-lg w-full text-white bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-3 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" style="margin-top: 15px;">Sign In</button>
-<a href='app/start?persist=1' id='lnk-app' style='display: none'>
-
-        <button class='btn btn-flat right blue-grey darken-1 waves-effect waves-effect white-text' style='margin-right: 4px'>Back</button>
-      </a>
-              <br>
       <div class='card-content' id='ccWA'>
         <span class='card-title'><img id='title-icon' src=''> Sign In with WebAuth</span>
         <div class='domain' tabindex='0' onkeypress='selDomain(this)' onclick='selDomain(this)'>
           <span class='domainName'>Sign in with an external security key</span>
+          <span class='domainURL'>svue.psdschools.org</span>
         </div>
       </div>
       <div class='card-content' id='cc2'>
-        <span class='card-title'><img id='title-icon' src=''> Synergy+</span>
-        <p>Looks like you haven't used Synergy+ yet this school year. Welcome!</p>
+        <span class='card-title'><img id='title-icon' src=''> BetterVue</span>
+        <p>Looks like you haven't used BetterVue yet this school year. Welcome!</p>
         <br>
-        <p>A new Synergy+ account will be linked to your StudentVUE account. Ple`ase confirm the following information is accurate before continuing.</p>
+        <p>A new BetterVue account will be linked to your StudentVUE account. Please confirm the following information is accurate before continuing.</p>
         <br>
         <p>Legal Name: <b><span id='cc2_name'></span></b><br>School: <b><span id='cc2_school'></span></b></p>
         <br>
         <br>
-        <button onclick='consent(2)' class='btn btn-flat right blue white-text waves-effect' style='margin-top: 20px;'>Cont</button>
+        <button onclick='consent(2)' class='btn btn-flat right blue white-text waves-effect'>Continue</button>
         <button onclick='consent(0)' class='btn btn-flat right grey white-text waves-effect' style='margin-right: 5px'>Cancel</button>
         <br>
       </div>
-
       <div class='card-content' id='cc3'>
         <span class='card-title'>Legal</span>
         <div id='div-msg2'>
           <b>Error:</b>
           <span id='msg2-content'>The request failed.</span>
         </div>
-        <p><b>Synergy+ works by communicating with Synergy SIS. No data is ever transferred to a central server -- everything is kept on your personal device.</p>
+        <p><b>BetterVue works by communicating with Synergy SIS. No data is ever transferred to a central server -- everything is kept on your personal device.</p>
         <br/>
         <p><b>Don't be a nerd and misuse this!</b></p>
         <div class='input-field'>
@@ -199,36 +206,19 @@
       </div>
       <div class='card-content' id='cc4'>
         <span class='card-title'>Success!</span>
-        <p>Your account has been successfully created. <br>Welcome to Synergy+, <span id='cc4_name'></span>!</p>
+        <p>Your account has been successfully created. <br>Welcome to BetterVue, <span id='cc4_name'></span>!</p>
         <br>
-        <p>If you have any questions, suggestions, or comments, please email Synergy+pusd@gmail.com. Thanks!!</p>
+        <p>If you have any questions, suggestions, or comments, please email bettervuepusd@gmail.com. Thanks!!</p>
         <br>
         <button onclick='window.open("../dashboard","_self")' class='btn btn-flat right blue white-text waves-effect'>Continue</button>
         <br>
       </div>
     </div>
-
-    
   </div>
-
-</div>
-</div>
+  <ul id='drop-domain-ul' class='dropdown-content' style="background-color: #14b8a6">
+    <li onclick='drop(0)'><a href="#" style="color: #111827;">Open District Portal</a></li>
+    <li onclick='drop(1)'><a href="#" style="color: #111827;">Change District</a></li>
+  </ul>
   
-    
-
-</div>
-
-  
-
-
-</div>
-</div>
-    
-
-  </section>
-  
-  
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 </body>
 </html>
