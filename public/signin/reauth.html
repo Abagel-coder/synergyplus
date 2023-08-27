@@ -15,53 +15,45 @@
   <script defer src='js/reauth.js'></script>
   <script async src='https://unpkg.com/animejs@3.0.1/lib/anime.min.js'></script>
   <noscript><style>.msg{opacity:1; height: 96px; margin-top: 10px; padding: 3px 6px} input, button, label {display: none !important}</style></noscript>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
+
+
 </head>
-<body>
-  <div id='imgbk' class='hide-on-small-only'></div>
+<body class="flex items-center justify-center min-h-screen bg-gray-900">
   <div id='login-outer'>
-    <div id='login-div' class='card'>
+    <div id='login-div' class='card bg-gray-700'>
       <div id='div-loadbar'></div>
       <div class='card-content' id='cc1'>
-        <span class='card-title'><img id='title-icon' src=''> Synergy+</span>
-        <p>Please confirm your password to continue.</p>
+        <span class='mb-4 text-3xl tracking-tight lg:text-3xl text-gray-300 dark:text-gray-200'>Synergy+</span>
+        <p class = "text-gray-200">Please confirm your password to continue.</p>
         <div id='div-msg' class='msg'>
           <b id='msg-title'>Error:</b>
           <span id='msg-content'>JavaScript is disabled (29).<br>Synergy+ can not be used without JavaScript.<br><br>If you need help enabling JavaScript, <a href='https://enable-javascript.com'>click here</a>.</span>
         </div>
         <div class='input-field'>
-          <input id='i_user' class='valid' disabled value='...'>
-          <label for='i_user' class='active'>User Account</label>
+            
+          <input id='i_user' class='text-gray-300' disabled value='...'>
+          
+          <label for='i_user' class='active'><span class = "text-gray-200 my-1">User Account</span></label>
         </div>
         <div class='input-field'>
-          <input id='i_conf' name='passConf' type='password' autocomplete='current-password' maxlength='48' class='validate'>
-          <label for='i_conf'>Password</label>
+          <input id='i_conf' name='passConf' type='password' autocomplete='current-password' maxlength='48' class='validate text-gray-300'>
+          <label for='i_conf'><span class = "text-gray-200 my-1">Password</span></label>
         </div>
-        <button id='btn-continue' onclick='login()' class='btn btn-flat right blue white-text waves-effect'>Continue</button>
-        <button onclick='cancel()' class='btn btn-flat right grey white-text waves-effect' style='margin-right: 8px'>Cancel</button>
+          
+        <button id='btn-continue' onclick='login()' 
+          class='right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800'
+          >Continue
+        </button>
+        
+        <button onclick='cancel()' class='right focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900' style='margin-right: 8px'>Cancel</button>
+        
         <a href='app/start?persist=1' id='lnk-app' style='display: none'><button class='btn btn-flat right blue-grey darken-1 waves-effect white-text' style='margin-right: 4px'>Back</button></a>
         <br>
       </div>
-      <div class='card-content' id='cc2'>
-        <span class='card-title'><img id='title-icon' src=''> Setup Security Key</span>
-        <div id='div-msg2' class='msg'>
-          <b>Error: </b><span id='waError-msg'>We were unable to register your key, please try again.</span>
-        </div>
-        <p>Enter a friendly name for your key (optional), then select which type of key you'd like to register.</p>
-        <div class='input-field'>
-          <input id='i_keyName' placeholder='No Friendly Name'>
-          <label for='i_keyName' class='active'>Friendly Name</label>
-        </div>
-        <div class='domain' tabindex='0' onkeypress='waInit(0)' onclick='waInit(0)'>
-          <span class='domainName'>Platform TPM</span>
-          <span class='domainURL'>Face ID, Windows Hello, etc.</span>
-        </div>
-        <div class='domain' tabindex='0' onkeypress='waInit(1)' onclick='waInit(1)'>
-          <span class='domainName'>External Key</span>
-          <span class='domainURL'>I have a physical security key.</span>
-        </div>
-        <a href='/account'><button class='btn btn-flat right grey waves-effect white-text'>Cancel</button></a>
-        <br/>
-      </div>
+      
       <div class='card-content' id='cc3'>
         <span class='card-title'><img id='title-icon' src=''> Success!</span>
         <p>Your key was successfully registered.</p>
@@ -71,9 +63,8 @@
       </div>
     </div>
   </div>
-  <div id='login-footer'>
-    <span id='ft'>Synergy+ is not affiliated with Edupoint. <a target='_blank' href='../legal'>Legal</a></span>
-    <span id='ft-right'>&copy; 2023 . All Rights Reserved.</span>
-  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
 </body>
 </html>
