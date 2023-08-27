@@ -55,6 +55,8 @@ function transition(ele1, ele2){
   })
 }
 
+localStorage.domain = "https://ca-pleas-psv.edupoint.com";
+
 let currentTheme = 'light'; 
 if(localStorage.cfg_theme === 'dark' || (window.matchMedia("(prefers-color-scheme: dark)").matches && localStorage.cfg_theme !== 'light')){
   $('#a-theme').text('Light Theme'); 
@@ -246,7 +248,7 @@ function login(){
   canLogin = false; // Prevent duplicate logins
   loadBar.start(2500);
   let reqDone = false;
-  let req = $.post('/signin', {user: $('#i_user').val(), pass: $('#i_pass').val(), domain: localStorage.domain.split('\\')[1], rem: $('#c_rem')[0].checked}, (res) => {
+  let req = $.post('/signin', {user: $('#i_user').val(), pass: $('#i_pass').val(), domain: "https://ca-pleas-psv.edupoint.com", rem: $('#c_rem')[0].checked}, (res) => {
     reqDone = true;
     if(res.type !== 'success'){
       lb.pause();
@@ -295,6 +297,7 @@ function drop(b){
 function showDrop(){
   M.Dropdown.getInstance($('#div-domain')[0]).open(); 
 }
+
 
 function selDomain(e, v){
   let ele = $(e)
