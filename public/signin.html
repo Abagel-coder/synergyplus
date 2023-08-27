@@ -17,9 +17,9 @@
 </head>
 <script>
   function redirectToPasswordHelp() {
-    window.location.href = "https://ca-pleas-psv.edupoint.com/PXP2_Password_Help.aspx?S=Y";
+    window.open("https://ca-pleas-psv.edupoint.com/PXP2_Password_Help.aspx?S=Y", "_blank");
   }
-  </script>
+</script>
 <style>
   #synergy-plus-image {
     max-width: 100%;
@@ -94,7 +94,7 @@
 
 <body class = "flex items-center justify-center min-h-screenb bg-gray-900">
   <div id='login-outer'>
-    <div id='login-div' class='card' style="background-color: #111827; width: 400px; height: 575px;">
+    <div id='login-div' class='card' style="background-color: #111827; width: 400px; height: 500px;">
       <div id='div-loadbar'></div>
       <div class='card-content' id='ccL'>
         <span class='card-title'><img id='title-icon' src=''> BetterVue</span>
@@ -123,20 +123,22 @@
           <input id='i_pass' type='password' maxlength='48' class='mt-2 rounded-lg bg-gray-900 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none custom-input' style="width: 95%;">
         </div>
 
-        <div class="center-elements">
+        <div class="flex justify-between items-center ml--2">
+        
           <label class="flex items-center">
             <input id='c_rem' type='checkbox' checked/>
             <span class="ml-2 text-gray-400 hover:text-gray-100">Remember Me</span>
           </label>
-          <button onclick="redirectToPasswordHelp();" class="custom-button text-md text-gray-400 hover:text-gray-100 hover-text-primary" style="background-color: transparent; text-align: right; float: right; color: white">
-            
+          <button onclick="redirectToPasswordHelp()"; class="custom-button text-md text-gray-400 hover:text-gray-100" style="color: white; margin-left: 45px;">
+            Don't Know Password?
           </button>
+          
         </div>
         
       
 
 
-        <button onclick='login()' id="sign_in_button" class="text-lg w-full text-white bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-3 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" style="margin-top: 15px; border-radius: 6px; height: 50px; margin-bottom: 30px;">Sign In</button>
+        <button onclick='login()' id="sign_in_button" class="text-lg w-full text-white bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-3 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" style="margin-top: 25px; border-radius: 6px; height: 50px; margin-bottom: 30px;">Sign In</button>
         <a href='app/start?persist=1' id='lnk-app' style='display: none'><button class='btn btn-flat right blue-grey darken-1 waves-effect waves-effect white-text' style='margin-right: 4px'>Back</button></a>
         <br>
       </div>
