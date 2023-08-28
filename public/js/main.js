@@ -1639,23 +1639,6 @@ async function initAppCore() {
           return 'N/A'
         }
       }, 
-      $_showLetterGrade: (course) => {
-        if(course.Marks[0]){
-          let raw = course.Marks[0].Mark[0].$.CalculatedScoreRaw; 
-          let str = course.Marks[0].Mark[0].$.CalculatedScoreString; 
-          if(str === 'U' || str === 'S'){
-            if(str === 'S') {
-              return `<i class='fas fa-check fa-xs'></i> S` }
-            return `<i class='fas fa-exclamation-triangle fa-xs'></i> U`
-          }
-          else if(str === 'N/A'){
-            return 'N/A' }
-          return `${str}`
-        }
-        else{ // No grade data
-          return 'N/A'
-        }
-      },
       $_trim: v_shared.trimTitle
     }, 
     computed: {
@@ -1680,8 +1663,6 @@ async function initAppCore() {
   } else if (sessionStorage.fullName) { // variable set upon signing in
     $('.sp-fullName').text(sessionStorage.fullName); 
   }
-
-  $('.sp-firstName').html("    " + svcore.getName().split(" ")[0]);
 
   if(!localStorage.lastChangelog || localStorage.lastChangelog !== $('#modal-whatsnew')[0].dataset.build) {
     cbList.cl.banner.update = true;
