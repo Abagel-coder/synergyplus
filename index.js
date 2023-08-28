@@ -36,6 +36,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 const http = require('http').Server(app);
+
 const winston = require('winston');
 const winston_estf = winston.format(info => { // Error stack tracer format
     if (info.meta && info.meta instanceof Error) {
