@@ -8,6 +8,7 @@ h4{
 button.btn, a.btn{
   text-transform: none; 
 }
+
 a:hover:not(.btn){
   text-decoration: underline;
 }
