@@ -175,6 +175,7 @@ label{
   background-color: #14b8a6;
   color: white;
   border-color: transparent;
+  box-shadow: 0px 2px 10px 0px #14b8a6; /* Adjust the Y-offset and spread radius as needed */
 }
 
 
@@ -255,7 +256,7 @@ label{
   }
   #login-footer{
     background: none;
-    color: #1e293b;
+    color: #000;
   }
   #ft{
     margin-left: 12px;

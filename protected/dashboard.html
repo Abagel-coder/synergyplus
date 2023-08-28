@@ -282,7 +282,7 @@ theme: {
        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
         <path class = "fas fa-fw fa-bell"/>
        </svg>
-        <span class="ml-3">Schedule</span>
+        <span class="ml-3">Bell Schedule</span>
     </a>
  </li>
 
@@ -391,37 +391,33 @@ theme: {
               {{banner.refresh.slice(2)}}
             </li>
           </transition>
-          <div class="flex justify-between">
-            <li class=' c-li inline-flex'>
-              <div class="flex flex-grow justify-start left">
-                <span id='sp-greeting' style='font-size: 26px; line-height: 1.1'></span>
-                <span class='sp-firstName' style='font-size: 26px; line-height: 1.1'></span>
-              </div>
-              <div class="flex justify-end right">
-                <span style='display: block; padding-top: 4px' >
-                  <div class="flex justify-end right">
-                    <span class='hide-on-small-only'>
-                      <span class='right tooltipped light-blue-text pointer bw' v-on:click='cbList.refresh()' v-on:keyup.enter='cbList.refresh()' v-on:keyup.space.prevent='cbList.refresh()' data-tooltip='Force Update' data-position='top' style='margin-right: 8px;' tabindex='0'><i class='fas fa-sync spin-on-hover'></i></span>
-                    </span>
-                    <span class='hide-on-med-and-up' style='font-size: 1.1rem'>
-                      <span id='sp-mobile-lu' class='right light-blue-text pointer bw dropdown-trigger drop-nc' data-target='drop-lastUpdated' style='margin-right: 16px' tabindex='0'><i class='fas fa-history'></i></span>
-                      <ul id='drop-lastUpdated' class='dropdown-content flex'>
-                        <li class='nh'>
-                          <span class='sp-lastUpdated'>Currently Updating...</span>
-                        </li>
-                        <li>
-                          <a href='#' v-on:click='cbList.refresh()' v-on:keyup.enter='cbList.refresh()' v-on:keyup.space.prevent='cbList.refresh()' class='waves-effect'><i class='fa fa-fw fa-sync-alt'></i> <span>Update Now</span></a>
-                        </li>
-                      </ul>
-                    </span>
-                    <span class='hide-on-small-and-down'>
-                      <span class='gray right sp-lastUpdated'>Loading...</span>
-                    </span>
-                </span>
-              </div>
-              <div id='sp-weather-drop' class='dropdown-content'></div>
-            </li>
-          </div>
+          <li class='collection-header c-li'>
+            <span id='sp-greeting'></span>
+            <span class='hide-on-med-and-up' style='font-size: 1.1rem'>
+              <span id='sp-mobile-lu' class='right light-blue-text pointer bw dropdown-trigger drop-nc' data-target='drop-lastUpdated' style='margin-right: 16px' tabindex='0'><i class='fas fa-history'></i></span>
+              <ul id='drop-lastUpdated' class='dropdown-content'>
+                <li class='nh'>
+                  <span class='sp-lastUpdated'>Currently Updating...</span>
+                </li>
+                <li>
+                  <a href='#' v-on:click='cbList.refresh()' v-on:keyup.enter='cbList.refresh()' v-on:keyup.space.prevent='cbList.refresh()' class='waves-effect'><i class='fa fa-fw fa-sync-alt'></i> <span>Update Now</span></a>
+                </li>
+              </ul>
+            </span>
+            <span class='hide-on-small-and-down'>
+              <span class='gray right sp-lastUpdated'>Loading...</span>
+            </span>
+            <br/>
+            <span class='sp-fullName' style='font-size: 26px; line-height: 1.1'></span>
+            <br/>
+            <span style='display: block; padding-top: 4px'>
+              <span class='hide-on-small-only'><span id='sp-time' class='light-blue-text bw'>...</span> • </span><span id='sp-date' class='light-blue-text bw'></span> <span id='sp-weather-outer' class='hidden'>• <span id='sp-weather' class='pointer light-blue-text bw dropdown-trigger drop-nc' data-target='sp-weather-drop' tabindex='0'><i class='far fa-question-circle'></i> ??</span></span>
+              <span class='hide-on-small-only'>
+                <span class='right tooltipped light-blue-text pointer bw' v-on:click='cbList.refresh()' v-on:keyup.enter='cbList.refresh()' v-on:keyup.space.prevent='cbList.refresh()' data-tooltip='Force Update' data-position='top' style='margin-right: 8px;' tabindex='0'><i class='fas fa-sync spin-on-hover'></i></span>
+              </span>
+            </span>
+            <div id='sp-weather-drop' class='dropdown-content'></div>
+          </li>
           <li class='collection-item' v-if='banner.loading'>
             <span class='bw'><i class='fas fa-spin fa-circle-notch'></i> <span id='course-loading-msg'>Loading Gradebook</span>...</span>
           </li> 
@@ -439,44 +435,44 @@ theme: {
             v-on:keydown.up.prevent='$_focus(index, 0)'
             v-on:keydown.down.prevent='$_focus(index, 1)'
             :id='`ci-`+index'
-            class='bg-gray-800 rounded-lg collection-item border h-auto p-4'
+            class='bg-gray-100 rounded-lg collection-item border p-2'
             :class='$_hasNew(course.$.Title)'
             v-for='(course, index) in course.slice(0,8)'
             v-if='course.$'
             tabindex='0'
           >
         
-            <div class="">
-             
+            <div class="flex items-center">
+              <div class="mr-4">
+        
+                <div class="w-12 h-12 flex items-center justify-center bg-primary-600 rounded-full">
+                  <span class="text-3xl tracking-tight font-extrabold lg:text-3xl text-gray-100 dark:text-gray-100 whitespace-nowrap">{{course.$.Period}}</span>
+                </div>
+              </div>
         
               
 
-              <div class="flex-grow justify-start left">
+              <div class="flex-grow">
         
-                <span class='mb-2 items-center text-gray-900 dark:text-white' :class='$_chkLength($_trim(course.$.Title))'>
+                <span class='whitespace-nowrap px-2 py-2 font-medium text-gray-900 dark:text-white'
+                  :class='$_chkLength($_trim(course.$.Title))'
+                >
                   {{$_trim(course.$.Title.replace(/\([^)]*\)/g, ''))}}
                 </span>
 
 
 
                 <br>
-                <div class="flex space-x-1 pb-2 items-center mb-3">
-                  <div class="w-5 h-6 bg-teal-400 rounded-full flex justify-center items-center text-white font-bold p-1 m-0.5">
-                    <div class="flex items-center justify-center h-full"><span class="tracking-tight font-extrabold text-gray-100 dark:text-gray-100 whitespace-nowrap">{{course.$.Period}}</span></div>
-                  </div>
-                  <div class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" aria-hidden="true" class="h-5 w-5 text-gray-500 dark:text-slate-500 sm:block">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path>
-                    </svg>
-                    <span class='whitespace-nowrap px-1 py-2 text-sm text-gray-900 dark:text-white'>{{course.$.Staff}}</span>
-                  </div>
-                </div>
+                <span class='whitespace-nowrap px-2 py-2 text-sm text-gray-900 dark:text-white'>{{course.$.Staff}}</span>
+              
               </div>
 
               <div>
-                <div class="w-12 h-12 bg-teal-400 rounded-full flex justify-center items-center text-white font-bold ml-auto">
-                <span class=' ml-auto lg font-medium px-2 text-gray-900 dark:text-white' v-html='$_showLetterGrade(course)'></span>
-                </div>
+        
+                <span class='right ml-auto lg font-medium px-2 text-gray-900 dark:text-white' v-html='$_showGrade(course)'></span>
+                <br>
+                <span class='hide-on-small-only right ml-auto text-sm px-2 py-1' :class='$_detNew(course.$.Title, 1, index)'>{{$_detNew(course.$.Title, 0, index)}}</span>
+        
               </div>
             </div>
           </a>
@@ -505,7 +501,7 @@ theme: {
         <ul class='collection with-header'>
           <li class='collection-header c-li'>
             <a id='bell-drop-trigger' href='#' data-target='bell-drop' class='right bell-hidden hidden dropdown-trigger drop-nc'><span id='bell-drop-title'>Today</span> <i class='fas fa-caret-down'></i></a>
-            <span style='font-size: 24px'>Schedule</span>
+            <span style='font-size: 24px'>Bell Schedule</span>
             <br/>
             <span id='bell-time'></span> <span id='bell-date'></span><span id='bell-schedule'></span>
           </li>
@@ -532,7 +528,7 @@ theme: {
       <div id='v-course-outer'>
         <div id='div-course' class='hidden'>
           <ul class='collection with-header'>
-            <li class='collection-header mb-3 transparent' style=''>
+            <li class='collection-header' style='border-bottom-color: #555'>
               <span class='text-4xl tracking-tight lg:text-3xl text-gray-100 dark:text-gray-100 whitespace-nowrap'><a title='Return to Course List' onclick='hideCourseDetails()' onkeypress='hideCourseDetails(0, event)' class='pointer' tabindex='0'><i class='bw fas fa-arrow-left'></i></a> <span class='whitespace-nowrap px-2 py-2 font-medium text-gray-900 dark:text-white text-3xl tracking-tight lg:text-2xl text-gray-100 dark:text-gray-100 whitespace-nowrap'>{{course.Title.replace(/\([^)]*\)/g, '')}}</span></span>
               <span class='right'>
                 <span v-if='!isModified' class='right lg green-text bw font-medium px-2 text-gray-900'>{{grade.CalculatedScoreRaw}}% ({{grade.CalculatedScoreString}})</span><span v-else><span class='lg gray font-medium px-2 text-gray-900' style='text-decoration: line-through'>{{grade.CalculatedScoreRaw}}%</span> <span class='lg light-blue-text bw font-medium px-2 text-gray-900'>{{modifiedScoreLg}}</span></span>
@@ -540,19 +536,19 @@ theme: {
                 <span class='green-text bw nw'>Raw: {{shared.gradeEngine.calcGrade(items, weights).toFixed(4)}}% <a class='modal-trigger pointer' ref='m_gr' v-on:keyup.enter='$refs.m_gr.click()' data-target='modal-gradeRounding' tabindex='0'><i class='fas fa-question-circle'></i></a></span>
               </span>
               <br/>
-              <span><span class='hide-on-med-and-up'>{{course.Title.replace(/\([^)]*\)/g, '')}}<br/></span>Period {{course.Period}}  <span class='hide-on-xs text-xl'>  •  </span>  {{course.Room?course.Room:"(No Room Specified)"}}<span class='hide-on-xs text-xl'>  •  </span><br class='show-on-xs'/><a class='bw' :href='`mailto:`+course.StaffEMail' tabindex='0'><i class='far fa-envelope va-raise'></i> {{course.Staff}}</a></span>
+              <span><span class='hide-on-med-and-up'>{{course.Title.replace(/\([^)]*\)/g, '')}}<br/></span>Period {{course.Period}} | {{course.Room?course.Room:"(No Room Specified)"}}<span class='hide-on-xs'> | </span><br class='show-on-xs'/><a class='bw' :href='`mailto:`+course.StaffEMail' tabindex='0'><i class='far fa-envelope va-raise'></i> {{course.Staff}}</a></span>
               <!-- <span class='right green-text bw'></span> -->
             </li>
-            <li class='collection-header items-center justify-center transparent'>
-              <span class="justify-center">{{items.length}} Item{{items.length==1?'':'s'}} <span v-show='shared.showNew' :class='$_calcNew(course.Title, 1)'>({{$_calcNew(course.Title)}} New)</span></span>
-              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect dropdown-trigger drop-nc' data-target='drop-courseActions'><i class='fa fa-ellipsis-v'></i><span class='hide-on-small-only'> More</span></button>
-              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect modal-trigger' data-target='modal-addWhatIf' v-show='$_showQA("addwhatif")'><i class='fa fa-file-medical'></i><span class='hide-on-small-only'> Add What-If</span></button>
-              <button class='qa-btn btn-small btn-flat rounded-lg bg-teal-500 white-text waves-effect' v-show='$_showQA("gradecalc")' v-on:click='showGC=!showGC'><i class='fa fa-calculator'></i><span class='hide-on-small-only'> Grade Calculator</span></button> 
-              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect' onclick='cb.showFilter = !cb.showFilter' v-show='$_showQA("filter")' :class='showFilter?"darken-1":"darken-2"'><i class='fas fa-filter'></i><span class='hide-on-small-only'> Filter <span v-if='filterCount' class='light-blue-text text-lighten-4'>({{filterCount}})</span></span></button>
-              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect' onclick='cb.$_toggleTrends()' v-show='$_showQA("trends")'><i class='fa fa-chart-line'></i><span class='hide-on-small-only'> Trends</span></button>
-              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect' v-on:click='showWeights = !showWeights' href='#' v-on:click.self.prevent tabindex='0'><i class='fa fa-list mr-2'></i>Categories</button></span>
+            <li class='collection-header'>
+              <span>{{items.length}} Item{{items.length==1?'':'s'}} <span v-show='shared.showNew' :class='$_calcNew(course.Title, 1)'>({{$_calcNew(course.Title)}} New)</span></span>
+              <button class='qa-btn btn-small cyan waves-effect dropdown-trigger drop-nc' data-target='drop-courseActions'><i class='fa fa-ellipsis-v'></i><span class='hide-on-small-only'> More</span></button>
+              <button class='qa-btn btn-small blue accent-3 waves-effect modal-trigger' data-target='modal-addWhatIf' v-show='$_showQA("addwhatif")'><i class='fa fa-file-medical'></i><span class='hide-on-small-only'> Add What-If</span></button>
+              <button class='qa-btn btn-small btn-flat green white-text waves-effect' v-show='$_showQA("gradecalc")' v-on:click='showGC=!showGC'><i class='fa fa-calculator'></i><span class='hide-on-small-only'> Grade Calculator</span></button> 
+              <button class='qa-btn btn-small light-green waves-effect' onclick='cb.showFilter = !cb.showFilter' v-show='$_showQA("filter")' :class='showFilter?"darken-1":"darken-2"'><i class='fas fa-filter'></i><span class='hide-on-small-only'> Filter <span v-if='filterCount' class='light-blue-text text-lighten-4'>({{filterCount}})</span></span></button>
+              <button class='qa-btn btn-small yellow darken-4 waves-effect' onclick='cb.$_toggleTrends()' v-show='$_showQA("trends")'><i class='fa fa-chart-line'></i><span class='hide-on-small-only'> Trends</span></button>
+              <br><span class='gray' v-if='weighted'>Weighted Class <br class='show-on-xs'/><span class='nw'>(<a v-on:click='showWeights = !showWeights' href='#' v-on:click.self.prevent tabindex='0'>{{showWeights?'Hide Categories':'Show Categories'}}</a>)</span></span><span class='gray' v-else>Unweighted Class <span class='nw'>(<span class='light-blue-text bw'>{{points_formatted}}</span>)</span></span>
               
-              <ul id='drop-courseActions' class='py-2 text-sm text-gray-700 dark:text-gray-200 dropdown-content items-center justify-center'>
+              <ul id='drop-courseActions' class='py-2 text-sm text-gray-700 dark:text-gray-200 dropdown-content'>
                 <li class='nh'><span>More Actions</span></li>
                 <li class='bw' v-show='!$_showQA("trends")'><span class='waves-effect' onclick='cb.$_toggleTrends()'><i class='fas fa-fw fa-chart-line'></i> Trends</span></li>
                 <li class='bw' v-show='!$_showQA("filter")'><span class='waves-effect' onclick='cb.showFilter = !cb.showFilter'><i class='fas fa-fw fa-filter'></i> Filter <span v-if='filterCount' class='light-blue-text text-lighten-4'>({{filterCount}})</span></span></li>
@@ -567,8 +563,8 @@ theme: {
                 <span><i class='fas fa-info-circle'></i> With your changes, your overall grade would be <b class='green-text bw'>{{shared.gradeEngine.calcGrade(items, weights).toFixed(2)}}%</b> (<span :class='modifiedDiff[0]'>{{modifiedDiff[1]}}</span>). (<a class='pointer' v-on:click='$_revertAllEdits()' v-on:keyup.enter='$_revertAllEdits()' tabindex='0'>Revert All Edits</a>)<br><i>Note: All tools (i.e., Trends, Grade Calculator) use your modified grade.</i></span>
               </li>
             </transition>
-            <transition-group name='anim-div' class="bg-gray-800">
-              <li v-if='showWeights' v-bind:key='1' class='collection-header bg-gray-800'>
+            <transition-group name='anim-div'>
+              <li v-if='showWeights' v-bind:key='1' class='collection-header'>
                 <p class='yellow-text bw' v-show='isModified'><i class='fas fa-exclamation-triangle'></i> These values are not affected by your modifications.</p>
                 <table class='hide-on-small-only'>
                   <thead>
