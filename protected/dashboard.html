@@ -1062,8 +1062,7 @@ theme: {
         <div id='ch-landing'>
           <p>See your GPA (to three decimals!) and course history with this tool.</p>
           <p class='light-blue-text bw'><i class='fas fa-info-circle'></i> Once course history is loaded, it'll be saved to your local device; accessing this page in the future will then load the saved version (as it's not something that often changes).</p>
-          <p class='yellow-text bw'><i class='fas fa-exclamation-triangle'></i> Because your course history is stored on your device until you sign out, <b>do not load it on public and/or untrusted devices</b>.</p>
-          <button id='ch-load' onclick='courseHistory.load()' class='btn teal waves-effect'>Load Course History</button> <span class='gray' style='margin-left: 4px;'><br class='hide-on-med-and-up'/>(Note that this may take a while. <a href='#' class='modal-trigger' data-target='modal-chInfo'>Why?</a>)</span>
+          <button id='ch-load' onclick='courseHistory.load()' class='inline-block rounded bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500'>Load Course History</button> <span class='gray' style='margin-left: 4px;'><br class='hide-on-med-and-up'/></span>
         </div>
         <div id='ch-main' class='hidden'>
           <p><b><i class='fas fa-calendar-check'></i> As of: </b><span id='ch-date'>-</span><br/><a href='#' onclick='courseHistory.collapseAll()' tabindex='0'>Collapse All</a> • <a href='#' onclick='courseHistory.expandAll()' tabindex='0'>Expand All</a><span id='ch-updateBtn'> • <a href='#' class='modal-trigger' data-target='modal-confirmLoad' tabindex='0'>Update</a></span></p>
