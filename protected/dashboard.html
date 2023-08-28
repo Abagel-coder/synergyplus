@@ -4,7 +4,7 @@
   <meta charset='UTF-8'>
   <title>Synergy+</title>
   <meta name='viewport' content='width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0'>
-  <link href='../favicon.ico' rel='icon' type='icon/ico'>
+  <link href='../Final.png' rel='icon' type='png'>
   <link rel='stylesheet' href='https://use.typekit.net/dda5vdo.css' crossorigin='anonymous'>
   <link id='css-theme' defer rel='stylesheet' crossorigin='anonymous'/>
   <link id='css-theme-secondary' defer rel='stylesheet' crossorigin='anonymous'/>
@@ -282,7 +282,7 @@ theme: {
        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
         <path class = "fas fa-fw fa-bell"/>
        </svg>
-        <span class="ml-3">Bell Schedule</span>
+        <span class="ml-3">Schedule</span>
     </a>
  </li>
 
@@ -391,39 +391,41 @@ theme: {
               {{banner.refresh.slice(2)}}
             </li>
           </transition>
-          <li class='collection-header c-li'>
-            <span id='sp-greeting'></span>
-            <span class='hide-on-med-and-up' style='font-size: 1.1rem'>
-              <span id='sp-mobile-lu' class='right light-blue-text pointer bw dropdown-trigger drop-nc' data-target='drop-lastUpdated' style='margin-right: 16px' tabindex='0'><i class='fas fa-history'></i></span>
-              <ul id='drop-lastUpdated' class='dropdown-content'>
-                <li class='nh'>
-                  <span class='sp-lastUpdated'>Currently Updating...</span>
-                </li>
-                <li>
-                  <a href='#' v-on:click='cbList.refresh()' v-on:keyup.enter='cbList.refresh()' v-on:keyup.space.prevent='cbList.refresh()' class='waves-effect'><i class='fa fa-fw fa-sync-alt'></i> <span>Update Now</span></a>
-                </li>
-              </ul>
-            </span>
-            <span class='hide-on-small-and-down'>
-              <span class='gray right sp-lastUpdated'>Loading...</span>
-            </span>
-            <br/>
-            <span class='sp-fullName' style='font-size: 26px; line-height: 1.1'></span>
-            <br/>
-            <span style='display: block; padding-top: 4px'>
-              <span class='hide-on-small-only'><span id='sp-time' class='light-blue-text bw'>...</span> • </span><span id='sp-date' class='light-blue-text bw'></span> <span id='sp-weather-outer' class='hidden'>• <span id='sp-weather' class='pointer light-blue-text bw dropdown-trigger drop-nc' data-target='sp-weather-drop' tabindex='0'><i class='far fa-question-circle'></i> ??</span></span>
-              <span class='hide-on-small-only'>
-                <span class='right tooltipped light-blue-text pointer bw' v-on:click='cbList.refresh()' v-on:keyup.enter='cbList.refresh()' v-on:keyup.space.prevent='cbList.refresh()' data-tooltip='Force Update' data-position='top' style='margin-right: 8px;' tabindex='0'><i class='fas fa-sync spin-on-hover'></i></span>
+
+
+            <li class='collection-header c-li' style="background-color:#111827;">
+              <span id='sp-greeting'></span>
+              <span class='hide-on-med-and-up' style='font-size: 1.1rem'>
+                <span id='sp-mobile-lu' class='right light-blue-text pointer bw dropdown-trigger drop-nc' data-target='drop-lastUpdated' style='margin-right: 16px' tabindex='0'><i class='fas fa-history'></i></span>
+                <ul id='drop-lastUpdated' class='dropdown-content'>
+                  <li class='nh'>
+                    <span class='sp-lastUpdated'>Currently Updating...</span>
+                  </li>
+                  <li>
+                    <a href='#' v-on:click='cbList.refresh()' v-on:keyup.enter='cbList.refresh()' v-on:keyup.space.prevent='cbList.refresh()' class='waves-effect'><i class='fa fa-fw fa-sync-alt'></i> <span>Update Now</span></a>
+                  </li>
+                </ul>
               </span>
-            </span>
-            <div id='sp-weather-drop' class='dropdown-content'></div>
-          </li>
-          <li class='collection-item' v-if='banner.loading'>
-            <span class='bw'><i class='fas fa-spin fa-circle-notch'></i> <span id='course-loading-msg'>Loading Gradebook</span>...</span>
-          </li> 
-          <li class='collection-item' v-if='banner.cache'>
-            <span class='bw'><i class='fas fa-info-circle'></i> A cached version of your gradebook from <span class='light-green-text bw'>{{banner.cache}}</span> is available. <br/><br/><button v-on:click='cbList.refresh(!1, 2)' style='margin-bottom: 4px' class='btn-small btn-flat blue white-text waves-effect'>Open Cached Gradebook</button> <button v-on:click='cbList.refresh()' style='margin-bottom: 4px' class='btn-small btn-flat teal white-text waves-effect'>Refresh Gradebook</button></span>
-          </li> 
+              <span class='hide-on-small-and-down'>
+                <span class='gray right sp-lastUpdated'>Loading...</span>
+              </span>
+              <br/>
+              <span class='sp-fullName' style='font-size: 26px; line-height: 1.1'></span>
+              <br/>
+              <span style='display: block; padding-top: 4px'>
+                <span class='hide-on-small-only'><span id='sp-time' class='light-blue-text bw'>...</span> • </span><span id='sp-date' class='light-blue-text bw'></span> <span id='sp-weather-outer' class='hidden'>• <span id='sp-weather' class='pointer light-blue-text bw dropdown-trigger drop-nc' data-target='sp-weather-drop' tabindex='0'><i class='far fa-question-circle'></i> ??</span></span>
+                <span class='hide-on-small-only'>
+                  <span class='right tooltipped light-blue-text pointer bw' v-on:click='cbList.refresh()' v-on:keyup.enter='cbList.refresh()' v-on:keyup.space.prevent='cbList.refresh()' data-tooltip='Force Update' data-position='top' style='margin-right: 8px;' tabindex='0'><i class='fas fa-sync spin-on-hover'></i></span>
+                </span>
+              </span>
+              <div id='sp-weather-drop' class='dropdown-content'></div>
+            </li>
+            <li class='collection-item' v-if='banner.loading'>
+              <span class='bw'><i class='fas fa-spin fa-circle-notch'></i> <span id='course-loading-msg'>Loading Gradebook</span>...</span>
+            </li> 
+            <li class='collection-item' v-if='banner.cache'>
+              <span class='bw'><i class='fas fa-info-circle'></i> A cached version of your gradebook from <span class='light-green-text bw'>{{banner.cache}}</span> is available. <br/><br/><button v-on:click='cbList.refresh(!1, 2)' style='margin-bottom: 4px' class='btn-small btn-flat blue white-text waves-effect'>Open Cached Gradebook</button> <button v-on:click='cbList.refresh()' style='margin-bottom: 4px' class='btn-small btn-flat teal white-text waves-effect'>Refresh Gradebook</button></span>
+            </li>
   
           
         <!-- GRADEBOOK ACTUAL -->
@@ -440,12 +442,15 @@ theme: {
             v-for='(course, index) in course.slice(0,8)'
             v-if='course.$'
             tabindex='0'
+            style="transition: background-color 0.3s;"
+            onmouseover="this.style.backgroundColor = '#334155';"
+            onmouseout="this.style.backgroundColor = '#1f2937';"
           >
         
             <div class="flex items-center">
               <div class="mr-4">
         
-                <div class="w-12 h-12 flex items-center justify-center bg-primary-600 rounded-full">
+                <div class="w-12 h-12 flex items-center justify-center bg-primary-600 rounded-full" style="background-color:#14b8a6;">
                   <span class="text-3xl tracking-tight font-extrabold lg:text-3xl text-gray-100 dark:text-gray-100 whitespace-nowrap">{{course.$.Period}}</span>
                 </div>
               </div>
@@ -463,7 +468,10 @@ theme: {
 
 
                 <br>
-                <span class='whitespace-nowrap px-2 py-2 text-sm text-gray-900 dark:text-white'>{{course.$.Staff}}</span>
+                <span class='whitespace-nowrap px-2 py-2 text-sm text-gray-900 dark:text-white'>
+                  <i class="fa fa-user" style="margin-right: 5px;"></i>
+                  {{course.$.Staff}}
+              </span>
               
               </div>
 
@@ -471,7 +479,7 @@ theme: {
         
                 <span class='right ml-auto lg font-medium px-2 text-gray-900 dark:text-white' v-html='$_showGrade(course)'></span>
                 <br>
-                <span class='hide-on-small-only right ml-auto text-sm px-2 py-1' :class='$_detNew(course.$.Title, 1, index)'>{{$_detNew(course.$.Title, 0, index)}}</span>
+                <span class='hide-on-small-only right ml-auto text-sm px-2 py-1' :class='$_detNew(course.$.Title, 1, index)' style="color: #14b8a6">{{$_detNew(course.$.Title, 0, index)}}</span>
         
               </div>
             </div>
@@ -501,7 +509,7 @@ theme: {
         <ul class='collection with-header'>
           <li class='collection-header c-li'>
             <a id='bell-drop-trigger' href='#' data-target='bell-drop' class='right bell-hidden hidden dropdown-trigger drop-nc'><span id='bell-drop-title'>Today</span> <i class='fas fa-caret-down'></i></a>
-            <span style='font-size: 24px'>Bell Schedule</span>
+            <span style='font-size: 24px'>Schedule</span>
             <br/>
             <span id='bell-time'></span> <span id='bell-date'></span><span id='bell-schedule'></span>
           </li>
@@ -528,7 +536,7 @@ theme: {
       <div id='v-course-outer'>
         <div id='div-course' class='hidden'>
           <ul class='collection with-header'>
-            <li class='collection-header' style='border-bottom-color: #555'>
+            <li class='collection-header mb-3 transparent' style=''>
               <span class='text-4xl tracking-tight lg:text-3xl text-gray-100 dark:text-gray-100 whitespace-nowrap'><a title='Return to Course List' onclick='hideCourseDetails()' onkeypress='hideCourseDetails(0, event)' class='pointer' tabindex='0'><i class='bw fas fa-arrow-left'></i></a> <span class='whitespace-nowrap px-2 py-2 font-medium text-gray-900 dark:text-white text-3xl tracking-tight lg:text-2xl text-gray-100 dark:text-gray-100 whitespace-nowrap'>{{course.Title.replace(/\([^)]*\)/g, '')}}</span></span>
               <span class='right'>
                 <span v-if='!isModified' class='right lg green-text bw font-medium px-2 text-gray-900'>{{grade.CalculatedScoreRaw}}% ({{grade.CalculatedScoreString}})</span><span v-else><span class='lg gray font-medium px-2 text-gray-900' style='text-decoration: line-through'>{{grade.CalculatedScoreRaw}}%</span> <span class='lg light-blue-text bw font-medium px-2 text-gray-900'>{{modifiedScoreLg}}</span></span>
@@ -536,19 +544,19 @@ theme: {
                 <span class='green-text bw nw'>Raw: {{shared.gradeEngine.calcGrade(items, weights).toFixed(4)}}% <a class='modal-trigger pointer' ref='m_gr' v-on:keyup.enter='$refs.m_gr.click()' data-target='modal-gradeRounding' tabindex='0'><i class='fas fa-question-circle'></i></a></span>
               </span>
               <br/>
-              <span><span class='hide-on-med-and-up'>{{course.Title.replace(/\([^)]*\)/g, '')}}<br/></span>Period {{course.Period}} | {{course.Room?course.Room:"(No Room Specified)"}}<span class='hide-on-xs'> | </span><br class='show-on-xs'/><a class='bw' :href='`mailto:`+course.StaffEMail' tabindex='0'><i class='far fa-envelope va-raise'></i> {{course.Staff}}</a></span>
+              <span><span class='hide-on-med-and-up'>{{course.Title.replace(/\([^)]*\)/g, '')}}<br/></span>Period {{course.Period}}  <span class='hide-on-xs text-xl'>  •  </span>  {{course.Room?course.Room:"(No Room Specified)"}}<span class='hide-on-xs text-xl'>  •  </span><br class='show-on-xs'/><a class='bw' :href='`mailto:`+course.StaffEMail' tabindex='0'><i class='far fa-envelope va-raise'></i> {{course.Staff}}</a></span>
               <!-- <span class='right green-text bw'></span> -->
             </li>
-            <li class='collection-header'>
-              <span>{{items.length}} Item{{items.length==1?'':'s'}} <span v-show='shared.showNew' :class='$_calcNew(course.Title, 1)'>({{$_calcNew(course.Title)}} New)</span></span>
-              <button class='qa-btn btn-small cyan waves-effect dropdown-trigger drop-nc' data-target='drop-courseActions'><i class='fa fa-ellipsis-v'></i><span class='hide-on-small-only'> More</span></button>
-              <button class='qa-btn btn-small blue accent-3 waves-effect modal-trigger' data-target='modal-addWhatIf' v-show='$_showQA("addwhatif")'><i class='fa fa-file-medical'></i><span class='hide-on-small-only'> Add What-If</span></button>
-              <button class='qa-btn btn-small btn-flat green white-text waves-effect' v-show='$_showQA("gradecalc")' v-on:click='showGC=!showGC'><i class='fa fa-calculator'></i><span class='hide-on-small-only'> Grade Calculator</span></button> 
-              <button class='qa-btn btn-small light-green waves-effect' onclick='cb.showFilter = !cb.showFilter' v-show='$_showQA("filter")' :class='showFilter?"darken-1":"darken-2"'><i class='fas fa-filter'></i><span class='hide-on-small-only'> Filter <span v-if='filterCount' class='light-blue-text text-lighten-4'>({{filterCount}})</span></span></button>
-              <button class='qa-btn btn-small yellow darken-4 waves-effect' onclick='cb.$_toggleTrends()' v-show='$_showQA("trends")'><i class='fa fa-chart-line'></i><span class='hide-on-small-only'> Trends</span></button>
-              <br><span class='gray' v-if='weighted'>Weighted Class <br class='show-on-xs'/><span class='nw'>(<a v-on:click='showWeights = !showWeights' href='#' v-on:click.self.prevent tabindex='0'>{{showWeights?'Hide Categories':'Show Categories'}}</a>)</span></span><span class='gray' v-else>Unweighted Class <span class='nw'>(<span class='light-blue-text bw'>{{points_formatted}}</span>)</span></span>
+            <li class='collection-header items-center justify-center transparent'>
+              <span class="justify-center">{{items.length}} Item{{items.length==1?'':'s'}} <span v-show='shared.showNew' :class='$_calcNew(course.Title, 1)'>({{$_calcNew(course.Title)}} New)</span></span>
+              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect dropdown-trigger drop-nc' data-target='drop-courseActions'><i class='fa fa-ellipsis-v'></i><span class='hide-on-small-only'> More</span></button>
+              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect modal-trigger' data-target='modal-addWhatIf' v-show='$_showQA("addwhatif")'><i class='fa fa-file-medical'></i><span class='hide-on-small-only'> Add What-If</span></button>
+              <button class='qa-btn btn-small btn-flat rounded-lg bg-teal-500 white-text waves-effect' v-show='$_showQA("gradecalc")' v-on:click='showGC=!showGC'><i class='fa fa-calculator'></i><span class='hide-on-small-only'> Grade Calculator</span></button> 
+              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect' onclick='cb.showFilter = !cb.showFilter' v-show='$_showQA("filter")' :class='showFilter?"darken-1":"darken-2"'><i class='fas fa-filter'></i><span class='hide-on-small-only'> Filter <span v-if='filterCount' class='light-blue-text text-lighten-4'>({{filterCount}})</span></span></button>
+              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect' onclick='cb.$_toggleTrends()' v-show='$_showQA("trends")'><i class='fa fa-chart-line'></i><span class='hide-on-small-only'> Trends</span></button>
+              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect' v-on:click='showWeights = !showWeights' href='#' v-on:click.self.prevent tabindex='0'><i class='fa fa-list mr-2'></i>Categories</button></span>
               
-              <ul id='drop-courseActions' class='py-2 text-sm text-gray-700 dark:text-gray-200 dropdown-content'>
+              <ul id='drop-courseActions' class='py-2 text-sm text-gray-700 dark:text-gray-200 dropdown-content items-center justify-center'>
                 <li class='nh'><span>More Actions</span></li>
                 <li class='bw' v-show='!$_showQA("trends")'><span class='waves-effect' onclick='cb.$_toggleTrends()'><i class='fas fa-fw fa-chart-line'></i> Trends</span></li>
                 <li class='bw' v-show='!$_showQA("filter")'><span class='waves-effect' onclick='cb.showFilter = !cb.showFilter'><i class='fas fa-fw fa-filter'></i> Filter <span v-if='filterCount' class='light-blue-text text-lighten-4'>({{filterCount}})</span></span></li>
@@ -563,53 +571,55 @@ theme: {
                 <span><i class='fas fa-info-circle'></i> With your changes, your overall grade would be <b class='green-text bw'>{{shared.gradeEngine.calcGrade(items, weights).toFixed(2)}}%</b> (<span :class='modifiedDiff[0]'>{{modifiedDiff[1]}}</span>). (<a class='pointer' v-on:click='$_revertAllEdits()' v-on:keyup.enter='$_revertAllEdits()' tabindex='0'>Revert All Edits</a>)<br><i>Note: All tools (i.e., Trends, Grade Calculator) use your modified grade.</i></span>
               </li>
             </transition>
-            <transition-group name='anim-div'>
-              <li v-if='showWeights' v-bind:key='1' class='collection-header'>
-                <p class='yellow-text bw' v-show='isModified'><i class='fas fa-exclamation-triangle'></i> These values are not affected by your modifications.</p>
-                <table class='hide-on-small-only'>
-                  <thead>
-                    <tr>
-                      <th>Category</th>
-                      <th>Points</th>
-                      <th>W. Avg.</th>
-                      <th>Weight</th>
-                      <th>Average</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-if='item.$.Type!="TOTAL"' v-for='item in weights'>
-                      <td><span :class='$_detClass(2, item.$.Type)'>{{item.$.Type}}</span></td>
-                      <td>{{$_formatPt(item)}}</td>
-                      <td>{{item.$.WeightedPct}}</td>
-                      <td>{{item.$.Weight}}</td>
-                      <td>{{$_formatAvg(item)}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class='hide-on-med-and-up'>
-                  <div v-if='item.$.Type!="TOTAL"' v-for='item in weights'>
-      <!--              <b :class='$_detClass(1, item.$.Type)'>{{item.$.Type}}</b>-->
-                    <b>{{item.$.Type}}</b>
-                    <table class='tb-sm'>
-                      <tbody>
-                        <tr>
-                          <td style='width: 25%'>Points</td>
-                          <td style='width: 23%'>Weight</td>
-                          <td style='width: 22%'>W. Avg.</td>
-                          <td style='width: 30%'>Average</td>
-                        </tr>
-                        <tr>
-                          <td>{{$_formatPt(item)}}</td>
-                          <td>{{item.$.WeightedPct}}</td>
-                          <td>{{item.$.Weight}}</td>
-                          <td>{{$_formatAvg(item)}}</td>
-                        </tr>
-                      </tbody>
-                    </table>
+            <transition-group name='anim-div' class="bg-gray-800">
+              <li v-if='showWeights' v-bind:key='1' class=' bg-gray-800' style='padding: 5px; border-radius: 10px; margin-top: 10px;'>
+                <div  class="bg-gray-800 center-elements justify-center" style='padding: 5px; border-radius: 10px; margin-top: 10px;'>
+                  <p class='yellow-text bw' v-show='isModified'><i class='fas fa-exclamation-triangle'></i> These values are not affected by your modifications.</p>
+                  <table class='hide-on-small-only center'>
+                    <thead>
+                      <tr>
+                        <th>Category</th>
+                        <th>Points</th>
+                        <th>W. Avg.</th>
+                        <th>Weight</th>
+                        <th>Average</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-if='item.$.Type!="TOTAL"' v-for='item in weights'>
+                        <td><span :class='$_detClass(2, item.$.Type)'>{{item.$.Type}}</span></td>
+                        <td>{{$_formatPt(item)}}</td>
+                        <td>{{item.$.WeightedPct}}</td>
+                        <td>{{item.$.Weight}}</td>
+                        <td>{{$_formatAvg(item)}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='hide-on-med-and-up'>
+                    <div v-if='item.$.Type!="TOTAL"' v-for='item in weights'>
+                        <!--              <b :class='$_detClass(1, item.$.Type)'>{{item.$.Type}}</b>-->
+                      <b>{{item.$.Type}}</b>
+                      <table class='tb-sm'>
+                        <tbody>
+                          <tr>
+                            <td style='width: 25%'>Points</td>
+                            <td style='width: 23%'>Weight</td>
+                            <td style='width: 22%'>W. Avg.</td>
+                            <td style='width: 30%'>Average</td>
+                          </tr>
+                          <tr>
+                            <td>{{$_formatPt(item)}}</td>
+                            <td>{{item.$.WeightedPct}}</td>
+                            <td>{{item.$.Weight}}</td>
+                            <td>{{$_formatAvg(item)}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </li>
-              <li v-show='showGC' v-bind:key='2' id='li-gc' class='collection-header' style='border-top: 1px solid #555'>
+              <li v-show='showGC' v-bind:key='2' id='li-gc'  class="bg-gray-800" style='padding: 15px; border-radius: 10px; margin-top: 10px;'>
                 <h3>Grade Calculator <span v-on:click='showGC=0' v-on:keyup.enter='showGC=0' class='waves-effect btn-dismiss-lg' tabindex='0'><i class='fas fa-times'></i></span></h3>
                 <span v-show='weighted'>What do you have coming up? </span>
                 <div class='input-field inline' v-show='weighted'>
@@ -640,15 +650,17 @@ theme: {
                 <p id='gc-result' v-show='gc.result' class='bw'><span id='gc-modNotice' class='light-blue-text bw'><i class='fas fa-info-circle'></i> This score is based off of your modified grade. <br></span><span class='green-text bw'>You'll need to get <b>{{gc.result}}%</b>{{gc.resDetails}}.</span><span class='right gray' v-on:click='gc.result=""'><i class='fas fa-times pointer'></i></span><br><span class='gray'>{{gc.helper}}</span></p>
                 <br v-if='!gc.result'><br>
               </li>
-              <li v-show='showTrends' v-bind:key='3' class='collection-header' style='border-top: 1px solid #555'>
-                <h3>Trends <span class='btn-dismiss-lg waves-effect' v-on:click='showTrends=0' v-on:keyup.enter='showTrends=0' tabindex='0'><i class='fas fa-times'></i></span></h3>
-                <div style='position: relative; width: 100%; height: 400px; max-height: 400px;'>
-                  <canvas id='canvas-chart'></canvas>
+              <li v-show='showTrends' v-bind:key='3' class=''>
+                <div class="bg-gray-800" style='padding: 15px; border-radius: 10px; margin-top: 10px;'>
+                  <h3 class="text-white text-2xl">Trends </h3>
+                  <div class="bg-gray-800"style='position: relative; width: 100%; height: 400px; max-height: 400px;'>
+                    <canvas id='canvas-chart'></canvas>
+                  </div>
                 </div>
               </li>
             </transition-group>
             <transition name='anim-div-sm'>
-              <li id='li-filters' v-show='showFilter' class='collection-header' style='border-top: 1px solid #555'> <!--v-show due to Materialize rendering-->
+              <li id='li-filters' v-show='showFilter' class="bg-gray-800" style='padding: 15px; border-radius: 10px; margin-top: 10px;'> <!--v-show due to Materialize rendering-->
                 <div id='div-cbf-input'>
                   <input v-model='filters.string' id='cbf-input' placeholder='Filter by Name' type='text' class='validate light-blue-text bw'/>
                 </div>
@@ -769,8 +781,8 @@ theme: {
             <a href='#' class='modal-close light-blue white-text waves-effect btn-flat'>Done</a>
           </div>
         </div>
-        <div id='modal-addWhatIf' class='modal modal-fixed-footer'>
-          <div class='modal-content'>
+        <div id='modal-addWhatIf' class="modal bg-gray-800" style='padding: 15px; border-radius: 10px; margin-top: 10px;'>
+          <div class="bg-gray-800" style='padding: 15px; border-radius: 10px; margin-top: 10px;'>
             <h4>Add What-If Assignment</h4>
             <div class='row'>
               <p v-if='weighted' style='display: inline-block; margin-right: 8px'>Category: </p>
