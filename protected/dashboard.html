@@ -393,7 +393,7 @@ theme: {
           </transition>
 
 
-            <li class='collection-header c-li' style="background-color:#111827;">
+            <li class='collection-header c-li' style="background-color:#1f2937; margin-bottom: 7px;" >
               <span id='sp-greeting'></span>
               <span class='hide-on-med-and-up' style='font-size: 1.1rem'>
                 <span id='sp-mobile-lu' class='right light-blue-text pointer bw dropdown-trigger drop-nc' data-target='drop-lastUpdated' style='margin-right: 16px' tabindex='0'><i class='fas fa-history'></i></span>
@@ -536,17 +536,69 @@ theme: {
       <div id='v-course-outer'>
         <div id='div-course' class='hidden'>
           <ul class='collection with-header'>
-            <li class='collection-header mb-3 transparent' style=''>
-              <span class='text-4xl tracking-tight lg:text-3xl text-gray-100 dark:text-gray-100 whitespace-nowrap'><a title='Return to Course List' onclick='hideCourseDetails()' onkeypress='hideCourseDetails(0, event)' class='pointer' tabindex='0'><i class='bw fas fa-arrow-left'></i></a> <span class='whitespace-nowrap px-2 py-2 font-medium text-gray-900 dark:text-white text-3xl tracking-tight lg:text-2xl text-gray-100 dark:text-gray-100 whitespace-nowrap'>{{course.Title.replace(/\([^)]*\)/g, '')}}</span></span>
-              <span class='right'>
-                <span v-if='!isModified' class='right lg green-text bw font-medium px-2 text-gray-900'>{{grade.CalculatedScoreRaw}}% ({{grade.CalculatedScoreString}})</span><span v-else><span class='lg gray font-medium px-2 text-gray-900' style='text-decoration: line-through'>{{grade.CalculatedScoreRaw}}%</span> <span class='lg light-blue-text bw font-medium px-2 text-gray-900'>{{modifiedScoreLg}}</span></span>
-                <br/>
-                <span class='green-text bw nw'>Raw: {{shared.gradeEngine.calcGrade(items, weights).toFixed(4)}}% <a class='modal-trigger pointer' ref='m_gr' v-on:keyup.enter='$refs.m_gr.click()' data-target='modal-gradeRounding' tabindex='0'><i class='fas fa-question-circle'></i></a></span>
+            <li class='collection-header mb-3 transparent flex justify-between flex-col lg:flex-row items-center' style=''>
+              <span class='text-4xl tracking-tight lg:text-3xl text-gray-100 dark:text-gray-100 whitespace-nowrap'>
+                <a title='Return to Course List' onclick='hideCourseDetails()' onkeypress='hideCourseDetails(0, event)' class='pointer' tabindex='0'>
+                  <i class='bw fas fa-arrow-left text-2xl lg:text-4xl'></i>
+                </a>
+                <span class='whitespace-nowrap px-2 py-2 font-medium text-gray-900 dark:text-white text-3xl tracking-tight lg:text-4xl text-gray-100 dark:text-gray-100 whitespace-nowrap'>
+                  {{course.Title.replace(/\([^)]*\)/g, '')}}
+                </span>
+                <br class='hidden lg:block'/>
+                <span class='text-xl text-gray-400 lg:block hidden lg:mt-2'>
+                  Period {{course.Period}} • {{course.Room ? course.Room : "(No Room Specified)"}}
+                  • <a class='bw' :href='`mailto:`+course.StaffEMail' tabindex='0'>
+                    <i class='far fa-envelope va-raise'></i> {{course.Staff}}
+                  </a>
+                </span>
               </span>
-              <br/>
-              <span><span class='hide-on-med-and-up'>{{course.Title.replace(/\([^)]*\)/g, '')}}<br/></span>Period {{course.Period}}  <span class='hide-on-xs text-xl'>  •  </span>  {{course.Room?course.Room:"(No Room Specified)"}}<span class='hide-on-xs text-xl'>  •  </span><br class='show-on-xs'/><a class='bw' :href='`mailto:`+course.StaffEMail' tabindex='0'><i class='far fa-envelope va-raise'></i> {{course.Staff}}</a></span>
-              <!-- <span class='right green-text bw'></span> -->
+              <div class="justify-center center-elements" style='margin-top: -20px; @media (max-width: 830px) { margin-top: 0; };'>
+                <span class='right mt-3 lg:mt-0 lg:mb-3'>
+                  <span v-if='!isModified' class='lg green-text bw font-medium px-2 text-gray-900 text-4xl' style=' margin-right: -20px;'>
+                    {{grade.CalculatedScoreRaw}}%
+                  </span>
+                  <span v-else>
+                    <span class='lg gray font-medium px-2 text-gray-900' style='text-decoration: line-through; margin-top: -10px;'>
+                      {{grade.CalculatedScoreRaw}}%
+                    </span>
+                    <span class='lg light-blue-text bw font-medium px-2 text-gray-900'>
+                      {{modifiedScoreLg}}
+                    </span>
+                  </span>
+                  <span class='lg:block hidden text-center lg:absolute lg:right-0 lg:mb-3'>
+                    <span class='green-text bw nw right'>
+                      Raw: {{shared.gradeEngine.calcGrade(items, weights).toFixed(4)}}%
+                      <a class='modal-trigger pointer' ref='m_gr' v-on:keyup.enter='$refs.m_gr.click()' data-target='modal-gradeRounding' tabindex='0'>
+                        <i class='fas fa-question-circle'></i>
+                      </a>
+                    </span>
+                  </span>
+                </span>
+              </div>
             </li>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             <li class='collection-header items-center justify-center transparent'>
               <span class="justify-center">{{items.length}} Item{{items.length==1?'':'s'}} <span v-show='shared.showNew' :class='$_calcNew(course.Title, 1)'>({{$_calcNew(course.Title)}} New)</span></span>
               <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect dropdown-trigger drop-nc' data-target='drop-courseActions'><i class='fa fa-ellipsis-v'></i><span class='hide-on-small-only'> More</span></button>
@@ -554,7 +606,7 @@ theme: {
               <button class='qa-btn btn-small btn-flat rounded-lg bg-teal-500 white-text waves-effect' v-show='$_showQA("gradecalc")' v-on:click='showGC=!showGC'><i class='fa fa-calculator'></i><span class='hide-on-small-only'> Grade Calculator</span></button> 
               <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect' onclick='cb.showFilter = !cb.showFilter' v-show='$_showQA("filter")' :class='showFilter?"darken-1":"darken-2"'><i class='fas fa-filter'></i><span class='hide-on-small-only'> Filter <span v-if='filterCount' class='light-blue-text text-lighten-4'>({{filterCount}})</span></span></button>
               <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect' onclick='cb.$_toggleTrends()' v-show='$_showQA("trends")'><i class='fa fa-chart-line'></i><span class='hide-on-small-only'> Trends</span></button>
-              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect' v-on:click='showWeights = !showWeights' href='#' v-on:click.self.prevent tabindex='0'><i class='fa fa-list mr-2'></i>Categories</button></span>
+              <button class='qa-btn btn-small rounded-lg bg-teal-500 waves-effect' v-on:click='showWeights = !showWeights' href='#' v-on:click.self.prevent tabindex='0'><i class='fa fa-list md:mr-2'></i><span class='hide-on-small-only'>Categories</span></button></span>
               
               <ul id='drop-courseActions' class='py-2 text-sm text-gray-700 dark:text-gray-200 dropdown-content items-center justify-center'>
                 <li class='nh'><span>More Actions</span></li>
