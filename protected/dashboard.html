@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang='en' class="dark">
 <head>
   <meta charset='UTF-8'>
   <title>Synergy+</title>
@@ -38,7 +38,7 @@
 
 <script>
   tailwind.config = {
-darkMode: 'media',
+darkMode: 'class',
 theme: {
   extend: {
     colors: {
@@ -393,7 +393,7 @@ theme: {
           </transition>
 
 
-            <li class='collection-header c-li' style="background-color:#1f2937; margin-bottom: 7px;" >
+            <li class='collection-header c-li' style="background-color:transparent; margin-bottom: 7px;" >
               <span id='sp-greeting'></span>
               <span class='hide-on-med-and-up' style='font-size: 1.1rem'>
                 <span id='sp-mobile-lu' class='right light-blue-text pointer bw dropdown-trigger drop-nc' data-target='drop-lastUpdated' style='margin-right: 16px' tabindex='0'><i class='fas fa-history'></i></span>
@@ -506,14 +506,14 @@ theme: {
        <!--v-gradeList wrapper-->
   
       <div id='v-schedule' class='hidden'>
-        <ul class='collection with-header'>
-          <li class='collection-header c-li'>
+        <ul class='collection with-header' style="background-color: transparent;">
+          <li class=' c-li mx-5 my-2'>
             <a id='bell-drop-trigger' href='#' data-target='bell-drop' class='right bell-hidden hidden dropdown-trigger drop-nc'><span id='bell-drop-title'>Today</span> <i class='fas fa-caret-down'></i></a>
             <span style='font-size: 24px'>Schedule</span>
             <br/>
             <span id='bell-time'></span> <span id='bell-date'></span><span id='bell-schedule'></span>
           </li>
-          <li id='bell-now-outer' class='collection-header hidden'>
+          <li id='bell-now-outer' class=' hidden mx-5 mt-2 mb-4'>
             <span class='bw'><i class='fas fa-clock'></i> <b>Now</b>: <span id='bell-now'></span> <span id='bell-timeLeft-outer' class='bw green-text'>(<span id='bell-timeLeft'></span>m left)</span></span>
           </li> 
           <li id='bell-unavailable' class='collection-item hl-i3'><i class='fas fa-exclamation-triangle'></i> Synergy+ does not have a bell schedule for your school.</li>
@@ -555,17 +555,12 @@ theme: {
               <div class="mb-4 lg:hidden"></div>
               <div class="justify-center center-elements" style='margin-top: -20px; @media (max-width: 1024px) { margin-top: 0; };'>
                 <span class='right mt-3 lg:mt-0 lg:mb-3'>
-                  <span v-if='!isModified' class='lg green-text bw font-medium px-2 text-gray-900 text-4xl' style=' margin-right: -20px;'>
+                  <span v-if='!isModified' class='lg green-text bw font-medium px-2 text-gray-900 text-4xl lg:mr-[-20px] ' >
                     {{grade.CalculatedScoreRaw}}%
-                  </span>
-                  <span v-else>
-                    <span class='lg gray font-medium px-2 text-gray-900' style='text-decoration: line-through; margin-top: -10px;'>
-                      {{grade.CalculatedScoreRaw}}%
-                    </span>
-                    <span class='lg light-blue-text bw font-medium px-2 text-gray-900'>
+                  </span>                    
+                    <span v-else class='lg green-text bw font-medium px-2 text-gray-900 text-4xl lg:mr[-20px]'>
                       {{modifiedScoreLg}}
                     </span>
-                  </span>
                   <span class='lg:block hidden text-center lg:absolute lg:right-0 lg:mb-3'>
                     <span class='green-text bw nw right'>
                       Raw: {{shared.gradeEngine.calcGrade(items, weights).toFixed(4)}}%
@@ -640,7 +635,7 @@ theme: {
 
             </li>
             <transition name='anim-div-sm'>
-              <li v-if='isModified' v-bind:key='0' class='collection-header'>
+              <li v-if='isModified' v-bind:key='0' class="bg-gray-800" style='padding: 15px; border-radius: 10px; margin-top: 10px;'>
                 <span><i class='fas fa-info-circle'></i> With your changes, your overall grade would be <b class='green-text bw'>{{shared.gradeEngine.calcGrade(items, weights).toFixed(2)}}%</b> (<span :class='modifiedDiff[0]'>{{modifiedDiff[1]}}</span>). (<a class='pointer' v-on:click='$_revertAllEdits()' v-on:keyup.enter='$_revertAllEdits()' tabindex='0'>Revert All Edits</a>)<br><i>Note: All tools (i.e., Trends, Grade Calculator) use your modified grade.</i></span>
               </li>
             </transition>
@@ -1124,8 +1119,8 @@ theme: {
           <br>
           <ul id='message-list' class='collapsible popout messages-doneLoading hidden'>
             <li v-for='msg in messages'>
-              <div class='collapsible-header'><b class='msg-date'>{{msg.dateStrShort}}</b> <span class='truncate'>{{msg.subject}}</span></div>
-              <div class='collapsible-body'>
+              <div class='collapsible-header rounded-lg bg-gray-800'><b class='msg-date'>{{msg.dateStrShort}}</b> <span class='truncate'>{{msg.subject}}</span></div>
+              <div class='collapsible-body rounded-lg bg-gray-800'>
                 <b>{{msg.subject}}</b><br/><br/>
                 <b>From: {{msg.from}}</b><br/>
                 <b>Timestamp: {{msg.dateStr}}</b>
@@ -1133,7 +1128,7 @@ theme: {
               </div>
             </li>
             <li v-if='messages.length === 0'>
-              <div class='collapsible-header'>Looks like you don't have any messages right now.</div>
+              <div class='collapsible-header rounded-lg bg-gray-800'>Looks like you don't have any messages right now.</div>
             </li>
           </ul>
         </div>
