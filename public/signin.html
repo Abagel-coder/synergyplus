@@ -134,21 +134,12 @@
           </button>
           
         </div>
-        
-      
-
 
         <button onclick='login()' id="sign_in_button" class="text-lg w-full text-white bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-3 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" style="margin-top: 25px; border-radius: 6px; height: 50px; margin-bottom: 30px;">Sign In</button>
         <a href='app/start?persist=1' id='lnk-app' style='display: none'><button class='btn btn-flat right blue-grey darken-1 waves-effect waves-effect white-text' style='margin-right: 4px'>Back</button></a>
         <br>
       </div>
-      <div class='card-content' id='ccWA'>
-        <span class='card-title'><img id='title-icon' src=''> Sign In with WebAuth</span>
-        <div class='domain' tabindex='0' onkeypress='selDomain(this)' onclick='selDomain(this)'>
-          <span class='domainName'>Sign in with an external security key</span>
-          <span class='domainURL'>svue.psdschools.org</span>
-        </div>
-      </div>
+      
       <div class='card-content' id='cc2'>
         <span class='card-title'><img id='title-icon' src=''> Synergy+</span>
         <p>Looks like you haven't used Synergy+ yet this school year. Welcome!</p>
@@ -168,18 +159,11 @@
           <b>Error:</b>
           <span id='msg2-content'>The request failed.</span>
         </div>
-        <p><b>Synergy+ works by communicating with Synergy SIS. No data is ever transferred to a central server -- everything is kept on your personal device.</p>
+        <p><b>Synergy+ works by communicating with Synergy SIS. No personal educational data (e.g grades, report cards, private information) is ever transferred to a central server -- everything is kept on your personal device.</p>
+        
         <br/>
-        <p><b>Don't be a nerd and misuse this!</b></p>
-        <div class='input-field'>
-          <input id='i_signature' type='text' maxlength='48' onchange='tosAcc.disabled=false' class='validate'>
-          <label for='i_signature'>Your Display Name</label>
-        </div>
+        <p><b>That's also why you can use this platform with the wifi off! Your data is automatically cached to your device.</b></p>
         <br>
-        <label>
-          <input id='c_tos' type='checkbox' onchange='tosAcc.disabled=false'/>
-          <span>I accept.</span>
-        </label>
         <br>
         <br>
         <button id='tosAcc' disabled onclick='consent(1)' class='btn btn-flat right blue white-text waves-effect'>Continue</button>
