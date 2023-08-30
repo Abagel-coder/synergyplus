@@ -1,19 +1,38 @@
 <!DOCTYPE html>
-<html class="dark" style="background-color: #1f2937;">
+<html>
+
 <head>
-<meta charset='UTF-8'>
+  <meta charset='UTF-8'>
   <title>Sign In | Synergy+</title>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='Final.png' rel='icon' type='icon/ico'>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' integrity='sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=' crossorigin='anonymous'/>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'
+    integrity='sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=' crossorigin='anonymous' />
   <link rel='stylesheet' href='css/auth.css' type='text/css'>
-  <script defer src='js/zepto.min.js' integrity='sha256-RHTXmWrHQAbYRTGQR8NJapj1bG53Zh4oRZRuAy2Hu3A=' crossorigin='anonymous'></script>
-  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js' integrity='sha256-U/cHDMTIHCeMcvehBv1xQ052bPSbJtbuiw4QA9cTKz0=' crossorigin='anonymous'></script>
+  <script defer src='js/zepto.min.js' integrity='sha256-RHTXmWrHQAbYRTGQR8NJapj1bG53Zh4oRZRuAy2Hu3A='
+    crossorigin='anonymous'></script>
+  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'
+    integrity='sha256-U/cHDMTIHCeMcvehBv1xQ052bPSbJtbuiw4QA9cTKz0=' crossorigin='anonymous'></script>
   <script defer src='js/ver.js'></script>
   <script defer src='js/signin.js'></script>
   <script defer src='js/wa-client.js'></script>
   <script async src='https://unpkg.com/animejs@3.0.1/lib/anime.min.js'></script>
-  <noscript><style>#div-msg{opacity:1; height: 96px; margin-top: 10px; padding: 3px 6px} input, button, label {display: none !important}</style></noscript>
+  <noscript>
+    <style>
+      #div-msg {
+        opacity: 1;
+        height: 96px;
+        margin-top: 10px;
+        padding: 3px 6px
+      }
+
+      input,
+      button,
+      label {
+        display: none !important
+      }
+    </style>
+  </noscript>
 </head>
 <script>
   function redirectToPasswordHelp() {
@@ -92,65 +111,88 @@
   }
 </style>
 
-<body class = "flex items-center justify-center min-h-screenb bg-gray-900">
+<body class="flex items-center justify-center min-h-screenb bg-gray-900">
   <div id='login-outer'>
     <div id='login-div' class='card' style="background-color: #111827; width: 400px; height: 500px;">
       <div id='div-loadbar'></div>
       <div class='card-content' id='ccL'>
         <span class='card-title'><img id='title-icon' src=''> Synergy+</span>
-        <br/>
+        <br />
         <noscript>
           <div>
             <b>Error:</b>
-            <span>JavaScript is disabled (29).<br>Synergy+ can not be used without JavaScript.<br><br>If you need help enabling JavaScript, <a href='https://enable-javascript.com'>click here</a>.</span>
+            <span>JavaScript is disabled (29).<br>Synergy+ can not be used without JavaScript.<br><br>If you need help
+              enabling JavaScript, <a href='https://enable-javascript.com'>click here</a>.</span>
           </div>
         </noscript>
-        <p style='font-size: 16px'><img src='images/rolling.svg' id='so-i' style='height: 20px; vertical-align: text-bottom'> Please wait...</p>
+        <p style='font-size: 16px'><img src='images/rolling.svg' id='so-i'
+            style='height: 20px; vertical-align: text-bottom'> Please wait...</p>
       </div>
-      
+
       <div class='card-content' id='cc1'>
-        <img id="synergy-plus-image" src="https://synergy-plus.vercel.app/static/media/synergyplus.66a8d0c1367f658c0c37.png" alt="Logo" class="mx-auto block" style="margin-bottom: -17px; max-width: 100%;" />
+        <img id="synergy-plus-image"
+          src="https://synergy-plus.vercel.app/static/media/synergyplus.66a8d0c1367f658c0c37.png" alt="Logo"
+          class="mx-auto block" style="margin-bottom: -17px; max-width: 100%;" />
         <div id='div-msg'>
           <b id='msg-title'>Error:</b>
-          <span id='msg-content'>JavaScript is disabled (29).<br>Synergy+ can not be used without JavaScript.<br><br>If you need help enabling JavaScript, <a href='https://enable-javascript.com'>click here</a>.</span>
+          <span id='msg-content'>JavaScript is disabled (29).<br>Synergy+ can not be used without JavaScript.<br><br>If
+            you need help enabling JavaScript, <a href='https://enable-javascript.com'>click here</a>.</span>
         </div>
         <div class="input-container" style="margin-top: -10px;">
-          <label id='l_user' for='i_user' class = "mt-2 py-2">Username</label>
+          <label id='l_user' for='i_user' class="mt-2 py-2">Username</label>
           <input id='i_user' maxlength='24' class='validate custom-input' style="width: 95%;">
         </div>
         <div class="input-container">
           <label id="l_pass" for='i_pass'>Password</label>
-          <input id='i_pass' type='password' maxlength='48' class='mt-2 rounded-lg bg-gray-900 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none custom-input' style="width: 95%;">
+          <input id='i_pass' type='password' maxlength='48'
+            class='mt-2 rounded-lg bg-gray-900 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none custom-input'
+            style="width: 95%;">
         </div>
 
         <div class="flex justify-between items-center ml--2">
-        
+
           <label class="flex items-center">
-            <input id='c_rem' type='checkbox' checked/>
+            <input id='c_rem' type='checkbox' checked />
             <span class="ml-2 text-gray-400 hover:text-gray-100">Remember Me</span>
           </label>
-          <button onclick="redirectToPasswordHelp()"; class="custom-button text-md text-gray-400 hover:text-gray-100" style="color: white; margin-left: 45px;">
+          <button onclick="redirectToPasswordHelp()" ; class="custom-button text-md text-gray-400 hover:text-gray-100"
+            style="color: white; margin-left: 45px;">
             Don't Know Password?
           </button>
-          
+
         </div>
 
-        <button onclick='login()' id="sign_in_button" class="text-lg w-full text-white bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-3 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" style="margin-top: 25px; border-radius: 6px; height: 50px; margin-bottom: 30px;">Sign In</button>
-        <a href='app/start?persist=1' id='lnk-app' style='display: none'><button class='btn btn-flat right blue-grey darken-1 waves-effect waves-effect white-text' style='margin-right: 4px'>Back</button></a>
+
+
+
+        <button onclick='login()' id="sign_in_button"
+          class="text-lg w-full text-white bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-3 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          style="margin-top: 25px; border-radius: 6px; height: 50px; margin-bottom: 30px;">Sign In</button>
+        <a href='app/start?persist=1' id='lnk-app' style='display: none'><button
+            class='btn btn-flat right blue-grey darken-1 waves-effect waves-effect white-text'
+            style='margin-right: 4px'>Back</button></a>
         <br>
       </div>
-      
+      <div class='card-content' id='ccWA'>
+        <span class='card-title'><img id='title-icon' src=''> Sign In with WebAuth</span>
+        <div class='domain' tabindex='0' onkeypress='selDomain(this)' onclick='selDomain(this)'>
+          <span class='domainName'>Sign in with an external security key</span>
+          <span class='domainURL'>svue.psdschools.org</span>
+        </div>
+      </div>
       <div class='card-content' id='cc2'>
         <span class='card-title'><img id='title-icon' src=''> Synergy+</span>
         <p>Looks like you haven't used Synergy+ yet this school year. Welcome!</p>
         <br>
-        <p>A new Synergy+ account will be linked to your StudentVUE account. Please confirm the following information is accurate before continuing.</p>
+        <p>A new Synergy+ account will be linked to your StudentVUE account. Please confirm the following information is
+          accurate before continuing.</p>
         <br>
         <p>Legal Name: <b><span id='cc2_name'></span></b><br>School: <b><span id='cc2_school'></span></b></p>
         <br>
         <br>
         <button onclick='consent(2)' class='btn btn-flat right blue white-text waves-effect'>Continue</button>
-        <button onclick='consent(0)' class='btn btn-flat right grey white-text waves-effect' style='margin-right: 5px'>Cancel</button>
+        <button onclick='consent(0)' class='btn btn-flat right grey white-text waves-effect'
+          style='margin-right: 5px'>Cancel</button>
         <br>
       </div>
       <div class='card-content' id='cc3'>
@@ -159,15 +201,25 @@
           <b>Error:</b>
           <span id='msg2-content'>The request failed.</span>
         </div>
-        <p><b>Synergy+ works by communicating with Synergy SIS. No personal educational data (e.g grades, report cards, private information) is ever transferred to a central server -- everything is kept on your personal device.</p>
-        
-        <br/>
-        <p><b>That's also why you can use this platform with the wifi off! Your data is automatically cached to your device.</b></p>
+        <p><b>Synergy+ works by communicating with Synergy SIS. No data is ever transferred to a central server --
+            everything is kept on your personal device.</p>
+        <br />
+        <p><b>Don't be a nerd and misuse this!</b></p>
+        <div class='input-field'>
+          <input id='i_signature' type='text' maxlength='48' onchange='tosAcc.disabled=false' class='validate'>
+          <label for='i_signature'>Your Display Name</label>
+        </div>
+        <br>
+        <label>
+          <input id='c_tos' type='checkbox' onchange='tosAcc.disabled=false' />
+          <span>I accept.</span>
+        </label>
         <br>
         <br>
-        <br>
-        <button id='tosAcc' disabled onclick='consent(1)' class='btn btn-flat right blue white-text waves-effect'>Continue</button>
-        <button id='tosAccCancel' onclick='consent(0)' class='btn btn-flat right blue white-text waves-effect' style='margin-right: 5px'>Sign Out</button>
+        <button id='tosAcc' disabled onclick='consent(1)'
+          class='btn btn-flat right blue white-text waves-effect'>Continue</button>
+        <button id='tosAccCancel' onclick='consent(0)' class='btn btn-flat right blue white-text waves-effect'
+          style='margin-right: 5px'>Sign Out</button>
         <br>
       </div>
       <div class='card-content' id='cc4'>
@@ -175,7 +227,8 @@
         <p>Your account has been successfully created. <br>Welcome to Synergy+, <span id='cc4_name'></span>!</p>
         <br>
         <br>
-        <button onclick='window.open("../dashboard","_self")' class='btn btn-flat right blue white-text waves-effect'>Continue</button>
+        <button onclick='window.open("../dashboard","_self")'
+          class='btn btn-flat right blue white-text waves-effect'>Continue</button>
         <br>
       </div>
     </div>
@@ -184,6 +237,7 @@
     <li onclick='drop(0)'><a href="#" style="color: #111827;">Open District Portal</a></li>
     <li onclick='drop(1)'><a href="#" style="color: #111827;">Change District</a></li>
   </ul>
-  
+
 </body>
+
 </html>
