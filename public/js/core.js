@@ -153,8 +153,8 @@ const svcore = {
       let cachedCourse = cache[`${school}/${(rp || rp === 0)?rp:this._metadata.rpDef[school]}`]; 
       if (cachedCourse) {
         let ts = cachedCourse.ts; 
-        if (Date.now()/1000 < ts + (60 * 3360) || fromCacheOnly) {
-          // data older than 56 hours is refreshed, unless otherwise specified 
+        if (Date.now()/1000 < ts + (60 * 0.75) || fromCacheOnly) {
+          // data older than 45 minutes is refreshed, unless otherwise specified 
           return {
             ok: true, 
             fromCache: true, 
