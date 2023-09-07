@@ -85,6 +85,143 @@ theme: {
 }
 </script>
 
+
+<script> // splash fixéd :D
+  function getRandomSplashText() {
+      const splashTexts = [
+    "As seen on TV!",
+    "Don't be depressed!",
+    "Should not be used while driving.",
+    "1% sugar!",
+    "We're like a better BetterQ!",
+    "Don't stare at the bugs!",
+    "Awesome!",
+    "100% pure!",
+    "All is full of love!",
+    "You can toggle assignments in 'Trends'!",
+    "Coming to stores near you!",
+    "BetterQ? Never heard of her!",
+    "Neubauer College wants YOU!",
+    "It's here!",
+    "Forcing dark mode since 2023!",
+    "Best in class!",
+    "It's finished! Kinda!",
+    "Kind of math free!",
+    "Call your Mom!",
+    "Excitement!",
+    "More than 2 sold!",
+    "One of a kind! Not really.",
+    "Heaps of hits on YouTube!",
+    "The navbar doesn't do anything!",
+    "Check it out!",
+    "Holy cow, man!",
+    "It's your grades!",
+    "Made in Pleasanton!",
+    "Uses LWJGL!",
+    "Reticulating splines!",
+    "SynergyPlus, whoo!",
+    "Yaaay!",
+    "Singleplayer!",
+    "Keyboard compatible!",
+    "I've got a bad feeling about this!",
+    "Hire us, Synergy!",
+    "Exploding creepers!",
+    "That's no moon!!",
+    "L33t!",
+    "Create!",
+    "Fetching grades!",
+    "Priming Grades...",
+    "Exclusive!",
+    "The bee's knees!",
+    "Down with O.P.P.!",
+    "Kinda closed source!",
+    "For whom does the bell toll?",
+    "Wow!",
+    "Not on steam!",
+    "Oh man!",
+    "Awesome community!",
+    "We're off to Never Never Land!",
+    "Teetsuuuuoooo!",
+    "Kaaneeeedaaaa!",
+    "Fade to Black!",
+    "Enhanced!",
+    "90% bug free!",
+    "NP is not in P!",
+    "12 herbs and spices!",
+    "Fat free!",
+    "<LOADING_SPLASH>",
+    "Free dental!",
+    "Ask your doctor!",
+    "Indie!",
+    "e4 e6 d4!",
+    "Ceci n'est pas une splash screen!",
+    "Euclidian!",
+    "Now in 2D!",
+    "Inspirational!",
+    "FHS CS Club is Cool!",
+    "Complex cellular automata!",
+    "Yes, sir!",
+    "Used by cowboys!",
+    "OpenGL 1.2!",
+    "Thousands of features!",
+    "Try it!",
+    "Up-Up-Down-Down-Left-Right-Left-Right-B-A-START!",
+    "Try the mushroom stew!",
+    "Sensational!",
+    "Hot tamale, hot hot tamale!",
+    "Guaranteed!",
+    "Macroscopic!",
+    "You totally failed that test!",
+    "Now in 10 frames per second!",
+    "Shoutout to DigitalOcean!",
+    "Shoutout to Certbot!",
+    "Runs on Chromebooks now!",
+    "Dark mode for all!",
+    "I'm sure you did great on your test!",
+    "Only taking 7 APs this year?",
+    "Tell your friends about us!",
+    "Good luck (you'll need it)!",
+    "Aryan smells!",
+    "Aryan smells!",
+    "Nirav can't sing!",
+    "Nirav can't sing!",
+    "Attend Foothill CS Club!",
+    "Attend Foothill CS Club!",
+    "Attend Foothill Chess Club!",
+    "Attend Foothill Chess Club!"
+      ];
+
+      const randomIndex = Math.floor(Math.random() * splashTexts.length);
+      return splashTexts[randomIndex];
+  }
+
+  function updateSplash() {
+      const messageElement = document.getElementById("splash-message");
+
+      if (messageElement) {
+          messageElement.innerText = getRandomSplashText();
+      }
+  }
+
+  updateSplash();
+
+  let intPassed = false;
+
+        // dont look into this code too hard
+        const initInterval = setInterval(() => {
+            if (!intPassed) {
+              updateSplash();
+              intPassed = true;
+            } else {
+                clearInterval(initInterval);
+                setInterval(updateSplash, 3400);
+            }
+        }, 50);
+
+
+</script>
+
+
 </head>
 <body class = "bg-gray-900">
 
@@ -365,6 +502,9 @@ theme: {
 
 
 
+
+
+
 <main class = "p-4 md:ml-64 h-auto mt-5 pt-10 bg-gray-50 dark:bg-gray-900 ">
   <div class="rounded-lg h-full mb-4">
       <div id='v-gradeList' class = "bg-gray-50 dark:bg-gray-900">
@@ -408,22 +548,31 @@ theme: {
               <span class='sp-fullName' style='font-size: 26px; line-height: 1.1'></span>
               <br/>
               <span style='display: block; padding-top: 4px'>
+
                 <span class='hide-on-small-only'><span id='sp-time' class='light-blue-text bw'>...</span> • </span><span id='sp-date' class='light-blue-text bw'></span> <span id='sp-weather-outer' class='hidden'>• <span id='sp-weather' class='pointer light-blue-text bw dropdown-trigger drop-nc' data-target='sp-weather-drop' tabindex='0'><i class='far fa-question-circle'></i> ??</span></span>
                 <span class='hide-on-small-only'>
                   <span class='right tooltipped light-blue-text pointer bw' v-on:click='cbList.refresh()' v-on:keyup.enter='cbList.refresh()' v-on:keyup.space.prevent='cbList.refresh()' data-tooltip='Force Update' data-position='top' style='margin-right: 8px;' tabindex='0'><i class='fas fa-sync spin-on-hover'></i></span>
                 </span>
+
               </span>
               <div id='sp-weather-drop' class='dropdown-content'></div>
             </li>
+            
             <li class='collection-item' v-if='banner.loading'>
               <span class='bw'><i class='fas fa-spin fa-circle-notch'></i> <span id='course-loading-msg'>Loading Gradebook</span>...</span>
+
+              <h2 id="splash-message" class = "m-1 text-2xl tracking-tight lg:text-2xl"></h2>
             </li> 
+
             <li class='collection-item' v-if='banner.cache'>
               <span class='bw'><i class='fas fa-info-circle'></i> A cached version of your gradebook from <span class='light-green-text bw'>{{banner.cache}}</span> is available. <br/><br/><button v-on:click='cbList.refresh(!1, 2)' style='margin-bottom: 4px' class='btn-small btn-flat blue white-text waves-effect'>Open Cached Gradebook</button> <button v-on:click='cbList.refresh()' style='margin-bottom: 4px' class='btn-small btn-flat teal white-text waves-effect'>Refresh Gradebook</button></span>
             </li>
   
           
         <!-- GRADEBOOK ACTUAL -->
+
+
+
   
         <div id='acc gradebook'>
           <a
@@ -466,6 +615,7 @@ theme: {
                 <span class='whitespace-nowrap px-2 py-2 text-sm text-gray-900 dark:text-white'>
                   <i class="fa fa-user" style="margin-right: 5px;"></i>
                   {{course.$.Staff}}
+                  
               </span>
               
               </div>
@@ -499,6 +649,8 @@ theme: {
       </div>
       
        <!--v-gradeList wrapper-->
+
+
   
       <div id='v-schedule' class='hidden'>
         <ul class='collection with-header' style="background-color: transparent;">
@@ -1145,197 +1297,8 @@ theme: {
       <div id='v-settings' class='hidden'>
         <br class='hide-on-small-only'/>
         <div class='row'>
-          <div class='col nopad s12'>
-            <ul id='settings-tabs' class='tabs'>
-              <li class='tab col s3'><a href='#settings-general' class='active'><i class='fas fa-cog'></i> General</a></li>
-              <li class='tab col s3'><a href='#settings-appearance'><i class='fas fa-eye'></i> Appearance</a></li>
-              <li class='tab col s3'><a href='#settings-about'><i class='fas fa-question-circle'></i> About</a></li>
-            </ul>
-          </div>
           <br>
-          <div id='settings-general' class='col s12 imgbk'>
-            <h2>General</h2>
-            <span class='p'><i class='fas fa-list-ul'></i> Quick Actions</span>
-            <div class='input-field inline'>
-              <select multiple class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 config-input' v-model='config.quickActions'>
-                <option value='trends'>Trends</option>
-                <option value='filter'>Filter</option>
-                <option value='gradecalc'>Grade Calculator</option>
-                <option value='addwhatif'>Add What-If</option>
-              </select>
-            </div>
-            <br/>
-            <i>"Quick Actions" are actions that show up under a course - anything not selected will be put under "More".<br>While there's no hard limit, it's recommended that you have two to three selected.</i>
-            <br/><br/>
-            <span class='p'><i class='fas fa-user-tag'></i> Nickname</span>
-            <div class='input-field' style='display: inline-block; margin-left: 8px'>
-              <input placeholder='Placeholder' id='config-nickname' class='config-input' v-model='config.nickname' maxlength='24'/>
-              <label class='active' for='config-nickname'>Nickname</label>
-            </div>
-            <br/>
-            <i>If you set a nickname, it will replace the name that shows up under "Gradebook". Limit 24 characters.</i>
-            <br/><br/>
-            <span class='p'><i class='fas fa-map-marked-alt'></i> Weather Location</span>
-            <div class='input-field' style='display: inline-block; margin-left: 8px'>
-              <input placeholder='40.51,-105.02' id='config-weather' class='config-input' v-model='config.weatherLocation' maxlength='24'/>
-              <label class='active' for='config-weather'>Zip (US) / Coordinates</label>
-            </div>
-            <div class='switch' style='display: inline-block; padding-bottom: 12px'>
-              <label>
-                <input type='checkbox' id='config-useGeolocation' class='config-input' v-model='config.useGeolocation'>
-                <span class='lever'></span>
-                Use My Location
-              </label>
-            </div>
-            <br/>
-            <i>This defaults to Fort Collins, Colorado (40.51,-105.02) if not set. You can either enter a US zip code or use "Use My Location" to get a more precise location.</i>
-            <br/><br/>
-            <p>
-              <label class='bw'>
-                <input type='checkbox' class='config-input' v-model='config.alwaysShowGC'/>
-                <span>Always Show Grade Changes</span>
-              </label>
-            </p>
-            <i><b>Enabled by default in r1.0.0+.</b> If enabled, grade changes will always be shown next to each assignment. Otherwise, they'll only be shown when the trends chart is also open.</i>
-            <p>
-              <label class='bw'>
-                <input type='checkbox' class='config-input' v-model='config.skipMarkingWait'/>
-                <span>Skip "Mark As Seen" Wait</span>
-              </label>
-            </p>
-            <i>By default, if you open a course and immediately close out, new assignments won't be marked as "seen". Enable this option to disable that feature.</i>
-            <p>
-              <label class='bw'>
-                <input type='checkbox' class='config-input' v-model='config.markPendingAsNew'/>
-                <span>Disable "Pending" Functionality</span>
-              </label>
-            </p>
-            <i>New items will show as "new" regardless of whether they have a grade or not.<br>Gradebook must be updated for changes to this option to take effect.</i>
-            <p>
-              <label class='bw'>
-                <input type='checkbox' class='config-input' v-model='config.usePointValue'/>
-                <span>Use $.PointValue (instead of $.Score) in calculations</span>
-              </label>
-            </p>
-            <i>Deprecated. Will make little to no difference for most users. If assignment grades don't show up properly, this option <b>may</b> help.</i>
-            <br/><br/>
-          </div>
-          <div id='settings-appearance' class='col s12 imgbk'>
-            <h2>Appearance</h2>
-            <h3>Color and Themes</h3>
-            <p style='margin-top: 0'>
-              <label class='bw'>
-                <input type='checkbox' class='config-input' data-reltheme='1' v-model='config.matchTheme'/>
-                <span>Match color scheme (light/dark) with system</span>
-              </label>
-            </p>
-            <p>
-              <label class='bw'>
-                <input type='checkbox' class='config-input' data-reltheme='1' v-model='config.imgTheme'/>
-                <span>Image Backgrounds</span>
-              </label>
-            </p>
-            <i>This setting is not recommended on lower-end devices; having hardware acceleration is highly recommended. </i>
-            <br/>
-            <span class='p' v-show='!config.matchTheme'>Color Scheme</span>
-            <div class='input-field inline' v-show='!config.matchTheme'>
-              <select class='config-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' data-reltheme='1' v-model='config.theme'>
-                <option value='light'>Light</option>
-                <option value='dark'>Dark</option>
-              </select>
-            </div>
-            <div v-show='config.imgTheme'>
-              <span class='p'>Background Image</span>
-              <div class='input-field inline'>
-                <select id='config-imgSrc' class='config-input icons' data-reltheme='1' v-model='config.imgSrc'>
-                  <option value='mountains' data-icon='images/mountains.icon.jpg'>Mountains L</option>
-                  <option value='mountains-night' data-icon='images/mountains-night.icon.jpg'>Mountains D</option>
-                  <option id='config-localImg' value='local' >Custom</option>
-                </select>
-              </div>
-              <div v-show='config.imgSrc == "local"' class='imgbk'>
-                <p><b>Image Settings</b></p>
-                <p>
-                  <label class='bw'>
-                    <input class='config-input' type='checkbox' data-reltheme='1' v-model='config.imgBlur'/>
-                    <span>Blur Background</span>
-                  </label>
-                </p>
-                <span>Image Size</span>
-                <div class='input-field inline'>
-                  <select id='config-imgSize' class='config-input icons' data-reltheme='1' v-model='config.imgSize'>
-                    <option value='cover'>Cover (Default)</option>
-                    <option value='contain'>Contain</option>
-                    <option value='unset'>Unset</option>
-                  </select>
-                </div>
-                <br/>
-                <span>Image Position</span>
-                <div class='input-field inline'>
-                  <select id='config-imgPos' class='config-input icons' data-reltheme='1' v-model='config.imgPos'>
-                    <option value='center'>Center (Default)</option>
-                    <option value='top'>Top</option>
-                    <option value='bottom'>Bottom</option>
-                    <option value='left'>Left</option>
-                    <option value='right'>Right</option>
-                  </select>
-                </div>
-                <br/>
-                <button onclick='$(`#fileSelect`).click()' class='btn blue config-imgBtn waves-effect'><i class='fas fa-image'></i> Change Image</button>
-                <br class='smOnly'/>
-                <a id='bkImg-export' download='Synergy+ Custom Background'><button class='btn teal config-imgBtn waves-effect'><i class='fas fa-download'></i> Export Image</button></a>
-                <br class='smOnly'/>
-                <button v-on:click='$_removeImg()' class='btn red config-imgBtn waves-effect'><i class='fas fa-trash'></i> Remove Image</button>
-                <br/><br/>
-              </div>
-            </div>
-            <input style='visibility: hidden' id='fileSelect' type='file' accept='image/*'/>
-            <h3>Accessibility and Animations</h3>
-            <p>
-              <label class='bw'>
-                <input class='config-input' type='checkbox' v-model='config.reduceMotion'/>
-                <span>Reduce Motion</span>
-              </label>
-            </p>
-            <i>Turning this on will disable most animations. This includes the page scrolling animation, button wave effects, open/close animations when selecting a quick action, and zoom-in/zoom-out animations for dropdowns and modals.</i>
-            <p>
-              <label class='bw'>
-                <input class='config-input' type='checkbox' v-model='config.noAnim'/>
-                <span>Remove Page Animations</span>
-              </label>
-            </p>
-            <i>Turning this on will completely remove page transition animations.</i>
-            <br/>
-            <span class='p'>Animation Speed</span>
-            <div class='input-field inline'>
-              <select class='config-input' v-model='config.animSpeed'>
-                <option value='0.5'>Fastest (x2.0)</option>
-                <option value='0.67'>Faster (x1.5)</option>
-                <option value='0.8'>Fast (x1.2)</option>
-                <option value='1'>Normal (x1.0)</option>
-                <option value='1.25'>Slow (x0.8)</option>
-                <option value='1.67'>Slower (x0.6)</option>
-                <option value='3.33'>Slowest (x0.3)</option>
-              </select>
-            </div>
-            <i><br>Change the rate transitions and animations are played.</i>
-            <br/><br/><br/>
-            <h3>Highlighting</h3>
-            <p>
-              <label class='bw'>
-                <input class='config-input' type='checkbox' v-model='config.sidenavHL'/>
-                <span>Highlight/indicate current tab (in sidebar)</span>
-              </label>
-            </p>
-            <p>
-              <label class='bw'>
-                <input class='config-input' type='checkbox' v-model='config.newIndicator'/>
-                <span>Highlight/indicate new assignments</span>
-              </label>
-            </p>
-            <i>Turning this off will disable the "__ new assignments" feature. Note that the feature will always be disabled if you're offline or in a different reporting period.</i>
-            <br/><br/>
-          </div>
+          
           
         </div>
       </div>

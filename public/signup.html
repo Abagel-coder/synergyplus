@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset='UTF-8'>
-  <title>About | Synergy+</title>
+  <meta charset='UTF-8'>
+  <title>Sign Up | Synergy+</title>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='Final.png' rel='icon' type='icon/ico'>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' integrity='sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=' crossorigin='anonymous'/>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'
+    integrity='sha256-OweaP/Ic6rsV+lysfyS4h+LM6sRwuO3euTYfr6M124g=' crossorigin='anonymous' />
   <link rel='stylesheet' href='css/auth.css' type='text/css'>
-  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js' integrity='sha256-vrn14y7WH7zgEElyQqm2uCGSQrX/xjYDjniRUQx3NyU=' crossorigin='anonymous'></script>
-  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js' integrity='sha256-H/ZsHjKSJUnQyCQHZwPmn7VTWFeTTI+qgCP1GkiB9zI=' crossorigin='anonymous'></script>
-  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js' integrity='sha256-U/cHDMTIHCeMcvehBv1xQ052bPSbJtbuiw4QA9cTKz0=' crossorigin='anonymous'></script>
+  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js'
+    integrity='sha256-vrn14y7WH7zgEElyQqm2uCGSQrX/xjYDjniRUQx3NyU=' crossorigin='anonymous'></script>
+  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/localforage/1.7.3/localforage.min.js'
+    integrity='sha256-H/ZsHjKSJUnQyCQHZwPmn7VTWFeTTI+qgCP1GkiB9zI=' crossorigin='anonymous'></script>
+  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'
+    integrity='sha256-U/cHDMTIHCeMcvehBv1xQ052bPSbJtbuiw4QA9cTKz0=' crossorigin='anonymous'></script>
   <script defer src='../js/ver.js'></script>
   <script defer src='js/signout.js'></script>
 
@@ -18,125 +23,162 @@
 
   <script>
     tailwind.config = {
-  darkMode: 'media',
-  theme: {
-    extend: {
-      colors: {
-        primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
+      darkMode: 'media',
+      theme: {
+        extend: {
+          colors: {
+            primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a", "950": "#172554" }
+          }
+        },
+        fontFamily: {
+          'body': [
+            'Inter',
+            'ui-sans-serif',
+            'system-ui',
+            '-apple-system',
+            'system-ui',
+            'Segoe UI',
+            'Roboto',
+            'Helvetica Neue',
+            'Arial',
+            'Noto Sans',
+            'sans-serif',
+            'Apple Color Emoji',
+            'Segoe UI Emoji',
+            'Segoe UI Symbol',
+            'Noto Color Emoji'
+          ],
+          'sans': [
+            'Inter',
+            'ui-sans-serif',
+            'system-ui',
+            '-apple-system',
+            'system-ui',
+            'Segoe UI',
+            'Roboto',
+            'Helvetica Neue',
+            'Arial',
+            'Noto Sans',
+            'sans-serif',
+            'Apple Color Emoji',
+            'Segoe UI Emoji',
+            'Segoe UI Symbol',
+            'Noto Color Emoji'
+          ]
+        }
       }
-    },
-    fontFamily: {
-      'body': [
-    'Inter', 
-    'ui-sans-serif', 
-    'system-ui', 
-    '-apple-system', 
-    'system-ui', 
-    'Segoe UI', 
-    'Roboto', 
-    'Helvetica Neue', 
-    'Arial', 
-    'Noto Sans', 
-    'sans-serif', 
-    'Apple Color Emoji', 
-    'Segoe UI Emoji', 
-    'Segoe UI Symbol', 
-    'Noto Color Emoji'
-  ],
-      'sans': [
-    'Inter', 
-    'ui-sans-serif', 
-    'system-ui', 
-    '-apple-system', 
-    'system-ui', 
-    'Segoe UI', 
-    'Roboto', 
-    'Helvetica Neue', 
-    'Arial', 
-    'Noto Sans', 
-    'sans-serif', 
-    'Apple Color Emoji', 
-    'Segoe UI Emoji', 
-    'Segoe UI Symbol', 
-    'Noto Color Emoji'
-  ]
     }
-  }
-}
   </script>
 </head>
 
-<body class = "bg-gray-900 flex flex-col items-center justify-center min-h-screen">
-    <div class="mx-auto min-h-screen max-w-screen-xl px-16 py-16 text-white">
-        <div class="max-w-3xl mx-auto center-elements">
-        <section class="mb-9">
-          
-          <h1 class="mb-4 text-4xl font-bold">How to Create an Account</h1>
-          <p class="text-gray-300 text-xl">A modern and user-friendly interface for Synergy's StudentVUE platform.</p>
-        </section>      
-        <section class="mb-4">
-          <h2 class="mb-4 text-3xl font-bold">Steps</h2>
-          <div class="flex flex-col space-y-7">
-            <div style="display: flex; align-items: center;">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 h-6 w-6 text-teal-500">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-              </svg>
-              <p class="text-gray-300 text-xl" style="font-size: 18px;">
-                <a href="https://ca-pleas-psv.edupoint.com/PXP2_Password_Help.aspx" target="_blank" rel="noopener noreferrer">
-                    <u style="text-decoration-color:teal">Set your Password</u>
-                </a>
-                (Can be the same as your StudentVUE password)
-              </p>
+<body class="bg-gray-900 flex flex-col items-center justify-center min-h-screen">
+  <div class="mx-auto min-h-screen max-w-screen-xl px-16 py-16 text-white">
+    <div class="max-w-3xl mx-auto center-elements">
+      <section class="mb-9">
+
+        <h1 class="mb-4 text-4xl font-bold">How to Create an Account</h1>
+        <p class="text-gray-300 text-xl">To use SynergyPlus, you must first reset your StudentVUE password. This is
+          because the district hasn't set up global passwords -- instead, most students use Google OAuth to sign in 
+          to their portals. <br><br>However, Google OAuth won't work with the Synergy SIS API, which is why you'll need to 
+          follow the steps below.
+          <b>This is a one-time setup, and takes ~3 minutes to complete.</b></p>
+        <br />
+        <p class="text-gray-300 text-xl">Resetting your password will NOT disable your ability to login with google,
+          stop your parents from logging in on their end, or cause any other issues with your Synergy StudentVUE
+          account.</p>
+      </section>
+      <section class="mb-4">
+        <h2 class="mb-4 text-3xl font-bold">Steps</h2>
+        <div class="flex flex-col space-y-7">
+          <div style="display: flex; align-items: center;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="mr-2 h-6 w-6 text-teal-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <p class="text-gray-300 text-xl" style="font-size: 18px;">
+              <a href="https://ca-pleas-psv.edupoint.com/PXP2_Password_Help.aspx" target="_blank"
+                rel="noopener noreferrer">
+                <u class="text-white" style=" text-decoration-color:teal">Set your Password</u>
+              </a>
+              (Can be the same as your StudentVUE password)
+            </p>
           </div>
           <p style="margin-top: 4px; margin-left: 5px; font-size: 16px">
-          <span style="font-style: italic;">
-              This will lead you to the Forgot Password site on StudentVUE, but it allows you to set up your password for SynergyPlus.
-          </span>
+            <span style="font-style: italic;">
+              This will lead you to the Forgot Password site on StudentVUE, but it allows you to set up your password
+              for SynergyPlus.
+            </span>
           </p>
           <div style="margin-left: 40px; margin-top: 10px;">
-              <img src="images/ForgotPassword.png" alt="Image description" style="vertical-align: top; margin-left: -35px">
-          </div>          
-            <div class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 h-6 w-6 text-teal-500">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <p class="text-gray-300 text-xl" style="font-size: 18px">Check your email</p>
-            </div>
-            <div style="margin-left: 40px; margin-top: 10px;">
-              <img src="images/newlogin.png" alt="Image description" style="vertical-align: top; margin-left: -35px">
+            <img src="images/ForgotPassword.png" alt="Image description"
+              style="vertical-align: top; margin-left: -35px">
           </div>
           <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 h-6 w-6 text-teal-500">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="mr-2 h-6 w-6 text-teal-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <p class="text-gray-300 text-xl" style="font-size: 18px">Check your email</p>
+          </div>
+          <p style="margin-top: 4px; margin-left: 5px; font-size: 16px">
+            <span style="font-style: italic;">
+              The Synergy SIS will have sent an email (to your school account!) with steps to create 
+              a password. 
+            </span>
+          </p>
+          <div style="margin-left: 40px; margin-top: 10px;">
+            <img src="images/newlogin.png" alt="Image description" style="vertical-align: top; margin-left: -35px">
+          </div>
+          <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="mr-2 h-6 w-6 text-teal-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
             </svg>
             <p class="text-gray-300 text-xl" style="font-size: 18px">Set up your new password</p>
           </div>
+
+          <p style="margin-top: 4px; margin-left: 5px; font-size: 16px">
+            <span style="font-style: italic;">
+              You can now set up a text password alongside Google signin. This allows you to use
+              Synergy+.
+            </span>
+          </p>
+          
           <div style="margin-left: 40px; margin-top: 10px;">
-            <img src="images/newcredentials.png" alt="Image description" style="vertical-align: top; margin-left: -35px">
+            <img src="images/newcredentials.png" alt="Image description"
+              style="vertical-align: top; margin-left: -35px">
           </div>
 
           <div class="flex flex-col space-y-4">
             <div style="display: flex; align-items: center;">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="margin-right: 10px; height: 24px; width: 24px; color: teal;">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" style="margin-right: 10px; height: 24px; width: 24px; color: teal;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
               </svg>
               <p class="text-gray-300 text-xl" style="font-size: 18px;">
                 <a href="https://synergyplus.org/signin" target="_blank" rel="noopener noreferrer">
-                    <u style="text-decoration-color:teal">Log in</u>
+                  <u class="text-white" style="text-decoration-color:teal">Log in</u>
                 </a>
                 to your account
               </p>
+            </div>
+            <p style="margin-top: 4px; margin-left: 5px; font-size: 16px">
+              <span style="font-style: italic;">
+                You're in! You can now use Synergy+.
+              </span>
+            </p>
+            <div style="margin-left: 40px; margin-top: 10px;">
+              <img src="images/SynergyPlusLogIn.png" alt="Image description"
+                style="vertical-align: top; margin-left: -35px">
+            </div>
           </div>
-          <div style="margin-left: 40px; margin-top: 10px;">
-            <img src="images/SynergyPlusLogIn.png" alt="Image description" style="vertical-align: top; margin-left: -35px">
-          </div>
-        </div>
-        
-        
-          
-        </section>
-        </div>
-      </div>
+
+
+
+      </section>
+    </div>
+  </div>
 
 </body>
+
 </html>

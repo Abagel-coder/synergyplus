@@ -23,6 +23,7 @@
         opacity: 1;
         height: 96px;
         margin-top: 10px;
+        margin-bottom: 10px;
         padding: 3px 6px
       }
 
@@ -33,12 +34,61 @@
       }
     </style>
   </noscript>
+
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.css" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a", "950": "#172554" }
+          }
+        },
+        fontFamily: {
+          'body': [
+            'Inter',
+            'ui-sans-serif',
+            'system-ui',
+            '-apple-system',
+            'system-ui',
+            'Segoe UI',
+            'Roboto',
+            'Helvetica Neue',
+            'Arial',
+            'Noto Sans',
+            'sans-serif',
+            'Apple Color Emoji',
+            'Segoe UI Emoji',
+            'Segoe UI Symbol',
+            'Noto Color Emoji'
+          ],
+          'sans': [
+            'Inter',
+            'ui-sans-serif',
+            'system-ui',
+            '-apple-system',
+            'system-ui',
+            'Segoe UI',
+            'Roboto',
+            'Helvetica Neue',
+            'Arial',
+            'Noto Sans',
+            'sans-serif',
+            'Apple Color Emoji',
+            'Segoe UI Emoji',
+            'Segoe UI Symbol',
+            'Noto Color Emoji'
+          ]
+        }
+      }
+    }
+  </script>
 </head>
-<script>
-  function redirectToPasswordHelp() {
-    window.open("https://ca-pleas-psv.edupoint.com/PXP2_Password_Help.aspx?S=Y", "_blank");
-  }
-</script>
 <style>
   #synergy-plus-image {
     max-width: 100%;
@@ -67,6 +117,7 @@
   .card {
     border-radius: 12px;
   }
+
 
   .custom-button {
     background-color: transparent;
@@ -111,9 +162,9 @@
   }
 </style>
 
-<body class="flex items-center justify-center min-h-screenb bg-gray-900">
+<body class="flex items-center min-h-screenb bg-gray-800">
   <div id='login-outer'>
-    <div id='login-div' class='card' style="background-color: #111827; width: 400px; height: 500px;">
+    <div id='login-div' class='card flex items-center lg:w-[400px]' style="background-color: #111827; ">
       <div id='div-loadbar'></div>
       <div class='card-content' id='ccL'>
         <span class='card-title'><img id='title-icon' src=''> Synergy+</span>
@@ -132,7 +183,7 @@
       <div class='card-content' id='cc1'>
         <img id="synergy-plus-image"
           src="https://synergy-plus.vercel.app/static/media/synergyplus.66a8d0c1367f658c0c37.png" alt="Logo"
-          class="mx-auto block" style="margin-bottom: -17px; max-width: 100%;" />
+          class="mx-auto block" style="margin-bottom: -13px; max-width: 100%;" />
         <div id='div-msg'>
           <b id='msg-title'>Error:</b>
           <span id='msg-content'>JavaScript is disabled (29).<br>Synergy+ can not be used without JavaScript.<br><br>If
@@ -140,7 +191,7 @@
         </div>
         <div class="input-container" style="margin-top: -10px;">
           <label id='l_user' for='i_user' class="mt-2 py-2">Email</label>
-          <input id='i_user' maxlength='24' class='validate custom-input' style="width: 95%;">
+          <input id='i_user' class='validate custom-input' style="width: 95%;">
         </div>
         <div class="input-container">
           <label id="l_pass" for='i_pass'>Password</label>
@@ -153,17 +204,18 @@
 
           <label class="flex items-center">
             <input id='c_rem' type='checkbox' checked />
-            <span class="ml-2 text-gray-400 hover:text-gray-100">Remember Me</span>
+            <span class="ml-[-4] text-gray-400 hover:text-gray-100">Remember Me</span>
           </label>
-          <button onclick="redirectToPasswordHelp()" class="custom-button text-md text-gray-400 hover:text-gray-100" style="color: white; margin-left: 75.25px">
-            <p class="text-gray-300 text-lg">
-                <a href="/signup" target="_blank" rel="noopener noreferrer" style="color: white;">
-                    <u style="text-decoration-color: teal;">Create an Account</u>
-                </a>
+          <button onclick="" class="custom-button text-md text-gray-400 hover:text-gray-100"
+            style="color: white; margin-left: 75.25px">
+            <p class="text-gray-300 text-md">
+              <a href="/signup" rel="noopener noreferrer" style="color: white;">
+                <u style="text-decoration-color: teal;">Create an Account</u>
+              </a>
             </p>
-        </button>
-        
-        
+          </button>
+
+
 
         </div>
 
@@ -171,7 +223,7 @@
 
 
         <button onclick='login()' id="sign_in_button"
-          class="text-lg w-full text-white bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-3 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          class="text-lg w-full text-white bg-primary-600 focus:ring-5 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-base px-5 py-3 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           style="margin-top: 25px; border-radius: 6px; height: 50px; margin-bottom: 30px;">Sign In</button>
         <a href='app/start?persist=1' id='lnk-app' style='display: none'><button
             class='btn btn-flat right blue-grey darken-1 waves-effect waves-effect white-text'
