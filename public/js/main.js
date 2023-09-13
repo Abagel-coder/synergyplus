@@ -848,7 +848,6 @@ let cb = new Vue({
       pts = parseFloat(pts); 
       total = parseFloat(total); 
       if(!item.$originalScore){
-        rlib.toast.success('Item modified.');
         if(pts !== item.$points || total !== item.$totalPoints){
           if(item.$hasScore){
             item.$originalScore = [item.$points, item.$totalPoints]}
@@ -879,7 +878,6 @@ let cb = new Vue({
         '$': {'$custom': true, 'GradebookID':'0000000','Measure':measure,'Type': this.addWhatIf.category,'Date':moment().format('MM/DD/YYYY'),'DueDate':moment().format('MM/DD/YYYY'),'Score':`${this.addWhatIf.pts} out of ${this.addWhatIf.total}`,'ScoreType':'Raw Score','Points':`${this.addWhatIf.pts} / ${this.addWhatIf.total}`,'Notes':'','TeacherID':'00000','StudentID':'00000','MeasureDescription':''},'Resources':[''],'Standards':['']}); 
       gradeEngine.markup(this.items, true); 
       gradeEngine.markChange(this.items, this.weights); 
-      rlib.toast.success('Assignment Added!');
       M.Modal.getInstance($('#modal-addWhatIf')[0]).close(); 
     }
   }, 
