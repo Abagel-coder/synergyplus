@@ -1,33 +1,50 @@
 // StudentVUE Function Library
-// . All Rights Reserved. 
 // 
 // Helper functions for SVUE (parsing, manipulation, server communication)
 
 const rlib = {
   isMobile: window.matchMedia('only screen and (max-width : 600px)').matches, // screen size check only
+
+  /* 
+      Editing Toasts:
+        const toast = document.createElement('div');
+        toast.innerHTML = `<i class='fas fa-check fa-fw'></i> ${msg}`;
+        
+        // general styling
+        toast.style.position = 'fixed';
+        toast.style.top = '0';
+        toast.style.right = '0';
+        toast.style.backgroundColor = 'green';
+        toast.style.color = 'white';
+        toast.style.padding = '10px';
+        toast.style.margin = '10px';
+        toast.style.zIndex = '1000';
+        document.body.appendChild(toast);
+  */
+
   toast: {
-    error: (msg, dur=4000) => {
+    error: (msg, dur=3000) => {
       return M.toast({
         html: `<i style='padding-right: 4px' class='fas fa-times-circle fa-fw'></i> ${msg}`, 
         classes: 'red darken-1', 
         displayLength: dur
       })
     }, 
-    warn: (msg, dur=4000) => {
+    warn: (msg, dur=3000) => {
       return M.toast({
         html: `<i style='padding-right: 4px' class='fas fa-exclamation-triangle fa-fw'></i> ${msg}`, 
         classes: 'yellow lighten-1 black-text', 
         displayLength: dur
       })
     }, 
-    success: (msg, dur=4000) => {
+    success: (msg, dur=3000) => {
        return M.toast({
-        html: `<i style='padding-right: 4px' class='fas fa-check fa-fw'></i> ${msg}`, 
+        html: `<i style='padding-left: 2px' class='fas fa-check fa-fw'></i> ${msg}`, 
         classes: 'green darken-2', 
         displayLength: dur
       }); 
     }, 
-    info: (msg, dur=4000) => {
+    info: (msg, dur=3000) => {
        return M.toast({
         html: `<i style='padding-right: 4px' class='fas fa-info-circle fa-fw'></i> ${msg}`, 
         classes: 'blue darken-1', 
