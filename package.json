@@ -10,7 +10,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.18.3",
     "bottleneck": "^2.17.1",
     "cheerio": "^1.0.0-rc.3",
