@@ -125,12 +125,12 @@ theme: {
     "Keyboard compatible!",
     "I've got a bad feeling about this!",
     "Hire us, Synergy!",
-    "Exploding creepers!",
-    "That's no moon!!",
+    "We use fuzzy logic!",
+    "That's no moon!",
     "You can access GPA now!",
     "Create!",
     "Fetching grades!",
-    "Priming Grades...",
+    "Priming grades...",
     "Exclusive!",
     "The bee's knees!",
     "Down with O.P.P.!",
@@ -140,7 +140,7 @@ theme: {
     "Not on steam!",
     "¿Dónde está la biblioteca?",
     "Awesome community!",
-    "We're off to Never Never Land!",
+    "We're off!",
     "Teetsuuuuoooo!",
     "Kaaneeeedaaaa!",
     "Fade to Black!",
@@ -158,17 +158,14 @@ theme: {
     "Euclidian!",
     "Now in 2D!",
     "Inspirational!",
-    "FHS CS Club is Cool!",
+    "FHS CS Club is cool!",
     "Complex cellular automata!",
-    "Yes, sir!",
     "Used by cowboys!",
     "OpenGL 1.2!",
     "Thousands of features!",
     "Try it!",
     "Up-Up-Down-Down-Left-Right-Left-Right-B-A-START!",
-    "Try the mushroom stew!",
     "Sensational!",
-    "Hot tamale, hot hot tamale!",
     "Guaranteed!",
     "Macroscopic!",
     "You totally failed that test!",
@@ -180,7 +177,7 @@ theme: {
     "I'm sure you did great on your test!",
     "Only taking 7 APs this year?",
     "Tell your friends about us!",
-    "Good luck (you'll need it)!",
+    "Good luck!",
     "Aryan smells!",
     "Aryan smells!",
     "Nirav can't sing!",
@@ -191,7 +188,7 @@ theme: {
     "Attend Foothill CS Club!",
     "Attend Foothill Chess Club!",
     "Attend Foothill Chess Club!",
-    "GPA screen fixed!"
+    "GPA screen fixed!",
       ];
 
       const randomIndex = Math.floor(Math.random() * splashTexts.length);
@@ -705,13 +702,13 @@ theme: {
               <div class="mb-4 lg:hidden"></div>
               <div class="justify-center center-elements" style='margin-top: -20px; @media (max-width: 1024px) { margin-top: 0; };'>
                 <span class='right mt-3 lg:mt-0 lg:mb-3'>
-                  <span v-if='!isModified' class='lg green-text bw font-medium px-2 text-gray-900 text-4xl lg:mr-[-20px] ' >
-                    {{grade.CalculatedScoreRaw}}%
+                  <span v-if='!isModified' class='lg green-text bw font-medium text-gray-900 text-4xl' >
+                    {{grade.CalculatedScoreRaw}}% ({{grade.CalculatedScoreString}})
                   </span>                    
                     <span v-else class='lg green-text bw font-medium px-2 text-gray-900 text-4xl lg:mr[-20px]'>
                       {{modifiedScoreLg}}
                     </span>
-                  <span class='lg:block hidden text-center lg:absolute lg:right-0 lg:mb-3'>
+                  <span class='lg:block hidden text-center lg:absolute lg:right-2 lg:mb-3 px-2'>
                     <span class='green-text bw nw right'>
                       Raw: {{shared.gradeEngine.calcGrade(items, weights).toFixed(4)}}%
                       
@@ -722,7 +719,7 @@ theme: {
 
                         <i class='fas fa-question-circle'></i>
                       </button>
-                      
+                      <!-- course dropdown v2 -->
                     </span>
                   </span>
                 </span>
@@ -952,10 +949,10 @@ theme: {
           </ul>
         </div>
         <div id='div-fixedBar' class='pinned col-w hidden'>
-          <ul class='collection with-header'>
+          <ul class='collection with-header'> <!-- course dropdown thing -->
             <li class='collection-header'>
-              <span id='div-fb-title' :class='isModified?"shorten":""' class='cf truncate'><span><a onclick='hideCourseDetails()' onkeypress='hideCourseDetails(0, event)' class='pointer' tabindex='0'><i class='bw fas fa-arrow-left'></i></a></span> {{$_trim(course.Title)}}</span>
-              <span v-if='!isModified' class='right cf green-text bw'>{{grade.CalculatedScoreRaw}}% ({{grade.CalculatedScoreString}})</span>
+              <span id='div-fb-title' :class='isModified?"shorten":""' class='font-medium text-gray-900 dark:text-white tracking-tight pb-2 dark:text-gray-100 whitespace-nowrap'><span><a onclick='hideCourseDetails()' onkeypress='hideCourseDetails(0, event)' class='pointer' tabindex='0'><i class='bw fas fa-arrow-left'></i></a></span> {{$_trim(course.Title)}}</span>
+              <span v-if='!isModified' class='pb-2 mb-2 lg green-text bw font-medium text-gray-900 text-4xl'>{{grade.CalculatedScoreRaw}}% ({{grade.CalculatedScoreString}})</span>
               <span v-else class='right cf'><span class='gray' style='text-decoration: line-through'>{{grade.CalculatedScoreRaw}}%</span> <span class='light-blue-text bw'>{{modifiedScoreLg}}</span></span>
             </li>
           </ul>
