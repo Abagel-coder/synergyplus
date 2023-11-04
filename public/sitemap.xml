@@ -1,0 +1,33 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+<url>
+<loc>https://synergyplus.org/</loc>
+<lastmod>2023-08-31T03:03:33+00:00</lastmod>
+<priority>1.00</priority>
+</url>
+<url>
+<loc>https://synergyplus.org/signup</loc>
+<lastmod>2023-09-22T18:10:10+00:00</lastmod>
+<priority>0.80</priority>
+</url>
+<url>
+<loc>https://synergyplus.org/signin</loc>
+<lastmod>2023-09-07T20:07:37+00:00</lastmod>
+<priority>0.64</priority>
+</url>
+<url>
+<loc>https://synergyplus.org/dashboard?app=1</loc>
+<lastmod>2023-11-03T00:20:49+00:00</lastmod>
+<priority>0.41</priority>
+</url>
+<url>
+<loc>https://synergyplus.org/account</loc>
+<lastmod>2023-09-13T00:38:59+00:00</lastmod>
+<priority>0.33</priority>
+</url>
+<url>
+<loc>https://synergyplus.org/signout</loc>
+<lastmod>2023-08-28T05:38:06+00:00</lastmod>
+<priority>0.33</priority>
+</url>
+</urlset>
