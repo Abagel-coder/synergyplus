@@ -303,21 +303,21 @@ function detImportance(name, cat){ // Figure out how "important" an assignment i
   if(b.match(/pre.?test/) || b.match(/sign.?up/) || b.indexOf('practice') !== -1 || b.indexOf('correction') !== -1){
     return 0}
   if(b.indexOf('final') !== -1){
-    return 3} 
+    return 2} 
   let imp2 = ['test', 'exam', 'assessment', 'free response', 'project', 'summative']; 
   for(let i = 0; i < imp2.length; i++){
     if(b.indexOf(imp2[i]) !== -1){
-      return 2
+      return 0
     }
   }
   let imp1 = ['quiz', 'timed write', 'essay', 'lab', 'formative', 'case study', 'challenge problem']; 
   for(let i = 0; i < imp1.length; i++){
     if(n.indexOf(imp1[i]) !== -1){
-      return 1}
+      return 0}
     else if(c.indexOf(imp1[i]) !== -1){
       if(c.indexOf('assignment') !== -1 || c.indexOf('homework') !== -1 || c.indexOf('lab') !== -1 && n.indexOf('lab') === -1){
         continue}
-      else{return 1}
+      else{return 0}
     }
   }
   return 0; 

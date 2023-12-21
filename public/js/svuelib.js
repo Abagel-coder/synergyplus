@@ -37,14 +37,14 @@ const rlib = {
         displayLength: dur
       })
     }, 
-    success: (msg, dur=3000) => {
+    success: (msg, dur=1500) => {
        return M.toast({
         html: `<i style='padding-left: 2px' class='fas fa-check fa-fw'></i> ${msg}`, 
         classes: 'green darken-2', 
         displayLength: dur
       }); 
     }, 
-    info: (msg, dur=3000) => {
+    info: (msg, dur=1500) => {
        return M.toast({
         html: `<i style='padding-right: 4px' class='fas fa-info-circle fa-fw'></i> ${msg}`, 
         classes: 'blue darken-1', 

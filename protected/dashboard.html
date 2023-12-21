@@ -758,6 +758,9 @@ theme: {
               </button>
 
              -->
+
+
+             
               
 
               <ul id='drop-courseActions' class='py-2 text-sm text-gray-700 dark:text-gray-200 dropdown-content items-center justify-center'>
@@ -910,6 +913,7 @@ theme: {
                 </div>
               </li>
             </transition>
+            
             <li href='#' class='collection-item class-item collection-stripe' :class='$_detClass(0, item.$)' v-for='item in filteredItems'>
               <span class='bw class-item-title truncate'>{{item.$.Measure}}</span>
               <div class='right' style='text-align: right'>
@@ -938,13 +942,7 @@ theme: {
           </ul>
         </div>
         <div id='div-fixedBar' class='pinned col-w hidden'>
-          <ul class='collection with-header'> <!-- course dropdown thing -->
-            <li class='collection-header'>
-              <span id='div-fb-title' :class='isModified?"shorten":""' class='font-medium text-gray-900 dark:text-white tracking-tight pb-2 dark:text-gray-100 whitespace-nowrap'><span><a onclick='hideCourseDetails()' onkeypress='hideCourseDetails(0, event)' class='pointer' tabindex='0'><i class='bw fas fa-arrow-left'></i></a></span> {{$_trim(course.Title)}}</span>
-              <span v-if='!isModified' class='pb-2 mb-2 lg green-text bw font-medium text-gray-900 text-4xl'>{{grade.CalculatedScoreRaw}}% ({{grade.CalculatedScoreString}})</span>
-              <span v-else class='right cf'><span class='gray' style='text-decoration: line-through'>{{grade.CalculatedScoreRaw}}%</span> <span class='light-blue-text bw'>{{modifiedScoreLg}}</span></span>
-            </li>
-          </ul>
+          
         </div>
         <div id='div-dropActions'>
           <ul id='drop-actions' class='py-2 text-sm text-gray-700 dark:text-gray-200 dropdown-content'>
