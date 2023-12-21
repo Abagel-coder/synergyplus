@@ -159,10 +159,10 @@ let limiter = new rateLimit({
     uri: 'mongodb://localhost:27017/svueplus',
     expireTimeMs: 36 * 1000
   }),
-  max: 8, // 8 requests per 16 seconds max
-  windowMs: 16 * 1000,
+  max: 20, 
+  windowMs: 18 * 1000,
   statusCode: 200, // Prevent Zepto from freaking out
-  message: { type: 'error', error: 39, msg: 'Too many login attempts. Try again in a minute.' }
+  message: { type: 'error', error: 39, msg: 'Too many login attempts. Try again soon.' }
 });
 
 let gbLimiter = new rateLimit({
@@ -170,10 +170,10 @@ let gbLimiter = new rateLimit({
     uri: 'mongodb://localhost:27017/svueplus',
     expireTimeMs: 36 * 1000
   }),
-  max: 12,
-  windowMs: 12 * 1000,
+  max: 24,
+  windowMs: 18 * 1000,
   statusCode: 429,
-  message: { type: 'error', error: 39, msg: 'Too many requests. Try again in a minute.' }
+  message: { type: 'error', error: 39, msg: 'Too many requests. Try again soon.' }
 });
 
 // Notification system setup
