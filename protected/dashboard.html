@@ -782,8 +782,8 @@ theme: {
              
               
 
-              <ul id='drop-courseActions' class='py-2 text-sm text-gray-700 dark:text-gray-200 dropdown-content items-center justify-center'>
-                <li class='nh'><span>More Actions</span></li>
+              <ul id='drop-courseActions' class='z-10 hidden bg-white divide-y divide-gray-100 text-sm rounded-lg shadow w-55 dark:bg-gray-700 dark:divide-gray-600 py-2 dropdown-content items-center text-center'>
+                <li class='nh font-medium truncate'><span>More Actions</span></li>
                 <li class='bw' v-show='!$_showQA("trends")'><span class='waves-effect' onclick='cb.$_toggleTrends()'><i class='fas fa-fw fa-chart-line'></i> Trends</span></li>
                 <li class='bw' v-show='!$_showQA("filter")'><span class='waves-effect' onclick='cb.showFilter = !cb.showFilter'><i class='fas fa-fw fa-filter'></i> Filter <span v-if='filterCount' class='light-blue-text text-lighten-4'>({{filterCount}})</span></span></li>
                 <li class='bw' v-show='!$_showQA("gradecalc")'><span class='py-2 text-sm text-gray-700 dark:text-gray-200' v-on:click='showGC=!showGC'><i class='fas fa-fw fa-calculator'></i> Grade Calc</span></li>
@@ -850,9 +850,7 @@ theme: {
                 <span v-show='weighted'>What do you have coming up? </span>
                 <div class='input-field inline' v-show='weighted'>
                   <select v-model='gc.category' v-on:change='$_gcCheck' class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 browser-default'>
-                    <option disabled>(Important Categories)</option>  
                     <option v-for='(item) in weights_sorted[2]' :class='item.$class' :value='item.$index'>{{item.$.Type}}</option>
-                    <option disabled>(Other Categories)</option>  
                     <option v-for='(item) in weights_sorted[1]' :class='item.$class' :value='item.$index'>{{item.$.Type}}</option>
                   </select>
                 </div>
@@ -872,8 +870,8 @@ theme: {
                 </div>
                 <span>%</span>
                 <br>
-                <button v-on:click='$_gcRun' class='btn btn-flat green waves-effect white-text'>What Do I Need?</button>
-                <p id='gc-result' v-show='gc.result' class='bw'><span id='gc-modNotice' class='light-blue-text bw'><i class='fas fa-info-circle'></i> This score is based off of your modified grade. <br></span><span class='green-text bw'>You'll need to get <b>{{gc.result}}%</b>{{gc.resDetails}}.</span><span class='right gray' v-on:click='gc.result=""'><i class='fas fa-times pointer'></i></span><br><span class='gray'>{{gc.helper}}</span></p>
+                <button v-on:click='$_gcRun' class='btn btn-flat bg-teal-500 waves-effect rounded-lg white-text px-2'>What Do I Need?</button>
+                <p id='gc-result' v-show='gc.result' class='bw'><span id='gc-modNotice' class='light-blue-text bw'><i class='fas fa-info-circle'></i> This score is based off of your modified grade. <br></span><span class='green-text bw px-1'>You'll need to get <b>{{gc.result}}%</b>{{gc.resDetails}}.</span><span class='right gray' v-on:click='gc.result=""'><i class='fas fa-times pointer'></i></span><br><span class='gray'>{{gc.helper}}</span></p>
                 <br v-if='!gc.result'><br>
               </li>
               <li v-show='showTrends' v-bind:key='3' class=''>
@@ -892,7 +890,7 @@ theme: {
                 </div>
                 <div id='div-cbf-cat' v-show='weighted'>
                   <a style='vertical-align: top' id='cbf-cat' onclick='scrollOnMobile("#li-filters")' class='dropdown-trigger drop-nc drop-ncl drop-bd bw' data-target='cbf-cat-drop'><span id='cbf-cat-text' class='truncate' style='display: inline-block; width: calc(100% - 12px)' :class='filter_catSelColor'>{{filter_catSel}}</span> <span class='right'><i class='fas fa-caret-down'></i></span></a>
-                  <ul id='cbf-cat-drop' class='dropdown-content'>
+                  <ul id='cbf-cat-drop' class='z-10 hidden bg-white divide-y divide-gray-100 text-sm rounded-lg shadow w-55 dark:bg-gray-700 dark:divide-gray-600 py-2 dropdown-content'>
                     <li class='nh'>
                       <span>Filter by Category</span>
                     </li>
@@ -963,9 +961,12 @@ theme: {
         <div id='div-fixedBar' class='pinned col-w hidden'>
           
         </div>
+
+
+
         <div id='div-dropActions'>
-          <ul id='drop-actions' class='py-2 text-sm text-gray-700 dark:text-gray-200 dropdown-content'>
-            <li class='nh'><span>More Actions</span></li>
+          <ul id='drop-actions' class='z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 py-2 dropdown-content'>
+            <li class='nh font-medium truncate'><span>More Actions</span></li>
             <li class='modal-trigger' data-target='modal-assignmentDetails'><a><i class='fas fa-info-circle fa-fw'></i> Details</a></li>
             <li v-on:click='$_dropAction(3)'><a><i class='fas fa-edit fa-fw'></i> Edit <span v-if='currentDropItem.details.$hasScore'>Item</span><span v-else>(What If?)</span></a></li>
             <li v-show='currentDropItem.pending' v-on:click='$_dropAction(5)'><a><i class='fas fa-calculator fa-fw'></i> Use in GC</a></li>
@@ -1013,9 +1014,7 @@ theme: {
 
                 <select v-model='addWhatIf.category' class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 browser-default'>
                   <option disabled>(Select One)</option>
-                  <option disabled>(Important Categories)</option>  
                   <option v-for='(item) in weights_sorted[2]' :class='item.$class' :value='item.$.Type'>{{item.$.Type}}</option>
-                  <option disabled>(Other Categories)</option>  
                   <option v-for='(item) in weights_sorted[1]' :class='item.$class' :value='item.$.Type'>{{item.$.Type}}</option>
                 </select>
               </div><br v-if='weighted'/>
@@ -1038,8 +1037,8 @@ theme: {
             </div>
           </div>
           <div class='modal-footer'>
-            <a href='#' class='modal-close grey darken-1 white-text waves-effect waves btn-flat'>Cancel</a>
-            <a href='#' target='_blank' v-on:click='$_addWhatIf' class='light-blue white-text waves-effect btn-flat'>Add Item</a>
+            <a href='#' class='rounded-lg modal-close grey darken-1 white-text waves-effect waves btn-flat'>Cancel</a>
+            <a href='#' target='_blank' v-on:click='$_addWhatIf' class='rounded-lg bg-teal-500 white-text waves-effect btn-flat'>Add Item</a>
           </div>
         </div>
       </div> <!--v-course outer wrapper-->
@@ -1349,31 +1348,7 @@ theme: {
   </div>
   
   
-  <div id="modal-gradeRounding" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    <div class="relative w-full max-w-2xl max-h-full">
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                    Grade Rounding
-                </h3>
-                <button class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-gradeRounding">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                </button>
-            </div>
-            <div class="p-6 space-y-6">
-                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                  Synergy rounds grades in each class to 0-2 decimals (this is determined by the teacher). <br>Your "raw" grade is a more accurate grade in the class, and is used in the grade calculator to give you results with a higher precision than third party grade calculators.
-                </p>
-            </div>
-            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button data-modal-hide="modal-gradeRounding" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Done</button>
-            </div>
-        </div>
-    </div>
-  </div>
+  
 
   
 
@@ -1408,9 +1383,10 @@ theme: {
       <a href='#' class='teal white-text waves-effect waves btn-flat' onclick='cbList.changeRP()'>Load</a>
     </div>
   </div>
-  <div id='modal-editItem' class='modal bottom-sheet'>
-    <div class='modal-content'>
-      <h4>Edit Item Score</h4>
+
+  <div id='modal-editItem' class='modal bottom-sheet dark:bg-gray-700 m-2'>
+    <div class='rounded-lg px-3 py-3'>
+      <h4 class = "text-xl font-semibold text-gray-900 dark:text-white py-2">Edit Item Score</h4>
       <p id='medit-item'></p>
       <div class='row'>
         <div class='input-field inline'>
@@ -1422,11 +1398,39 @@ theme: {
           <label class='active' for='medit-totalPoints'>Out Of</label>
         </div>
       </div>
-      <a href='#' style='margin-right: 4px' class='left grey white-text modal-close waves-effect btn-flat'>Cancel</a>
-      <a href='#' onclick='cb.$_processEdit()' class='left green white-text modal-close waves-effect btn-flat'>Done</a>
+      <a href='#' style='margin-right: 4px' class='text-white bg-gray-500 hover:bg-gray-600 left white-text modal-close waves-effect btn-flat mb-10 rounded-lg'>Cancel</a>
+      <a href='#' onclick='cb.$_processEdit()' class='text-white bg-teal-600 hover:bg-teal-800 left white-text modal-close waves-effect btn-flat mb-10 rounded-lg'>Done</a>
       <br/>
     </div>
   </div>
+
+  <div id="modal-gradeRounding" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div class="relative w-full max-w-2xl max-h-full">
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                    Grade Rounding
+                </h3>
+                <button class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="modal-gradeRounding">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+            </div>
+            <div class="p-6 space-y-6">
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  Synergy rounds grades in each class to 0-2 decimals (this is determined by the teacher). <br>Your "raw" grade is a more accurate grade in the class, and is used in the grade calculator to give you results with a higher precision than third party grade calculators.
+                </p>
+            </div>
+            <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <button data-modal-hide="modal-gradeRounding" type="button" class="text-white bg-teal-600 hover:bg-teal-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Done</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
   <div id='modal-confirmPass' class='modal'>
     <div class='modal-content'>
       <h4>One more step...</h4>
@@ -1457,6 +1461,8 @@ theme: {
       <a href='#' class='btn light-blue white-text waves-effect' onclick='rlib.copyStack()'><i class='fas fa-copy'></i> Copy</a> 
     </div>
   </div>
+
+  
   
   <div id='modal-welcome' class='modal'>
     <div id='wel-container'>
