@@ -30,7 +30,7 @@ label{
 
 #login-outer{
   position: absolute;
-  top: calc(40% - 150px);
+  top: calc(40% - 280px);
   width: 100%;
 }
 
@@ -114,7 +114,7 @@ label{
 }
 
 #drop-domain-ul li:hover {
-  background-color: #1C8BFF;
+  background-color: #26A69A;
 }
 
 .domain{
@@ -211,6 +211,10 @@ label{
 #s-domain, .domainName{
   font-size: 16px; 
   display: block;
+}
+
+.domainName {
+  color: rgb(182, 181, 181);
 }
 
 #s-domainURL, .domainURL{
