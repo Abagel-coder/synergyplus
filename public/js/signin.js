@@ -2,6 +2,8 @@ M.AutoInit();
 let canLogin = true; 
 let cont = false; 
 let lb = false; 
+
+
 let loadBar = {
   start: (t) => {
     lb = anime({
@@ -55,7 +57,6 @@ function transition(ele1, ele2){
   })
 }
 
-localStorage.domain = "https://ca-pleas-psv.edupoint.com";
 
 let currentTheme = 'light'; 
 if(localStorage.cfg_theme === 'dark' || (window.matchMedia("(prefers-color-scheme: dark)").matches && localStorage.cfg_theme !== 'light')){
@@ -248,8 +249,17 @@ function login(){
   canLogin = false; // Prevent duplicate logins
   loadBar.start(2500);
   let reqDone = false;
-  let req = $.post('/signin', {user: $('#i_user').val(), pass: $('#i_pass').val(), domain: "https://ca-pleas-psv.edupoint.com", rem: $('#c_rem')[0].checked}, (res) => {
-    reqDone = true;
+
+  let domainValue = localStorage.domain ? localStorage.domain.split('\\')[1] : "ca-pleas-psv.edupoint.com";
+
+
+  let req = $.post('/signin', {
+    user: $('#i_user').val(),
+    pass: $('#i_pass').val(),
+    domain: domainValue,
+    rem: $('#c_rem')[0].checked
+  }, (res) => {    
+  reqDone = true;
     if(res.type !== 'success'){
       lb.pause();
       loadBar.finish('#e53');
@@ -374,6 +384,9 @@ $('#i_domain').on('keypress', (e) => {
   }
   hideMsg();
 })
+
+
+
 
 window.onload = function(){
   $('#ccL').hide();

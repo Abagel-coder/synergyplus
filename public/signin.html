@@ -118,6 +118,9 @@
   .card {
     border-radius: 12px;
   }
+  #ccD {
+  display: none;
+  }
 
 
   .custom-button {
@@ -158,18 +161,25 @@
     margin-top: calc(50vh - 300px);
   }
 
-  hover-text-primary:hover {
-    color: #2196F3;
-  }
+  
 </style>
 
-<body class="flex items-center min-h-screenb bg-gray-800">
+<body class="flex items-center min-h-screen bg-gray-800">
   <div id='login-outer'>
-    <div id='login-div' class='card flex items-center lg:w-[400px]' style="background-color: #111827; ">
+    <div id='login-div' class='card flex items-center lg:w-[800px]' style="background-color: #111827; ">
       <div id='div-loadbar'></div>
+
+      
+
       <div class='card-content' id='ccL'>
         <span class='card-title'><img id='title-icon' src=''> Synergy+</span>
         <br />
+
+
+        
+
+        
+
         <noscript>
           <div>
             <b>Error:</b>
@@ -177,9 +187,24 @@
               enabling JavaScript, <a href='https://enable-javascript.com'>click here</a>.</span>
           </div>
         </noscript>
+
+
+
         <p style='font-size: 16px'><img src='images/rolling.svg' id='so-i'
             style='height: 20px; vertical-align: text-bottom'> Please wait...</p>
+
+
+              
+
+
+
+            
+
       </div>
+
+      
+
+      
 
       <div class='card-content' id='cc1'>
         <img id="synergy-plus-image"
@@ -201,6 +226,37 @@
             style="width: 95%;">
         </div>
 
+        <div class="input-container pb-2">
+          <label for='div-domain' class='active'>Domain / District</label>
+            <div id='div-domain' tabindex='0' data-target='drop-domain-ul' onclick='showDrop()'>
+              <span id='s-domain'></span>
+            </div>
+        </div>
+
+
+        
+
+          <span>Select your district below.</span> <br />
+
+
+          <div id='domainOut'>
+            <div class='domain' tabindex='0' onkeypress='selDomain(this)' onclick='selDomain(this)'>
+              <span class='domainName'><b>Pleasanton Unified School District</b></span>
+              <span class='domainURL'><i>ca-pleas-psv.edupoint.com</i></span>
+            </div>
+          </div>
+
+         <br/> <span>If your district is not listed, enter your <b>district URL</b>.</span>
+
+          <div class='input-field'>
+            <input id='i_domain' type='text' maxlength='64' class='validate'>
+            <label id='l_domain' for='i_domain'>District URL </label>
+            <span id='h_domain' class='helper-text' data-error='The URL provided is not valid.'></span>
+          </div>
+
+        
+
+
         <div class="flex justify-between items-center ml--2">
 
           <label class="flex items-center">
@@ -221,6 +277,11 @@
         </div>
 
 
+        
+
+        
+
+
 
 
         <button onclick='login()' id="sign_in_button"
@@ -231,13 +292,7 @@
             style='margin-right: 4px'>Back</button></a>
         <br>
       </div>
-      <div class='card-content' id='ccWA'>
-        <span class='card-title'><img id='title-icon' src=''> Sign In with WebAuth</span>
-        <div class='domain' tabindex='0' onkeypress='selDomain(this)' onclick='selDomain(this)'>
-          <span class='domainName'>Sign in with an external security key</span>
-          <span class='domainURL'>svue.psdschools.org</span>
-        </div>
-      </div>
+      
       <div class='card-content' id='cc2'>
         <span class='card-title'><img id='title-icon' src=''> Synergy+</span>
         <p>Looks like you haven't used Synergy+ yet this school year. Welcome!</p>
@@ -259,13 +314,13 @@
           <b>Error:</b>
           <span id='msg2-content'>The request failed.</span>
         </div>
-        <p><b>Synergy+ works by communicating with Synergy SIS. No data is ever transferred to a central server --
-            everything is kept on your personal device.</p>
+        <p><b>Synergy+ works by communicating with Synergy SIS. No sensitive information is EVER sent to a server, like your transcripts or grades.
+            It's all stored on your personal device.</p>
         <br />
         <p><b>Don't be a nerd and misuse this!</b></p>
         <div class='input-field'>
           <input id='i_signature' type='text' maxlength='48' onchange='tosAcc.disabled=false' class='validate'>
-          <label for='i_signature'>Your Display Name</label>
+          <label for='i_signature'>Sign Here.</label>
         </div>
         <br>
         <label>
@@ -291,10 +346,38 @@
       </div>
     </div>
   </div>
-  <ul id='drop-domain-ul' class='dropdown-content' style="background-color: #14b8a6">
-    <li onclick='drop(0)'><a href="#" style="color: #111827;">Open District Portal</a></li>
-    <li onclick='drop(1)'><a href="#" style="color: #111827;">Change District</a></li>
+
+<!--
+  <div class='card-content' id='ccD'>
+    <div style="display: flex; align-items: center;">
+      <img id='title-icon' src='Final.png' style="width: 32px; height: 32px; margin-right: 10px;">
+      <span class='card-title'>District Selection</span>
+    </div>  
+
+    <span>If your district is not listed below, enter either your <b>zip code</b> or <b>district URL</b> to show a list of districts near you.</span><br/>
+      <div class='input-field'>
+        <input id='i_domain' type='text' maxlength='64' class='validate'>
+        <label id='l_domain' for='i_domain'>District URL / Zip Code</label>
+        <span id='h_domain' class='helper-text' data-error='The URL provided is not valid.'></span>
+      </div>
+      <div id='domainOut'>
+        <div class='domain' tabindex='0' onkeypress='selDomain(this)' onclick='selDomain(this)'>
+          <span class='domainName'>Pleasanton Unified School District</span>
+          <span class='domainURL'>ca-pleas-psv.edupoint.com</span>
+        </div>
+      </div>
+  </div> -->
+
+
+  <ul id='drop-domain-ul' class='z-10 hidden bg-white divide-y divide-gray-100 text-sm rounded-lg shadow w-55 dark:bg-gray-700 dark:divide-gray-600 py-2 dropdown-content items-center text-center' style='background-color:#4a5568;'>
+    <li onclick='drop(0)'><a href="#" style="color: #c9c9c9;">Open District Portal</a></li>
   </ul>
+
+
+ 
+
+    
+  
 
 </body>
 
