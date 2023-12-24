@@ -276,12 +276,5 @@ label{
   }
 }
 
-@media only screen and (max-width: 360px) {
-  #login-outer{
-    min-height: 720px; /*Prevents text from getting clipped off on really small displays (i.e. iPhone SE)*/
-  }
-  #ft, #ft-right{
-    background: rgba(255, 255, 255, 0.6);
-  }
-}
+
 
