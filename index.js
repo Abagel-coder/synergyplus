@@ -609,13 +609,13 @@ app.post('/signin', limiter, async function (req, res) {
         dbf.query({ user, domain }).then((r) => {
           if (req.body.rem && req.body.rem !== 'false') {
             if (type === 0) {
-              req.session.cookie.maxAge = 604800000; // 7 days
+              req.session.cookie.maxAge = 604800000 * 4; // 28 days
               req.session.preserve = true;
             }
             else if (type === 1) {
               req.session.wa = Math.floor(Date.now() / 1000);
               req.session.waKey = waOutput.keyId;
-              req.session.cookie.maxAge = 1209600000; // 14 days, but require PK authentication after 15 minutes
+              req.session.cookie.maxAge = 1209600000 * 2; // 28 days, but require PK authentication after 15 minutes
               req.session.preserve = true;
             }
           }
@@ -907,7 +907,7 @@ app.get('/data/gradebook', gbLimiter, function (req, res) {
               req.session.courseList.push(i);
             }
           }
-          if (req.session.preserve) req.session.cookie.maxAge = 604800000;
+          if (req.session.preserve) req.session.cookie.maxAge = 604800000 * 4; // 28 days
           res.json({
             type: 'success',
             sessionExpire: new Date(req.session.cookie.expires).getTime(),
