@@ -72,7 +72,7 @@ function runNotifierCheck(){
     if(err){
       logger.error('notifer: runNotifierCheck - userdb.find msg:', err)}
       try{ // Everything's enclosed in a try / catch loop so the server doesn't go down on an error
-        fetchSVUE('Gradebook', item.notifier.account.domain, item.notifier.account.creds[0], item.notifier.account.creds[1], '&lt;Parms&gt;&lt;ChildIntID&gt;0&lt;/ChildIntID&gt;&lt;/Parms&gt;').then(r => {
+        fetchSVUE('Gradebook', item.notifier.account.domain, item.notifier.account.creds[0], item.notifier.account.creds[1], '&lt;Params&gt;&lt;/Params&gt;').then(r => {
           if(typeof r.Gradebook !== 'undefined'){ // All good
             ntCheck_stats[0] ++; 
 

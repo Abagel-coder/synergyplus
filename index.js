@@ -207,7 +207,7 @@ const dbf = { // Database Functions
     let usrn = sessionAuth.creds[0];
     let pswd = cryptoHelper.decrypt(sessionAuth.creds[1]);
     return new Promise((resolve, reject) => {
-      fetchSVUE('Gradebook', sessionAuth.domain, usrn, pswd, '&lt;Parms&gt;&lt;ChildIntID&gt;0&lt;/ChildIntID&gt;&lt;/Parms&gt;').catch(err => {
+      fetchSVUE('Gradebook', sessionAuth.domain, usrn, pswd, '&lt;Params&gt;&lt;/Params&gt;').catch(err => {
         logger.error('dbf.createUser: failed to create user (requestSVUE failed)', err)
         resolve({ type: 'error', error: 'Internal server error' })
       }).then(r => {
@@ -1129,8 +1129,9 @@ app.get('/data/secure/courseHistory', gbLimiter, function (req, res) {
     }
     else {
       let jar = request.jar(), domain = req.session.auth.domain;
-      let loginURL = 'https://%d/PXP2_Login_Student.aspx?regenerateSessionId=True'.replace('%d', domain);
-      let chURL = 'https://%d/PXP_CourseHistory.aspx?AGU=0'.replace('%d', domain);
+      let loginURL = 'https://%d/PXP2_Login_Student.aspx?regenerateSessionId=True'.replace('%d', "ca-pleas-psv.edupoint.com");
+      let chURL = 'https://%d/PXP_CourseHistory.aspx?AGU=0'.replace('%d', "ca-pleas-psv.edupoint.com");
+      console.log(domain)
       request.get({
         url: loginURL,
         jar: jar

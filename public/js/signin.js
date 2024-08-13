@@ -250,13 +250,13 @@ function login(){
   loadBar.start(2500);
   let reqDone = false;
 
-  let domainValue = localStorage.domain ? localStorage.domain.split('\\')[1] : "ca-pleas-psv.edupoint.com";
+  let domainValue = localStorage.domain ? localStorage.domain.split('\\')[1] : "ca-pleas.edupoint.com";
 
 
   let req = $.post('/signin', {
     user: $('#i_user').val(),
     pass: $('#i_pass').val(),
-    domain: domainValue,
+    domain: "ca-pleas.edupoint.com",
     rem: $('#c_rem')[0].checked
   }, (res) => {    
   reqDone = true;
@@ -270,6 +270,7 @@ function login(){
       if(res.msgExt){
         showError(`${res.msgExt} (${res.error})`, 0, 1)
       } else{
+        console.log(res)
         showError(`${res.msg} (${res.error})`)
       }
     }
@@ -384,8 +385,6 @@ $('#i_domain').on('keypress', (e) => {
   }
   hideMsg();
 })
-
-
 
 
 window.onload = function(){
