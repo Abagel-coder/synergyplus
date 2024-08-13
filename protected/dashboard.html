@@ -180,7 +180,8 @@ theme: {
     "3/7 Bridges remain in Königsberg!",
     "O(n log n) time!",
     "Shoutout!",
-      ];
+    "We're back!",
+  ];
 
       const randomIndex = Math.floor(Math.random() * splashTexts.length);
       return splashTexts[randomIndex];
@@ -205,7 +206,7 @@ theme: {
               intPassed = true;
             } else {
                 clearInterval(initInterval);
-                setInterval(updateSplash, 3400);
+                setInterval(updateSplash, 3200);
             }
         }, 50);
 
@@ -595,8 +596,9 @@ theme: {
                 <span class='whitespace-nowrap px-2 py-2 font-medium text-gray-900 dark:text-white'
                   :class='$_chkLength($_trim(course.$.Title))'
                 >
-                  {{$_trim(course.$.Title.replace(/\([^)]*\)/g, ''))}}
-                </span>
+                {{ $_trim(course.$.Title.replace(/\([^)]*\)/g, '').replace(/course/gi, '').trim()) }}
+              </span>
+                
 
 
 
