@@ -388,10 +388,9 @@ const svueLib = {
           console.log("test")
           console.log(items[j])
           
-          if(!items[j].$.Score) {
-            pendingList.push(items[j].$.GradebookID)
-          }
-          else if(items[j].$.DisplayScore.slice(0, 3) === 'Not'){
+          
+
+          if(items[j].$.DisplayScore.slice(0, 3) === 'Not'){
             pendingList.push(items[j].$.GradebookID)
           }
           
