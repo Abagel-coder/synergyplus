@@ -71,6 +71,10 @@ let cbList = {
     if (gb.ok) {
       if (this.cl && this.cl.banner.cache) this.cl.banner.cache = false; // remove "cache available" popup
       cbData = gb.data;
+      
+      console.log("cbData")
+      console.log(cbData)
+      
       cbDiff = svueLib.diffAssignments(svueLib.parseAssignments(cbData), hist);
       cbList.cl.course = cbData; 
       cbList.cl.$forceUpdate(); 
@@ -533,11 +537,11 @@ let cb = new Vue({
   methods: {
     $_trim: v_shared.trimTitle, 
     $_getScore: (item) => { // returns [(num) score, (num) score out of, (num) percentage, (bool) isEC], or false if there is no score
-      if(item.Score.slice(0, 3) === 'Not' && !item.$originalScore){return false}
+      if(item.DisplayScore.slice(0, 3) === 'Not' && !item.$originalScore){return false}
       if(item.$originalScore){ // edited assignment
         let res = [item.$points, item.$totalPoints, item.$points / item.$totalPoints, (item.$points !== 0 && item.$totalPoints === 0)];
         if(!config.usePointValue && !res[3] && item.$hasScore){ // score conversion is only done if a) enabled in settings, b) item is not an extra credit assignment, and c) item had an original score (aka not pending)
-          let scoreOutOf = parseFloat(item.Score.split(' out of ')[1]);
+          let scoreOutOf = parseFloat(item.DisplayScore.split(' out of ')[1]);
           if(item.$originalScore[1] !== scoreOutOf && item.$totalPoints === item.$originalScore[1]){ // scale points to score if the totalPoints value wasn't modified
             let scale = scoreOutOf / item.$totalPoints; 
             res[0] = Math.round(item.$points * scale * 100) / 100; 
@@ -549,7 +553,7 @@ let cb = new Vue({
       else{ // non edited assignment
         if(item.Points.indexOf('/') === -1){
           return [-1, -1, 0, 0]} // no grade ("__ points possible")
-        let raw = (config.usePointValue || item.Score.indexOf(' out of ') === -1)?item.Points.split('/'):item.Score.split(' out of '); 
+        let raw = (config.usePointValue || item.DisplayScore.indexOf(' out of ') === -1)?item.Points.split('/'):item.DisplayScore.split(' out of '); 
         return [parseFloat(raw[0]), parseFloat(raw[1]), parseFloat(raw[0])/parseFloat(raw[1]), (parseFloat(item.Points.split('/')[0]) !== 0 && parseFloat(item.Points.split('/')[1]) === 0)]; 
       }
     }, 
@@ -569,14 +573,14 @@ let cb = new Vue({
     $_formatScore: function (item) {
       let score = this.$_getScore(item); 
       if(!score){
-        if(parseFloat(item.Points) > 0){return item.Score + ` (${parseFloat(item.Points)} pts)`}
-        return item.Score // Not Graded, Not Due, etc.
+        if(parseFloat(item.Points) > 0){return item.DisplayScore + ` (${parseFloat(item.Points)} pts)`}
+        return item.DisplayScore // Not Graded, Not Due, etc.
       }
       if(score[3]){
         return `(+${score[0]} pt${score[0]===1?'':'s'})`;
       }
-      if(!this.$_isCounted(item) && score[1] === 0 && item.Score.indexOf(' out of ') === -1){
-        return `(Raw: ${item.Score})`; // raw, uncounted value
+      if(!this.$_isCounted(item) && score[1] === 0 && item.DisplayScore.indexOf(' out of ') === -1){
+        return `(Raw: ${item.DisplayScore})`; // raw, uncounted value
       }
       return `(${score[0]}/${score[1]})`; 
     }, 
@@ -677,7 +681,7 @@ let cb = new Vue({
     }, 
     $_isCounted: function (item){ // returns false if an item has the note "Not For Grading" or is entered as 0/0 pts with a non-zero score
       let pts = item.Points.split('/'); 
-      let score = item.Score.split('out of'); 
+      let score = item.DisplayScore.split('out of'); 
       if(item.Notes.trim() === '(Not For Grading)'){
         return false;
       }

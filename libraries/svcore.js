@@ -7,16 +7,39 @@ const moment = require('moment');
 let logger; 
 const fetch = require('node-fetch'); // Import the fetch polyfill
 
+const { XMLBuilder, XMLParser } = require('fast-xml-parser');
+
+const parser = new XMLParser({
+	ignoreAttributes: false,
+	ignoreDeclaration: true,
+	attributeNamePrefix: '_',
+});
+
+const builder = new XMLBuilder({
+	ignoreAttributes: false,
+	attributeNamePrefix: '_'
+});
 
 const localSVUECreds = fs.existsSync(path.join(__dirname, '', 'svue.accounts.json')) ? require(path.join(__dirname, '', 'svue.accounts.json')):{}; 
 
 let template_options = { method: 'POST',
-  url: 'https://%d/Service/PXPCommunication.asmx',
+  url: 'https://%d/Service/PXPCommunication.asmx?WSDL',
   headers:
-   { soapaction: 'http://edupoint.com/webservices/ProcessWebServiceRequest',
-     'content-type': 'text/xml; charset=utf-8' },
-  body:
-   '<?xml version="1.0" encoding="utf-8"?>\n<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><soap:Body><ProcessWebServiceRequest xmlns="http://edupoint.com/webservices/"><userID>%u</userID><password>%p</password><skipLoginLog>1</skipLoginLog><parent>0</parent><webServiceHandleName>PXPWebServices</webServiceHandleName><methodName>%m</methodName><paramStr>%r</paramStr></ProcessWebServiceRequest></soap:Body></soap:Envelope>'};
+   {'content-type': 'application/soap+xml; charset=utf-8' },
+     body: `<?xml version="1.0" encoding="utf-8"?>
+     <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+       <soap12:Body>
+         <ProcessWebServiceRequest xmlns="http://edupoint.com/webservices/">
+           <userID>%u</userID>
+           <password>%p</password>
+           <skipLoginLog>true</skipLoginLog>
+           <parent>false</parent>
+           <webServiceHandleName>PXPWebServices</webServiceHandleName>
+           <methodName>%m</methodName>
+           <paramStr>&lt;Params&gt;&lt;/Params&gt;</paramStr>
+         </ProcessWebServiceRequest>
+       </soap12:Body>
+     </soap12:Envelope>`};
 
 let zipLookupKey = false; 
 
@@ -50,47 +73,94 @@ function handleSVUEData(raw){
  * @returns {(object|string)} JSON object by default, XML string if @param raw is set to true
  */
 
- async function fetchSVUE(method, domain, user, pswd, params = {}, raw = false) {
-  try {
-    // Define the SOAP envelope with placeholders
-    const soapEnvelope = `<?xml version="1.0" encoding="utf-8"?>
-      <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
-        <soap12:Body>
-          <ProcessWebServiceRequest xmlns="http://edupoint.com/webservices/">
-            <userID>${user}</userID>
-            <password>${pswd}</password>
-            <skipLoginLog>true</skipLoginLog>
-            <parent>false</parent>
-            <webServiceHandleName>PXPWebServices</webServiceHandleName>
-            <methodName>${method}</methodName>
-            <paramStr>&lt;Params&gt;&lt;/Params&gt;</paramStr>
-          </ProcessWebServiceRequest>
-        </soap12:Body>
-      </soap12:Envelope>`;
 
-    // Make the POST request using fetch
-    const response = await fetch(`https://${domain}/Service/PXPCommunication.asmx?WSDL`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/soap+xml; charset=utf-8'
-      },
-      body: soapEnvelope
-    });
 
-    // Handle the response
-    const text = await response.text();
-    if (raw) {
-      return text; // Return the raw XML if requested
-    } else {
-      // Convert XML to JSON (you would need a library like xml2js for this)
-      const json = await handleSVUEData(text);
-      return json;
+ function fetchSVUE(method, domain, user, pswd, params, raw){
+  return new Promise ((resolve, reject) => {
+    // reject({code: 'ECONNRESET'}); return; // enable for simulating server being down
+    let options = {...template_options}; 
+    options.body = options.body.replace('%m', method).replace('%u', user).replace('%p', pswd)
+    options.url = options.url.replace('%d', domain);
+    if(domain === '') {
+      if(method === 'TestWebServiceURL'){
+        resolve({TestWebServiceURL: {
+          OrganizationName: ['Internal Server']
+        }})
+      }
+      else if(raw){
+        resolve({RT_ERROR: {
+          $: {'ERROR_MESSAGE': 'RAW request cannot be performed on a local account.\r\n' }}, error: 'Invalid method '})
+      }
+      let base = path.join(__dirname, 'svue.itsryan.accounts', user); 
+      if(fs.existsSync(base) && localSVUECreds[user]){
+        bcrypt.compare(pswd, localSVUECreds[user]).then(valid => {
+          if(!valid){
+            resolve({RT_ERROR: {
+              $: {'ERROR_MESSAGE': 'The user name or password is incorrect.\r\n' }}, error: 'Incorrect password '}); 
+          }
+          else if(method === 'Gradebook' && fs.existsSync(path.join(base, 'Gradebook.json'))){
+            fs.readFile(path.join(base, 'Gradebook.json'), 'utf8', (err, res) => {
+              if(err){reject(err)}
+              else{ // r.Gradebook.Courses[0].Course
+                let data = JSON.parse(res).data; 
+                resolve({
+                  'Gradebook': {
+                    'Courses': [{
+                      'Course': data
+                    }]
+                  }
+                }); 
+              }
+            }); 
+          }
+          else if(fs.existsSync(path.join(base, method+'.xml'))) {
+            fs.readFile(path.join(base, method+'.xml'), 'utf8', (err, res) => {
+              if(err){reject(err)}
+              else{
+                handleSVUEData(res).then(r => {
+                  resolve(r); 
+                })
+              }
+            }); 
+          }
+          else{
+            reject({error: 'Method does not exist. '}); 
+          }
+        })
+      }
+      else{
+        resolve({RT_ERROR: {
+          $: {'ERROR_MESSAGE': 'Invalid user id or password' }}, error: 'User does not exist. '})}
     }
-  } catch (error) {
-    console.error('Error in fetchSVUE:', error);
-    throw error;
-  }
+    else{
+      request(options, function (error, response, body) {
+        if (error) {
+          if (logger) logger.error(`fetchSVUE call (method=${method}, user=${user}): `, error);
+          reject(error);
+          return;
+        }
+        else if (response.statusCode !== 200) {
+          if (logger) logger.error(`fetchSVUE call (domain=${domain}) (statusCode=${response.statusCode})`);
+          reject(error);
+          return; 
+        }
+        if (raw) {
+          resolve(body); 
+        } 
+        else{
+          handleSVUEData(body).then(r => {
+            resolve(r); 
+          }).catch(e => {
+            reject(e); 
+          });
+        }
+      })
+    }
+  }); 
 }
+
+
+
 /**
  * Formats a user's concurrent schools into a nicer array (MongoDB doesn't support "$" objects)
  * @param {object} obj r.Concurrent as returned from @method fetchSVUE

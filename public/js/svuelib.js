@@ -355,6 +355,8 @@ const svueLib = {
     try {
       let res = {}; 
       let courses = data;
+      console.log("courses! \n\n")
+      console.log(courses)
       if (!courses) { // no courses
         return {}; 
       }
@@ -370,10 +372,12 @@ const svueLib = {
         if(!marks){ // Selected class does not have gradebook data
           res[id.$.Title] = {
             grade: -2, 
-            items: [] };
+            items: [] 
+          };
           continue; 
         }
         let items = marks.Mark[0].Assignments[0].Assignment; 
+        console.log('items', items)
         if(!items){ // No assignments in the selected class
           res[id.$.Title] = {
             grade: -1, 
@@ -381,8 +385,16 @@ const svueLib = {
           continue; 
         }
         for(let j = 0; j < items.length; j++){
-          if(items[j].$.Score.slice(0, 3) === 'Not'){
-            pendingList.push(items[j].$.GradebookID)}
+          console.log("test")
+          console.log(items[j])
+          
+          if(!items[j].$.Score) {
+            pendingList.push(items[j].$.GradebookID)
+          }
+          else if(items[j].$.DisplayScore.slice(0, 3) === 'Not'){
+            pendingList.push(items[j].$.GradebookID)
+          }
+          
           itemList.push(items[j].$.GradebookID); 
         }
         res[id.$.Title] = {
