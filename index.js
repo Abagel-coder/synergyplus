@@ -212,6 +212,7 @@ const dbf = { // Database Functions
         resolve({ type: 'error', error: 'Internal server error' })
       }).then(r => {
         if (typeof r.Gradebook !== 'undefined') { // All good
+                    
           let assignments = svueLib.parseAssignments(r, true);
           userdb.insertOne({
             user: usrn,
@@ -901,6 +902,8 @@ app.get('/data/gradebook', gbLimiter, function (req, res) {
           if (!req.session.courseList || !Array.isArray(req.session.courseList)) {
             req.session.courseList = [];
           }
+
+
           let courseNames = Object.keys(svueLib.parseAssignments(r, true));
           for (let i of courseNames) {
             if (req.session.courseList.indexOf(i) === -1) {
