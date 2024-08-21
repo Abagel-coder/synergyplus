@@ -7,19 +7,6 @@ const moment = require('moment');
 let logger; 
 const fetch = require('node-fetch'); // Import the fetch polyfill
 
-const { XMLBuilder, XMLParser } = require('fast-xml-parser');
-
-const parser = new XMLParser({
-	ignoreAttributes: false,
-	ignoreDeclaration: true,
-	attributeNamePrefix: '_',
-});
-
-const builder = new XMLBuilder({
-	ignoreAttributes: false,
-	attributeNamePrefix: '_'
-});
-
 const localSVUECreds = fs.existsSync(path.join(__dirname, '', 'svue.accounts.json')) ? require(path.join(__dirname, '', 'svue.accounts.json')):{}; 
 
 let template_options = { method: 'POST',
