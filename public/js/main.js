@@ -777,10 +777,10 @@ let cb = new Vue({
         this.gc.helper = 'You don\'t even need to show up!'}
       else if(grade > 200){
         this.gc.result = '>200'
-        this.gc.helper = 'Did you mistype something?'}
+        this.gc.helper = 'It\'s joever!'}
       else{
         this.gc.result = `a${grade < 90 && grade >= 80? 'n':''} ` + gradef
-        if(grade < 65){this.gc.helper = 'Looks like it\'ll be a piece of cake!'}
+        if(grade < 65){this.gc.helper = 'Draw a flower or something!'}
         else if(grade < 75){this.gc.helper = 'Maybe spend a few minutes studying?'}
         else if(grade < 85){this.gc.helper = 'That\'s not bad at all!'}
         else if(grade < 92){this.gc.helper = 'Do some studying, you\'ll be fine!'}
@@ -879,7 +879,7 @@ let cb = new Vue({
       }
       let measure = this.addWhatIf.name.length > 0 ? this.addWhatIf.name : 'What-If Assignment'; 
       this.items.unshift({ 
-        '$': {'$custom': true, 'GradebookID':'0000000','Measure':measure,'Type': this.addWhatIf.category,'Date':moment().format('MM/DD/YYYY'),'DueDate':moment().format('MM/DD/YYYY'),'Score':`${this.addWhatIf.pts} out of ${this.addWhatIf.total}`,'ScoreType':'Raw Score','Points':`${this.addWhatIf.pts} / ${this.addWhatIf.total}`,'Notes':'','TeacherID':'00000','StudentID':'00000','MeasureDescription':''},'Resources':[''],'Standards':['']}); 
+        '$': {'$custom': true, 'GradebookID':'0000000','Measure':measure,'Type': this.addWhatIf.category,'Date':moment().format('MM/DD/YYYY'),'DueDate':moment().format('MM/DD/YYYY'),'DisplayScore':`${this.addWhatIf.pts} out of ${this.addWhatIf.total}`,'ScoreType':'Raw Score','Points':`${this.addWhatIf.pts} / ${this.addWhatIf.total}`,'Notes':'','TeacherID':'00000','StudentID':'00000','MeasureDescription':''},'Resources':[''],'Standards':['']}); 
       gradeEngine.markup(this.items, true); 
       gradeEngine.markChange(this.items, this.weights); 
       M.Modal.getInstance($('#modal-addWhatIf')[0]).close(); 
