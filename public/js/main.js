@@ -1463,7 +1463,7 @@ function initApp(userData){
     $('#sp-fullNameActual').text(name); 
     $('.sp-fullName').text(name)}
 
-  if (name.includes("Menon")) {
+  if (name.includes("Aadhitya V. Menon")) {
       $('.sp-fullName').text("Mungie");
   } else {
       $('.sp-fullName').text(name);
@@ -1670,7 +1670,7 @@ async function initAppCore() {
   } else if (svcore.getName()) {
     const name = svcore.getName();
 
-    if (name.includes("Menon")) {
+    if (name.includes("Aadhitya V. Menon")) {
         $('.sp-fullName').text("Mungie");
     } else {
         $('.sp-fullName').text(name);
