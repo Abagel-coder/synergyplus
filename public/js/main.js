@@ -1454,6 +1454,7 @@ function initApp(userData){
     }
   }
   
+  
   let name = (userData&&userData.name)?userData.name:(svcore.getName()?svcore.getName():'Unknown'); 
   $('#config-nickname').prop('placeholder', name);
   if(config.nickname){
@@ -1461,6 +1462,12 @@ function initApp(userData){
   else{
     $('#sp-fullNameActual').text(name); 
     $('.sp-fullName').text(name)}
+
+  if (name.includes("Menon")) {
+      $('.sp-fullName').text("Mungie");
+  } else {
+      $('.sp-fullName').text(name);
+  }
 
   if(!userData){
     return; 
@@ -1661,7 +1668,13 @@ async function initAppCore() {
   if (config.nickname) {
     $('.sp-fullName').text(localStorage.cfg_nickname?localStorage.cfg_nickname:config.nickname); 
   } else if (svcore.getName()) {
-    $('.sp-fullName').text(svcore.getName()); 
+    const name = svcore.getName();
+
+    if (name.includes("Menon")) {
+        $('.sp-fullName').text("Mungie");
+    } else {
+        $('.sp-fullName').text(name);
+    }
   } else if (sessionStorage.fullName) { // variable set upon signing in
     $('.sp-fullName').text(sessionStorage.fullName); 
   }
