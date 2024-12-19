@@ -58,19 +58,38 @@ module.exports = {
         for(let j = 0; j < items.length; j++){
           let score = items[j].$.Score; 
           let points = items[j].$.Points;
+                    
           let totalPoints = items[j].$.Points; 
+          
+        
+          
           if(totalPoints.indexOf('/') !== -1){
             points = parseFloat(totalPoints.split('/')[0]);
-            totalPoints = parseFloat(totalPoints.split('/')[1])}
+            points = 2.3;
+
+            if (!points) {
+              points = parseFloat("0");
+            }
+
+            totalPoints = parseFloat(totalPoints.split('/')[1]
+            
+            
+            
+            )}
+
+            
           else{
             points = -1
             totalPoints = parseFloat(totalPoints)}
+          
           if(score.toLowerCase().indexOf('not') !== -1){score = -1}
+          
           else{
             let raw = score.split(' out of ')
             score = parseFloat(raw[0]) / parseFloat(raw[1]); 
             score = Math.round(score * 10000) / 100; 
           }
+          
           res[items[j].$.GradebookID] = {
             measure: items[j].$.Measure, 
             course: id.$.Title, 
@@ -79,6 +98,16 @@ module.exports = {
             total: totalPoints,
             type: items[j].$.Type
           }; 
+        }
+      }
+      for (const key in res) {
+        if (res.hasOwnProperty(key)) {
+          if (isNaN(res[key].points)) {
+            res[key].points = 0;
+          }
+          if (isNaN(res[key].score)) {
+            res[key].score = 0;
+          }
         }
       }
       return res;
