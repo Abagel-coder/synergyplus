@@ -252,62 +252,47 @@ const gradeEngine = {
     items.reverse(); 
   }, 
   // note that this requires $points and $totalPoints
-  calcGrade: function(items, rawWeights) {
-    if (items.length === 0) {
-      return 0;
-    }
-  
-    // Helper function to safely parse numbers
-    const safeParse = (value) => (isNaN(value) ? 0 : parseFloat(value));
-  
-    if (rawWeights) {
-      let weights = {};
-      for (let weight of rawWeights) {
-        if (weight.$.Type === 'TOTAL') {
-          continue;
-        }
+  calcGrade: function(items, rawWeights){
+    if(items.length === 0){return 0}
+    if(rawWeights){
+      let weights = {}; 
+      for(weight of rawWeights){
+        if(weight.$.Type === 'TOTAL'){continue}
         weights[weight.$.Type] = {
-          weight: safeParse(weight.$.Weight),
-          pts: 0,
-          total: 0,
-        };
-      }
-  
-      for (let i of items) {
-        const points = safeParse(i.$.$points);
-        const totalPoints = safeParse(i.$.$totalPoints);
-        if (typeof i.$.$points !== 'undefined' && weights[i.$.Type]) {
-          weights[i.$.Type].pts += points;
-          weights[i.$.Type].total += totalPoints;
+          weight: parseFloat(weight.$.Weight), 
+          pts: 0, 
+          total: 0
         }
       }
-  
+      for(let i of items){
+        if(typeof i.$.$points !== 'undefined' && weights[i.$.Type]){ // item isn't counted if it doesn't have points (ie. items that are "not graded"), nor if it points to a nonexistent category
+          weights[i.$.Type].pts += i.$.$points; 
+          weights[i.$.Type].total += i.$.$totalPoints; 
+        }
+      }
       let s = 0; // score / grade
       let z = 0; // % of weights with no points - Synergy ignores those fields
-      for (let n in weights) {
-        let i = weights[n];
-        if (i.pts !== 0) {
-          z += i.weight;
-          s += (i.pts / i.total) * i.weight;
+      for(let n in weights){
+        let i = weights[n]; 
+        if(i.pts !== 0){
+          z += i.weight; 
+          s += ((i.pts / i.total) * i.weight); 
         }
       }
-  
-      if (z !== 100) {
-        s = s * (100 / z);
-      }
-      return Math.round(s * 10000) / 10000;
-    } else {
-      let pts = 0;
-      let total = 0;
-      for (let i of items) {
-        const points = safeParse(i.$.$points);
-        const totalPoints = safeParse(i.$.$totalPoints);
-        if (typeof i.$.$points !== 'undefined') {
-          pts += points;
-          total += totalPoints;
+      if(z !== 100){
+        s = s * (100 / z)}
+      return Math.round(s*10000)/10000; 
+    }
+    else{
+      let pts = 0; 
+      let total = 0; 
+      for(let i of items){
+        if(typeof i.$.$points !== 'undefined'){
+          pts += i.$.$points; 
+          total += i.$.$totalPoints; 
         }
       }
-      return Math.round((1000000 * pts) / total) / 10000;
+      return Math.round(1000000*pts/total)/10000; 
     }
   },
   // function genChartData
