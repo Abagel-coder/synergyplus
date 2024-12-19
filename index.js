@@ -159,7 +159,7 @@ let limiter = new rateLimit({
     uri: 'mongodb://localhost:27017/svueplus',
     expireTimeMs: 36 * 1000
   }),
-  max: 30, 
+  max: 50, 
   windowMs: 18 * 1000,
   statusCode: 200, // Prevent Zepto from freaking out
   message: { type: 'error', error: 39, msg: 'Too many login attempts. Try again soon.' }
@@ -170,7 +170,7 @@ let gbLimiter = new rateLimit({
     uri: 'mongodb://localhost:27017/svueplus',
     expireTimeMs: 36 * 1000
   }),
-  max: 40,
+  max: 50,
   windowMs: 18 * 1000,
   statusCode: 429,
   message: { type: 'error', error: 39, msg: 'Too many requests. Try again soon.' }
