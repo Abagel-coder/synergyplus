@@ -1,6 +1,3 @@
-
-
-
 // main.js
 // 
 // Main script, used for all functions in the Gradebook tab as well as global / shared functions (settings, page navigation, etc.)
@@ -414,9 +411,6 @@ async function pageNav(targetPage, hideOnly, noHist){
     case 'messages': 
       await hideElement('#v-messages'); 
       break;
-    case 'courseHistory': 
-      await hideElement('#courseHistory'); 
-      break; 
     case 'roadmap': 
       await hideElement('#ext-roadmap');
       break;
@@ -448,12 +442,8 @@ async function pageNav(targetPage, hideOnly, noHist){
       await showElement('#v-attendance');
       break;
     case 'messages': 
-      if(!messages.loaded) messages.update(); 
       await showElement('#v-messages'); 
       break;
-    case 'courseHistory': 
-      await showElement('#courseHistory'); 
-      break; 
     case 'roadmap': 
       loadExternal('ext-roadmap', '/static/roadmap'); 
       await showElement('#ext-roadmap');
@@ -516,7 +506,7 @@ let cb = new Vue({
     }, 
     weighted: false, 
     showWeights: false, 
-    showFilter: false,
+    showFilter: false, 
     showGC: false, 
     showTrends: false, 
     showChanges: false, // tied to config.alwaysShowGC 
@@ -1500,7 +1490,7 @@ function initApp(userData){
       } 
       // otherwise, it's an invalid hash - go to "start off at gradebook"
     }
-    else if(['schedule', 'attendance', 'messages', 'notifier', 'roadmap', 'settings', 'courseHistory'].indexOf(hash) !== -1){ // another page
+    else if(['schedule', 'attendance', 'messages', 'notifier', 'roadmap', 'settings'].indexOf(hash) !== -1){ // another page
       pageNav(hash, 0, 1); 
       if(config.sidenavHL) $('#sn-'+hash).addClass('sidenav-hl'); 
       return; 
