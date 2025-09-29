@@ -645,92 +645,7 @@ let bellSchedule = {
   }
 }
 
-let courseHistory = {
-  raw: '', 
-  format: function(){
-    this.raw = this.raw.replace(/\s\-\s/g, `<br class="hide-on-med-and-up"/><span class="hide-on-small-only"> - </span>`).replace('Credit Attempted', `Credit Att<span class="hide-on-med-and-up">.</span><span class="hide-on-small-only">empted</span>`).replace('Credit Completed', `Credit Comp<span class="hide-on-med-and-up">.</span><span class="hide-on-small-only">leted</span>`); 
-  }, 
-  collapseAll: function() {
-    let ele = $('#ch-data').find('table').last(); 
-    ele.find('tr:not(.tr-hdr)').hide(); 
-    ele.find('.icon').html(`<i class='fas fa-fw fa-eye-slash'></i>`); 
-    ele.find('.icon').addClass('ch-hidden'); 
-  }, 
-  expandAll: function() {
-    let ele = $('#ch-data').find('table').last(); 
-    ele.find('tr:not(.tr-hdr)').show(); 
-    ele.find('.icon').html(`<i class='fas fa-fw fa-eye'></i>`); 
-    ele.find('.icon').removeClass('ch-hidden'); 
-  }, 
-  markup: function() { // "loads" data to DOM and collapses course years
-    $('#ch-data').html(this.raw); 
-    let ele = $('#ch-data').find('table').last(); 
-    ele.find('tr:not(.tr-hdr)').hide(); 
-    ele.find('tr.tr-hdr').each((i, e) => {
-      if(!$(e).next().is('.tr-hdr')){
-        $(e).addClass('tr-hdr2'); 
-        $(e).find('th').prepend(`<span class='icon ch-hidden'><i class='fas fa-fw fa-eye-slash'></i></span> `);
-        // e.innerHTML = `<i class='fas fa-fw fa-eye-slash></i> ` + e.innerHTML; 
-        $(e).prop('tabindex', 0); 
-        $(e).on('click keyup', (ev) => {
-          if (ev.code && (ev.code !== 'Enter' && ev.code !== 'Space')) return; 
-          else if (ev.code) ev.preventDefault(); 
-
-          let ele = $(ev.srcElement).is('.tr-hdr')?$(ev.srcElement):$(ev.srcElement).parent(); 
-          let icon = $(ev.srcElement).find('.icon'); 
-          if(icon.is('.ch-hidden')){
-            icon.html(`<i class='fas fa-fw fa-eye'></i>`); 
-            icon.removeClass('ch-hidden'); 
-            let selEle = ele.next(); 
-            while(selEle.length > 0 && !selEle.is('.tr-hdr')){
-              selEle.show(); 
-              selEle = selEle.next()}
-          } else{
-            icon.html(`<i class='fas fa-fw fa-eye-slash'></i>`); 
-            icon.addClass('ch-hidden'); 
-            let selEle = ele.next(); 
-            while(selEle.length > 0 && !selEle.is('.tr-hdr')){
-              selEle.hide(); 
-              selEle = selEle.next()}
-          }
-        })
-      }
-    }); 
-  }, 
-  load: function() {
-    $('#ch-load').prop('disabled', true); 
-    $('#ch-load').html(`<i class='fas fa-circle-notch fa-spin'></i> Loading Course History...`);
-    $.get('data/secure/courseHistory').then(r => {
-      if(r.type === 'success'){
-        rlib.toast.success('Success.'); 
-        localforage.setItem('courseHistory', {timestamp: Date.now(), data: r.data});
-        $('#ch-landing').hide(); 
-        $('#ch-date').text(moment().format('MMM DD, YYYY'));
-        this.raw = r.data; 
-        this.format(); 
-        this.markup(); 
-        $('#ch-main').show(); // show data
-      }
-      else if(r.type === 'auth'){
-        $('#ch-load').html(`<i class='fas fa-circle-notch fa-spin'></i> Waiting for Authentication...`);
-        rlib.popup('../signin/reauth', 400, 500); 
-        pendingSudo = 'ch.load'
-      }
-    })
-  }, 
-  loadCached: function() {
-    localforage.getItem('courseHistory').then(r => {
-      if(r) { // cache exists
-        $('#ch-landing').hide(); 
-        $('#ch-date').text(moment(r.timestamp).format('MMM DD, YYYY'));
-        this.raw = r.data; 
-        this.format(); 
-        this.markup(); 
-        $('#ch-main').show(); 
-      }
-    })
-  }
-}
+// Remove courseHistory feature: no longer loaded or exposed.
 
 let welcome = {
   instance: null, 
@@ -786,29 +701,4 @@ let welcome = {
   }
 }
 
-let pendingSudo; 
-$('body').on('ready', () => {
-  courseHistory.loadCached(); // load cached, if it exists
-  window.confirmSudo = function(){
-    rlib.closePopup(); 
-    if(pendingSudo) {
-      switch(pendingSudo) {
-        case 'ch.load': 
-          rlib.toast.info('Now loading...');
-          courseHistory.load(); 
-          break; 
-      }
-    }
-    pendingSudo = false; 
-  }
-  window.cancelSudo = function(){
-    if(pendingSudo) {
-      switch(pendingSudo) {
-        case 'ch.load': 
-          $('#ch-load').text('Load Course History'); 
-          $('#ch-load').prop('disabled', false)
-          break; 
-      }
-    } 
-  }
-}); 
+// Remove pendingSudo hooks used by courseHistory 

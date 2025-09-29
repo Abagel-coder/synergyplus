@@ -379,30 +379,21 @@ theme: {
    </li>
 
    <li>
-    <a href='#' onclick='pageNav("schedule", this)' class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+    <a href='#' onclick='pageNav("attendance", this)' class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
        <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-        <path class = "fas fa-fw fa-bell"/>
+        <path class = "fas fa-fw fa-calendar-alt"/>
        </svg>
-        <span class="ml-3">Schedule</span>
+        <span class="ml-3">Attendance</span>
     </a>
  </li>
 
  <li>
-  <a href='#' onclick='pageNav("courseHistory", this)' class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-     <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-      <path class = "fas fa-fw fa-graduation-cap"/>
-     </svg>
-      <span class="ml-3">GPA / Course History</span>
-  </a>
-</li>
-
-<li>
-  <a href='#' onclick='pageNav("attendance", this)' class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-     <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
-        <path class = "fas fa-fw fa-calendar-alt"/>
-     </svg>
-      <span class="ml-3">Attendance</span>
-  </a>
+   <a href='#' onclick='pageNav("schedule", this)' class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+      <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+       <path class = "fas fa-fw fa-bell"/>
+      </svg>
+       <span class="ml-3">Schedule</span>
+   </a>
 </li>
 
 <li>
@@ -1246,7 +1237,7 @@ theme: {
         </div>
       </div> <!-- messages wrapper -->
       <div id='courseHistory' class='hidden imgbk'>
-        <h2>GPA / Course History</h2>
+        <h2>Course History</h2>
         <div id='ch-landing'>
           <p>See your GPA (to three decimals!) and course history with this tool.</p>
           <p class='light-blue-text bw'><i class='fas fa-info-circle'></i> Once course history is loaded, it'll be saved to your local device; accessing this page in the future will then load the saved version (as it's not something that often changes).</p>
@@ -1285,14 +1276,7 @@ theme: {
       <a href='#' class='modal-close green white-text waves-effect waves btn-flat'>Done</a>
     </div>
   </div>
-  <div id='modal-chInfo' class='modal modal-fixed-footer md-scroll'>
-    <div class='modal-content'>
-      <h3>Loading GPA/Course History</h3>
-    </div>
-    <div class='modal-footer'>
-      <a href='#' class='modal-close green white-text waves-effect waves btn-flat'>Done</a>
-    </div>
-  </div>
+  
   <div id='modal-catDefinitions' class='modal modal-fixed-footer md-scroll'>
     <div class='modal-content'>
       <h3>Notification Categories</h3>
