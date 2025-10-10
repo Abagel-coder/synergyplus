@@ -903,13 +903,14 @@ app.get('/data/gradebook', gbLimiter, function (req, res) {
             req.session.courseList = [];
           }
 
-
+        
           let courseNames = Object.keys(svueLib.parseAssignments(r, true));
           for (let i of courseNames) {
             if (req.session.courseList.indexOf(i) === -1) {
               req.session.courseList.push(i);
             }
           }
+          console.log(courseNames);
           if (req.session.preserve) req.session.cookie.maxAge = 604800000 * 4; // 28 days
           res.json({
             type: 'success',
