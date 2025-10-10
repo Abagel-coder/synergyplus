@@ -1447,8 +1447,9 @@ theme: {
             for (let i = 0; i < index; i++) {
               const child = parent.children[i];
 
-              if (child.innerText !== element.innerText) continue;
+              if (child.children[0].children[1].children[0].innerText !== element.children[0].children[1].children[0].innerText) continue;
               element.style.display = "none";
+              console.log(`Hiding: ${i} ${element.children[0].children[1].children[0].innerText}`);
               break;
             }
           }
