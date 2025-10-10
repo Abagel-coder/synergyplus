@@ -537,24 +537,6 @@ theme: {
   
           
         <!-- GRADEBOOK ACTUAL -->
-
-
-        <script>
-          function deleteDuplicates()
-          {
-            const parent = element.parentElement;
-            const siblings = [];
-
-            for (let i = 0; i < parent.children.length; i++) {
-              const child = parent.children[i];
-
-              if (child.style.display === "none") continue;
-              if (child === element) continue;
-              if (child.innerText !== element.innerText) continue;
-              child.style.display = "none";
-            }
-          }
-        </script>
   
         <div id='acc gradebook'>
           <a
@@ -1445,5 +1427,31 @@ theme: {
 </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"></script>
+  <script>
+          function deleteDuplicates()
+          {
+            if (element.style.display === "none") return;
+            const parent = element.parentElement;
+            const siblings = [];
+
+            const index = 0;
+            for (let i = 0; i < parent.children.length; i++)
+            {
+              const child = parent.children[i];
+
+              if (child !== element) continue;
+              index = i;
+              break;
+            }
+
+            for (let i = 0; i < index; i++) {
+              const child = parent.children[i];
+
+              if (child.innerText !== element.innerText) continue;
+              element.style.display = "none";
+              break;
+            }
+          }
+  </script>
 </body>
 </html>
