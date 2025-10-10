@@ -539,7 +539,22 @@ theme: {
         <!-- GRADEBOOK ACTUAL -->
 
 
+        <script>
+          function deleteDuplicates()
+          {
+            const parent = element.parentElement;
+            const siblings = [];
 
+            for (let i = 0; i < parent.children.length; i++) {
+              const child = parent.children[i];
+
+              if (child.style.display === "none") continue;
+              if (child === element) continue;
+              if (child.innerText !== element.innerText) continue;
+              child.style.display = "none";
+            }
+          }
+        </script>
   
         <div id='acc gradebook'>
           <a
@@ -556,6 +571,7 @@ theme: {
             style="transition: background-color 0.3s;"
             onmouseover="this.style.backgroundColor = '#334155';"
             onmouseout="this.style.backgroundColor = '#1f2937';"
+            onload="deleteDuplicates()"
           >
         
             <div class="flex items-center">
