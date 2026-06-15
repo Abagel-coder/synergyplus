@@ -1,3 +1,33 @@
 logs/
 node_modules/
 secure/
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+.env*.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary/Cache
+tmp/
+temp/
+dist/
+build/
+
+# Sensitive files
+*.key
+*.pem
+*.p12
+credentials.json
+config.js
